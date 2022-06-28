@@ -20,9 +20,9 @@ spring:
       suffix: .jsp #省略文件后最
   jpa:
     open-in-view: false
-  thymeleaf:
-    cache: false
-    enabled: false
+#  thymeleaf:
+#    cache: false
+#    enabled: false
 #mybatis映射路径
 mybatis:
   mapper-locations: classpath:mybatis/*/*.xml,mybatis/**/*.xml
