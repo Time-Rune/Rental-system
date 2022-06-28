@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>Title</title>
-    <h2>hello web!</h2>
+
 </head>
 <body>
-
+    <h2>hello web!</h2>
 </body>
 </html>
