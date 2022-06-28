@@ -1,6 +1,7 @@
 package com.example.rentalsystem.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Slf4j
 @Controller
@@ -16,19 +19,16 @@ import java.security.Principal;
 public class LoginController {
 //    @ResponseBody
 //    @Value("${message}")
-    private int count;
+    @Autowired
+    private Timecounter timecounter;
     @GetMapping("/login")
     public String login(String account, String password, Model model){
-        for(int i = 0; i < 300; i++){
-            try {
-                Thread.sleep(500);
-            }catch (InterruptedException e){
-                System.out.println(e);
-            }
-            System.out.println("cout = ", count);
-            count += 1;
-            model.addAttribute("mess", "count");
-        }
+        System.out.format("main_count = %d\n", timecounter.getCounter());
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        Date date = new Date(System.currentTimeMillis());
+        System.out.println(formatter.format(date));
+        model.addAttribute("mess", formatter.format(date));
+
         return "success";
     }
 }
