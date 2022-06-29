@@ -1,7 +1,7 @@
 server:
   port: 8089
   servlet:
-    context-path: /web
+    context-path: /
     #以下三行配置信息，修改jsp文件不用重启
     jsp:
       init-parameters:
@@ -18,6 +18,10 @@ spring:
     view:
       prefix: /WEB-INF/jsp/ #jsp文件夹映射路径
       suffix: .jsp #省略文件后最
+    static-path-pattern: /static/**
+    # 只有静态资源的访问路径为/static/**时，才会处理请求
+#  resources:
+#    static-loc
   jpa:
     open-in-view: false
 #  thymeleaf:

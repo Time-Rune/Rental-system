@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -17,18 +18,23 @@ public class LoginController {
 //    @ResponseBody
 //    @Value("${message}")
     private int count;
-    @GetMapping("/login")
+    @GetMapping("/")
     public String login(String account, String password, Model model){
-        for(int i = 0; i < 300; i++){
-            try {
-                Thread.sleep(500);
-            }catch (InterruptedException e){
-                System.out.println(e);
-            }
-            System.out.println("cout = ", count);
-            count += 1;
+//        for(int i = 0; i < 300; i++){
+//            try {
+//                Thread.sleep(500);
+//            }catch (InterruptedException e){
+//                System.out.println(e);
+//            }
+//            System.out.println("cout = ", count);
+//            count += 1;
             model.addAttribute("mess", "count");
-        }
-        return "success";
+//        }
+        return "index";
+    }
+//    登录注册
+    @PostMapping("/login")
+    public String main(String username,String password){
+        return "index";
     }
 }
