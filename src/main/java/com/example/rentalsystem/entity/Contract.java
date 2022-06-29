@@ -9,6 +9,7 @@ public class Contract {
     private int UID2;
     private Date Ubegin;
     private Date Uend;
+    private int HID;
 
     @Override
     public String toString() {
@@ -19,7 +20,16 @@ public class Contract {
                 ", UID2=" + UID2 +
                 ", Ubegin=" + Ubegin +
                 ", Uend=" + Uend +
+                ", HID=" + HID +
                 '}';
+    }
+
+    public int getHID() {
+        return HID;
+    }
+
+    public void setHID(int HID) {
+        this.HID = HID;
     }
 
     public int getCID() {
