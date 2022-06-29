@@ -1,5 +1,7 @@
 package com.example.rentalsystem.entity;
 
+import java.util.Date;
+
 public class House {
     private int HID;
     private String Hname;
@@ -13,6 +15,7 @@ public class House {
     private int Hstate;
     private int Hclick;
     private int Howner;
+    private Date Hdate;
 
     @Override
     public String toString() {
@@ -29,7 +32,16 @@ public class House {
                 ", Hstate=" + Hstate +
                 ", Hclick=" + Hclick +
                 ", Howner=" + Howner +
+                ", Hdate=" + Hdate +
                 '}';
+    }
+
+    public Date getHdate() {
+        return Hdate;
+    }
+
+    public void setHdate(Date hdate) {
+        Hdate = hdate;
     }
 
     public int getHID() {
