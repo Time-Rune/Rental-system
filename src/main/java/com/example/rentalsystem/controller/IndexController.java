@@ -23,16 +23,16 @@ public class IndexController {
     @GetMapping("/index")
     public String pageIndex(Model model){
         List<House> houses = serviceShowLatestHouse.getLastestHouse(4);
-
+        /*
+        最新房源展示
+         */
         House test = new House();
         test.setHphoto("/XHS_1656418008466e5128622-da5a-3a04-aaae-66d82326.jpg");
         model.addAttribute("Houses0", test);
 
-//        HashMap<String, House> latestHouses = new HashMap<String, House>();
         for(int i = 0; i < houses.size(); i++){
-            model.addAttribute("Latesthouses." + Integer.toString(i), houses.get(i));
+            model.addAttribute("Latesthouses" + i, houses.get(i));
         }
-//        model.addAllAttributes(latestHouses);
         return "index";
     }
 }
