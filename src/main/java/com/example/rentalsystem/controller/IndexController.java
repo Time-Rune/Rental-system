@@ -5,7 +5,9 @@ import com.example.rentalsystem.service.ServiceShowLatestHouse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,14 +20,19 @@ public class IndexController {
     /**
      * 主页
      */
-    @RequestMapping("/index")
+    @GetMapping("/index")
     public String pageIndex(Model model){
         List<House> houses = serviceShowLatestHouse.getLastestHouse(4);
-        HashMap<String, House> latestHouses = new HashMap<String, House>();
+
+        House test = new House();
+        test.setHphoto("/XHS_1656418008466e5128622-da5a-3a04-aaae-66d82326.jpg");
+        model.addAttribute("Houses0", test);
+
+//        HashMap<String, House> latestHouses = new HashMap<String, House>();
         for(int i = 0; i < houses.size(); i++){
-            latestHouses.put("LatestHouse" + Integer.toString(i), houses.get(i));
+            model.addAttribute("Latesthouses." + Integer.toString(i), houses.get(i));
         }
-        model.addAllAttributes(latestHouses);
+//        model.addAllAttributes(latestHouses);
         return "index";
     }
 }
