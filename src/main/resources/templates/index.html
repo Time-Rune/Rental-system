@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+<!--    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png">-->
+    <link rel="stylesheet" href="/static/css/adminLogin/login.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="header-wel">
+                <span>欢迎光临本站！</span>
+                <span><a href="" id="adminBtn">登录</a></span>
+            </div>
+            <div class="nav">
+                <ul>
+                    <!-- <img src="/11.jpeg" alt=""> -->
+                    <img src="/static/assets/images/logo/2.webp" alt="" class="nav-img">
+                    <li><a href="">首页</a></li>
+                    <li><a href="">新闻公告</a></li>
+                    <li><a href="">商业办公</a></li>
+                    <li><a href="">普通民宅</a></li>
+                    <li><a href="">酒店公寓</a></li>
+                    <li><a href="">全部房源</a></li>
+                    <li><a href="">留言交流</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="search">
+            <img id="search-img" src="/static/assets/images/logo/1.webp" alt="">
+            <input type="text">
+            <button id="searchbtn">搜索</button>
+        </div>
+        <div class="slideshow">
+            <div id="slideshow-imgs">
+                <img src="/static/assets/images/bg/1.jpg" alt="" id="slideshow-img">
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-lelf">
+                <div class="new-h">新闻公告</div>
+                <div>
+                
+                </div>
+                <h2>这是左侧栏</h2>
+            </div>
+            <div class="main-right">
+                <h2>这是右侧栏</h2>
+            </div>
+        </div>
+        <div class="content">
+            <h2>这是房源内容</h2>
+        </div>
+        <div class="footer">
+            <h2>这是页面底端</h2>
+        </div>
+    </div>
+    <!-- <%--				登录框--%> -->
+    <div id="login" class="login">
+        <div id="login-title" class="login-title">
+            <div class="login-title-item">
+                <div class="active">用户登录</div><div>管理员登录</div>
+            </div>
+            <span><a id="closeBtn" href="javascript:void(0)"><img src="/static/assets/images/icon-img/closeBtn.png"
+                                                                  alt=""></a></span>
+        </div>
+
+        <form id="login-form" action="loginServlet" method="post" style="display: block">
+            <div class="login-input">
+                <label>用户名:</label>
+                <i class="icons-user" id="icons-login"></i>
+                <input type="text" id="inputAccount" name="act" minlength="4" maxlength="40" class="list-input" placeholder="请输入用户名"/><br>
+                <span id="inputAccountEmpty" class="emptyInput" style="display: none">用户名不能为空</span>
+            </div>
+            <div class="login-input eye-div">
+                <label>密码:</label>
+                <i class="icons-password"></i>
+                <input type="password" id="inputPassword" minlength="6" maxlength="18" name="psw" class="list-input eye-input" placeholder="请输入密码"/><br>
+                <img id="eye" class="eye" src="/static/assets/images/icon-img/eye-show.png" alt="">
+                <span id="inputPasswordEmpty" class="emptyInput" style="display: none">密码不能为空</span>
+            </div>
+            <input type="hidden" id="loginRole" name="role" value="user"/>
+            <input type="submit" id="loginBtn" value="登录" class="loginSubmit"/>
+            <span><a id="register-btn" href="">点击注册</a></span>
+            <span><a id="forget-btn" href="">忘记密码？</a></span>
+        </form>
+    </div>
+    <!-- 遮盖层 -->
+    <div id="bg" class="bg"></div>
+    <div id="ScrollHeadersPlaceholder"></div>
+<!-- jQuery JS -->
+<script src="/assets/js/vendor/jquery-3.3.1.min.js"></script>
+<!-- login.js  -->
+<script type="text/javascript" src="../static/js/login.js"></script>
+<!-- register.js -->
+<script type="text/javascript" src="../static/js/register.js"></script>
+<!-- forget.js -->
+<script type="text/javascript" src="../static/js/forget.js"></script>
+</body>
+</html>
