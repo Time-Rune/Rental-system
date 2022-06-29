@@ -12,8 +12,8 @@ import java.util.List;
 @Mapper
 public interface AdminSQL {
     @Insert("insert into Admins(AID, Aaccount, Apassword, Aname, Adate, Aphone)" +
-            "values(#{id}, #{account}, #{password}, #{name}, #{date), #{phone}")
-    void insertAdmin(int id, String account, String password, Date date, String phone);
+            "values(#{id}, #{account}, #{password}, #{name}, #{date}, #{phone})")
+    void insertAdmin(int id, String account, String password, String date, String phone);
 
     @Select("select * from Admins")
     List<Admins> getAdmins();

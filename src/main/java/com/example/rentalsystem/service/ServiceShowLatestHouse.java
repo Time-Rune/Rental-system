@@ -19,3 +19,18 @@ public class ServiceShowLatestHouse {
         return houses;
     }
 }
+
+
+//    public List<House> getLastestHouse(){
+                     //        Date date = new Date();
+                     //        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                     //        String nowtime = simpleDateFormat.format(date.getTime());
+                     //        List<House> houses = showHouseSQL.getLatestHouse(nowtime);
+                     ////        String[][] reslist = new String[houses.size()][3];
+                     ////        for(int i = 0; i < houses.size(); i++){
+                     ////            reslist[i][0] = houses.get(i).getHphoto();
+                     ////            reslist[i][1] = houses.get(i).getHname();
+                     ////            reslist[i][2] = Integer.toString(houses.get(i).getHcost());
+                     ////        }
+                     //        return houses;
+                     //    }
