@@ -1,6 +1,5 @@
 package com.example.rentalsystem.entity;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 public class Admins {
@@ -8,7 +7,7 @@ public class Admins {
     private String Aaccount;
     private String Apassword;
     private String Aname;
-    private Date date;
+    private Date Adate;
     private String Aphone;
 
     @Override
@@ -18,7 +17,7 @@ public class Admins {
                 ", Aaccount='" + Aaccount + '\'' +
                 ", Apassword='" + Apassword + '\'' +
                 ", Aname='" + Aname + '\'' +
-                ", date=" + date +
+                ", date=" + Adate +
                 ", Aphone='" + Aphone + '\'' +
                 '}';
     }
@@ -55,12 +54,12 @@ public class Admins {
         Aname = aname;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getAdate() {
+        return Adate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setAdate(Date adate) {
+        this.Adate = adate;
     }
 
     public String getAphone() {

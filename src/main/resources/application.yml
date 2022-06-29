@@ -1,7 +1,7 @@
 server:
   port: 8089
   servlet:
-    context-path: /web
+#    context-path: /web
     #以下三行配置信息，修改jsp文件不用重启
     jsp:
       init-parameters:

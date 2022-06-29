@@ -8,6 +8,7 @@ public class News {
     private String Npost;
     private Date Ndate;
     private int Nclick;
+    private String Nheader;
 
     @Override
     public String toString() {
@@ -17,7 +18,16 @@ public class News {
                 ", Npost='" + Npost + '\'' +
                 ", Ndate=" + Ndate +
                 ", Nclick=" + Nclick +
+                ", Nheader='" + Nheader + '\'' +
                 '}';
+    }
+
+    public String getNheader() {
+        return Nheader;
+    }
+
+    public void setNheader(String nheader) {
+        Nheader = nheader;
     }
 
     public int getNID() {
