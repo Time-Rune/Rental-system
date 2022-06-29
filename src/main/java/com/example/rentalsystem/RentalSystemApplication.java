@@ -11,11 +11,6 @@ public class RentalSystemApplication {
 	static private Timecounter timecounter;
 
 	public static void main(String[] args) {
-		try {
-			timecounter.start();
-		}catch (NullPointerException e){
-			System.out.println(e);
-		}
 		SpringApplication.run(RentalSystemApplication.class, args);
 	}
 
