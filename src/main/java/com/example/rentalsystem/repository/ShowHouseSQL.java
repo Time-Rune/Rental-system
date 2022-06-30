@@ -25,4 +25,7 @@ public interface ShowHouseSQL {
     @Select("select max(House.HID) from House")
     int getMaxHID();
 
+    @Select("select * from house where HID = #{id}")
+    List<House> getHouseByID(int id);
+
 }

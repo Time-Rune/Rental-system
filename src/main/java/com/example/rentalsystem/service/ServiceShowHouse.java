@@ -19,5 +19,9 @@ public class ServiceShowHouse {
     public List<House> getSpecificKindHouse(int num){
         return showHouseSQL.getSpecificKindHouse(num);
     }
+
+    public List<House> getHouseByID(int id){
+        return showHouseSQL.getHouseByID(id);
+    }
 }
 

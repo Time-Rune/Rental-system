@@ -5,7 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-    <h1 th:text="${Latesthouses0.Hphoto}"></h1>
-    <img th:src="${Latesthouses0.Hphoto}">
+    <h1 th:text="${mess}"></h1>
+    <div th:each="house:${houses}">
+        <h1 th:text="'租金为：'+${house.Hcost}"></h1>
+    </div>
+    <!--    <h1 th:text="${Latesthouses0.Hphoto}"></h1>-->
+<!--    <img th:src="${Latesthouses0.Hphoto}">-->
 </body>
 </html>

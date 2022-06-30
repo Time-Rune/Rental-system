@@ -27,4 +27,7 @@ spring:
 #mybatis映射路径
 mybatis:
   mapper-locations: classpath:mybatis/*/*.xml,mybatis/**/*.xml
+  # 打印sql语句
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 

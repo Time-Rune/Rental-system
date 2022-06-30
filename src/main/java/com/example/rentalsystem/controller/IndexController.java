@@ -71,7 +71,6 @@ public class IndexController {
     }
     private void addLatestNews(Model model){
         List<News> newslist = serviceNews.getLatestNews(10);
-        for(int i = 0; i < newslist.size(); i++)
-            model.addAttribute("LatestNews" + i, newslist.get(i));
+        model.addAttribute("LatestNews", newslist);
     }
 }

@@ -19,7 +19,7 @@ public class LoginController {
     private ServiceShowHouse serviceShowHouse;
     private int count;
 
-    @GetMapping("/test")
+    @GetMapping("/login2")
     public String login(String account, String password, Model model){
         List<House> houses = serviceShowHouse.getLastestHouse(4);
         House test = new House();
