@@ -1,7 +1,9 @@
 package com.example.rentalsystem.controller;
 
 import com.example.rentalsystem.entity.House;
+import com.example.rentalsystem.entity.News;
 import com.example.rentalsystem.repository.ShowHouseSQL;
+import com.example.rentalsystem.service.ServiceNews;
 import com.example.rentalsystem.service.ServiceShowHouse;
 import com.example.rentalsystem.utils.TypeConversion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import java.util.List;
 public class IndexController {
     @Autowired
     private ServiceShowHouse serviceShowHouse;
+    @Autowired
+    private ServiceNews serviceNews;
     /**
      * 主页
      */
@@ -66,6 +70,8 @@ public class IndexController {
         }
     }
     private void addLatestNews(Model model){
-
+        List<News> newslist = serviceNews.getLatestNews(10);
+        for(int i = 0; i < newslist.size(); i++)
+            model.addAttribute("LatestNews" + i, newslist.get(i));
     }
 }
