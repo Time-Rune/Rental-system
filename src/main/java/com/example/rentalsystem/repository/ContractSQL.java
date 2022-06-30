@@ -18,6 +18,9 @@ public interface ContractSQL {
     @Select("select * from Contract")
     List<Contract> getContract();
 
+    @Select("select max(Contract.CID) from Contract")
+    int getMaxCID();
+
     @Delete("delete from Contract where CID = #{id}")
     void deleteContract(int id);
 

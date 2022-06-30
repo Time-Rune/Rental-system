@@ -18,6 +18,9 @@ public interface WordSQL {
     @Select("select * from Word")
     List<Word> getWords();
 
+    @Select("select max(Word.WID) from Word")
+    int getMaxWID();
+
     @Delete("delete from Word where WID = #{id}")
     void deleteWord(int id);
 

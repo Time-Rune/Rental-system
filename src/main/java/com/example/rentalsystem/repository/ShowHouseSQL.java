@@ -1,6 +1,7 @@
 package com.example.rentalsystem.repository;
 
 import com.example.rentalsystem.entity.House;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -17,4 +18,11 @@ public interface ShowHouseSQL {
 
     @Select("select * from house where house.Hkind = #{kind}")
     List<House> getSpecificKindHouse(int kind);
+
+    @Select("select * from house where Hname like '%#{keyword}%'")
+    List<House> searchHouseByName(String keyword);
+
+    @Select("select max(House.HID) from House")
+    int getMaxHID();
+
 }

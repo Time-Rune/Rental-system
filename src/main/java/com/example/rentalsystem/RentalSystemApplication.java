@@ -7,11 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class RentalSystemApplication {
-	@Autowired
-	static private Timecounter timecounter;
-
 	public static void main(String[] args) {
 		SpringApplication.run(RentalSystemApplication.class, args);
 	}
-
 }

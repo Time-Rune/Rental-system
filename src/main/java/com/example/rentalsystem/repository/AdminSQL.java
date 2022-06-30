@@ -18,6 +18,9 @@ public interface AdminSQL {
     @Select("select * from Admins")
     List<Admins> getAdmins();
 
+    @Select("select max(Admins.AID) from Admins")
+    int getMaxAID();
+
     @Delete("delete from Admins where AID = #{id}")
     void deleteAdmin(int id);
 }
