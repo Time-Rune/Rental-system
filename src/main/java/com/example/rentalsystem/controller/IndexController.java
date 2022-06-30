@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/")
 public class IndexController {
     @Autowired
     private ServiceShowHouse serviceShowHouse;
@@ -33,7 +35,7 @@ public class IndexController {
     }
 
     /**
-     * 传输最新房源数据
+     * 房源展示相关
      */
     private void addLatestHouse(Model model){
         int numbers = 4;
@@ -59,6 +61,11 @@ public class IndexController {
         for (House house : houses) System.out.println(house.getHID());
         model.addAttribute("HotelHouseList", houses);
     }
+
+    /**
+     * 展示首页新闻推荐
+     * @param numbersOfNews 首页展示的新闻数量
+     */
     private void addLatestNews(@RequestParam(defaultValue = "5") int numbersOfNews, Model model){
         List<News> newslist = serviceNews.getLatestNews(numbersOfNews);
         model.addAttribute("LatestNews", newslist);

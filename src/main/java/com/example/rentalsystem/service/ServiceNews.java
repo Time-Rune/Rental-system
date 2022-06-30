@@ -15,4 +15,10 @@ public class ServiceNews {
     public List<News> getLatestNews(int num){
         return newsSQL.selectNews(num);
     }
+
+    public News getNewsByID(int id){
+        List<News> showNews = newsSQL.getNewsByID(id);
+        News news = showNews.get(0);
+        return news;
+    }
 }

@@ -21,8 +21,10 @@ public interface NewsSQL {
             "values(#{id}, #{text}, #{header}, #{post}, #{date}, #{click})")
     void insertNews(int id, String text, String header, int post, Date date, int click);
 
-    @Delete("delete from News where NID = #{id}")
+    @Delete("delete * from News where NID = #{id}")
     void deleteNews(int id);
 
+    @Select("select * from News where NID = #{id}")
+    List<News> getNewsByID(int id);
 
 }
