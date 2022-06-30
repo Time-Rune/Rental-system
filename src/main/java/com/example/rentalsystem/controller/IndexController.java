@@ -65,7 +65,6 @@ public class IndexController {
 
     /**
      * 展示首页新闻推荐
-     * @param numbersOfNews 首页展示的新闻数量
      */
     private void addLatestNews(Model model){
         int numbersOfNews = 5;
