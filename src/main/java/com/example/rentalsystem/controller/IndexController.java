@@ -44,8 +44,6 @@ public class IndexController {
         int numbers = 4;
         int houseId = TypeConversion.changeHouseTypeToNumber("商业办公");
         List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId, numbers);
-        for(int i = 0; i < houses.size(); i++)
-            System.out.println(houses.get(i));
         model.addAttribute("CommercialOfficeList", houses);
     }
     private void addOrdinaryResidence(Model model){
@@ -56,8 +54,9 @@ public class IndexController {
     }
     private void addHotelHouse(Model model){
         int numbers = 4;
-        int houseId = TypeConversion.changeHouseTypeToNumber("酒店住宅");
+        int houseId = TypeConversion.changeHouseTypeToNumber("酒店式公寓");
         List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId, numbers);
+        for (House house : houses) System.out.println(house.getHID());
         model.addAttribute("HotelHouseList", houses);
     }
     private void addLatestNews(@RequestParam(defaultValue = "5") int numbersOfNews, Model model){
