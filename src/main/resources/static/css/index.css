@@ -226,27 +226,27 @@
     color: #2aa067;
 }
 /* 房源具体内容 */
-#house-type-content ul {
+.house-type-content ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     list-style: none;
 }
-#house-type-content ul li{
+.house-type-content ul li{
     margin-top: 10px;
     width: 200px;
     height: 360px;
 }
-#house-type-content ul li img {
+.house-type-content ul li img {
     width: 180px;
     height: 200px;
 }
-#house-type-content ul li h2 {
+.house-type-content ul li h2 {
     width: 180px;
     height: 30px;
     font-size: 14px;
     color: #de4252;
 }
-#house-type-content ul li p {
+.house-type-content ul li p {
     width: 180px;
     height: 30px;
     font-size: 14px;

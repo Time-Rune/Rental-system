@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/images/favicon.png">
     <link rel="stylesheet" href="/static/css/adminLogin/login.css">
     <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="/static/css/slide.css">
@@ -88,25 +88,10 @@
                 </div>
                 <div id="right-content">
                     <ul>
-                        <li>
-                            <img th:src="${Latesthouses0.Hphoto}" alt="">
-                            <p th:text="${Latesthouses0.Hname}">环境很好，阳光充足！</p>
-                            <h2 th:text="'￥'+${Latesthouses0.Hcost}+'/月'">＄7600/月</h2>
-                        </li>
-                        <li>
-                            <img th:src="${Latesthouses1.Hphoto}" alt="">
-                            <p th:text="${Latesthouses1.Hname}">环境很好，阳光充足！</p>
-                            <h2 th:text="'￥'+${Latesthouses1.Hcost}+'/月'">＄7600/月</h2>
-                        </li>
-                        <li>
-                            <img th:src="${Latesthouses2.Hphoto}" alt="">
-                            <p th:text="${Latesthouses2.Hname}">环境很好，阳光充足！</p>
-                            <h2 th:text="'￥'+${Latesthouses2.Hcost}+'/月'">＄7600/月</h2>
-                        </li>
-                        <li>
-                            <img th:src="${Latesthouses3.Hphoto}" alt="">
-                            <p th:text="${Latesthouses3.Hname}">环境很好，阳光充足！</p>
-                            <h2 th:text="'￥'+${Latesthouses3.Hcost}+'/月'">＄7600/月</h2>
+                        <li th:each="house:${LatestHouseList}">
+                            <img th:src="${house.Hphoto}" alt="">
+                            <p th:text="${house.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${house.Hcost}+'/月'">＄7600/月</h2>
                         </li>
                     </ul>
                 </div>
@@ -117,27 +102,17 @@
                 <div class="house-type-head">
                     <h2>商务办公</h2>
                 </div>
-                <div id="house-type-content">
+                <div class="house-type-content">
                     <ul>
-                        <li>
-                            <img th:src="${Latesthouses0.Hphoto}" alt="">
-                            <p th:text="${Latesthouses0.Hname}">环境很好，阳光充足！</p>
-                            <h2 th:text="'￥'+${Latesthouses0.Hcost}+'/月'">＄7600/月</h2>
-                        </li>
-                        <li>
-                            <img th:src="${Latesthouses1.Hphoto}" alt="">
-                            <p th:text="${Latesthouses1.Hname}">环境很好，阳光充足！</p>
-                            <h2 th:text="'￥'+${Latesthouses1.Hcost}+'/月'">＄7600/月</h2>
-                        </li>
-                        <li>
-                            <img th:src="${Latesthouses2.Hphoto}" alt="">
-                            <p th:text="${Latesthouses2.Hname}">环境很好，阳光充足！</p>
-                            <h2 th:text="'￥'+${Latesthouses2.Hcost}+'/月'">＄7600/月</h2>
-                        </li>
-                        <li>
-                            <img th:src="${Latesthouses3.Hphoto}" alt="">
-                            <p th:text="${Latesthouses3.Hname}">环境很好，阳光充足！</p>
-                            <h2 th:text="'￥'+${Latesthouses3.Hcost}+'/月'">＄7600/月</h2>
+<!--                        <li>-->
+<!--                            <img src="/static/assets/images/logo/2.webp" art="">-->
+<!--                            <p>hhh</p>-->
+<!--                            <h2>jjj</h2>-->
+<!--                        </li>-->
+                        <li th:each="house:${CommercialOfficeList}">
+                            <img th:src="${house.Hphoto}" alt="">
+                            <p th:text="${house.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${house.Hcost}+'/月'">＄7600/月</h2>
                         </li>
                     </ul>
                 </div>
@@ -146,10 +121,29 @@
                 <div class="house-type-head">
                     <h2>普通民宅</h2>
                 </div>
+
+                <div class="house-type-content">
+                    <ul>
+                        <li th:each="house:${OrdinaryHouseList}">
+                            <img th:src="${house.Hphoto}" alt="">
+                            <p th:text="${house.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${house.Hcost}+'/月'">＄7600/月</h2>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="house-type">
                 <div class="house-type-head">
                     <h2>酒店公寓</h2>
+                </div>
+                <div class="house-type-content">
+                    <ul>
+                        <li th:each="house:${HotelHouseList}">
+                            <img th:src="${house.Hphoto}" alt="">
+                            <p th:text="${house.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${house.Hcost}+'/月'">＄7600/月</h2>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
