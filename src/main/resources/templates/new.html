@@ -40,17 +40,17 @@
             <div id="new-nav">
                 <!-- <h2>当前页面</h2> -->
                 <span>当前页面,</span>
-                <a href="/templates/index.html">首页</a>
-                <span>
+                <a href="/index">首页</a>
+                <span th:text="'>'+${news.Nheader}">
                     >《标题内容》
                 </span>
             </div>
             <div id="news">
                 <div id="news-head">
-                    <h2>标题</h2>
+                    <h2 th:text="${news.Nheader}">标题</h2>
                 </div>
                 <img src="/static/assets/images/slide-imgs/4.jpg" alt="">
-                <span>新闻内容</span>
+                <span th:text="${news.Ntext}">新闻内容</span>
             </div>
         </div>
     </div>

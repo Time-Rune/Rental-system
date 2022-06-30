@@ -73,12 +73,9 @@
                 </div>
                 <div id="new-content">
                     <ul>
-                        <li><a href="/templates/new.html">新闻一</a></li>
-                        <li><a href="">新闻一</a></li>
-                        <li><a href="">新闻一</a></li>
-                        <li><a href="">新闻一</a></li>
-                        <li><a href="">新闻一</a></li>
-                        <li><a href="">新闻一</a></li>
+                        <li th:each="news:${LatestNewsList}">
+                            <a th:href="@{/news/shownews(id=${news.NID})}" th:text="'●'+${news.Nheader}">● 新闻一</a>
+                        </li>
                     </ul>
                 </div>
             </div>
