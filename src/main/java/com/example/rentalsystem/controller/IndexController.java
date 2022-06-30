@@ -31,6 +31,7 @@ public class IndexController {
         addCommercialOffice(model);
         addHotelHouse(model);
         addOrdinaryResidence(model);
+        addLatestNews(model);
         return "index";
     }
 
@@ -66,7 +67,8 @@ public class IndexController {
      * 展示首页新闻推荐
      * @param numbersOfNews 首页展示的新闻数量
      */
-    private void addLatestNews(@RequestParam(defaultValue = "5") int numbersOfNews, Model model){
+    private void addLatestNews(Model model){
+        int numbersOfNews = 5;
         List<News> newslist = serviceNews.getLatestNews(numbersOfNews);
         model.addAttribute("LatestNews", newslist);
     }
