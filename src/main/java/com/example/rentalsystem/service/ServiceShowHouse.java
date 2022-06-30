@@ -20,6 +20,10 @@ public class ServiceShowHouse {
         return showHouseSQL.getSpecificKindHouse(id, num);
     }
 
+    public List<House> getAllSpecificKindHouse(int id){
+        return showHouseSQL.getAllSpecificKindHouse(id);
+    }
+
     public List<House> getHouseByID(int id){
         return showHouseSQL.getHouseByID(id);
     }

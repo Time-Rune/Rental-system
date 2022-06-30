@@ -39,7 +39,7 @@ public class HouseController {
     @GetMapping("/allhouse")
     public String getAllHouse(@RequestParam(defaultValue = "1") int pageNumber, @RequestParam(defaultValue = "5") int numbersOfHousePerPage, Model model){
         List<House> houses = serviceShowHouse.getAllHouse();
-        List<House> reslist = new ArrayList<House>();
+        List<House> reslist = new ArrayList<>();
         for(int i = (pageNumber-1)*numbersOfHousePerPage; i < pageNumber*numbersOfHousePerPage; i++)
             reslist.add(houses.get(i));
         model.addAttribute("allhouses", reslist);
@@ -50,13 +50,13 @@ public class HouseController {
      * 商务办公房源
      * @param pageNumber 当前页码，默认为1
      * @param numbersOfHousePerPage 每页展示房源的数量，默认为5
-     * @return
+     * @return allhouse.html
      */
     @GetMapping("/commercialoffice")
     public String getCommercialOffice(@RequestParam(defaultValue = "1") int pageNumber, @RequestParam(defaultValue = "5") int numbersOfHousePerPage, Model model){
         int kind = TypeConversion.changeHouseTypeToNumber("商业办公");
-        List<House> houses = serviceShowHouse.getSpecificKindHouse(kind);
-        List<House> reslist = new ArrayList<House>();
+        List<House> houses = serviceShowHouse.getAllSpecificKindHouse(kind);
+        List<House> reslist = new ArrayList<>();
         for(int i = (pageNumber-1)*numbersOfHousePerPage; i < pageNumber*numbersOfHousePerPage; i++)
             reslist.add(houses.get(i));
         model.addAttribute("allhouses", reslist);

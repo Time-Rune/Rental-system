@@ -44,6 +44,8 @@ public class IndexController {
         int numbers = 4;
         int houseId = TypeConversion.changeHouseTypeToNumber("商业办公");
         List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId, numbers);
+        for(int i = 0; i < houses.size(); i++)
+            System.out.println(houses.get(i));
         model.addAttribute("CommercialOfficeList", houses);
     }
     private void addOrdinaryResidence(Model model){
