@@ -41,18 +41,21 @@ public class IndexController {
         model.addAttribute("LatestHouseList", houses);
     }
     private void addCommercialOffice(Model model){
+        int numbers = 4;
         int houseId = TypeConversion.changeHouseTypeToNumber("商业办公");
-        List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId);
+        List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId, numbers);
         model.addAttribute("CommercialOfficeList", houses);
     }
     private void addOrdinaryResidence(Model model){
+        int numbers = 4;
         int houseId = TypeConversion.changeHouseTypeToNumber("普通民宅");
-        List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId);
+        List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId, numbers);
         model.addAttribute("OrdinaryHouseList", houses);
     }
     private void addHotelHouse(Model model){
+        int numbers = 4;
         int houseId = TypeConversion.changeHouseTypeToNumber("酒店住宅");
-        List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId);
+        List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId, numbers);
         model.addAttribute("HotelHouseList", houses);
     }
     private void addLatestNews(@RequestParam(defaultValue = "5") int numbersOfNews, Model model){

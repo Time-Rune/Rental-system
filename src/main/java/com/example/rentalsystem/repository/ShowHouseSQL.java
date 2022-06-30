@@ -16,8 +16,8 @@ public interface ShowHouseSQL {
     @Select("select * from House order by House.Hdate desc limit #{sum}")
     List<House> getLatestHouse(int sum);
 
-    @Select("select * from house where house.Hkind = #{kind}")
-    List<House> getSpecificKindHouse(int kind);
+    @Select("select * from house where house.Hkind = #{kind} order by House.Hdate desc limit #{sum}")
+    List<House> getSpecificKindHouse(int kind, int sum);
 
     @Select("select * from house where Hname like '%#{keyword}%'")
     List<House> searchHouseByName(String keyword);

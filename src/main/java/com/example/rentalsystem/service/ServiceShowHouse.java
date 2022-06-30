@@ -16,8 +16,8 @@ public class ServiceShowHouse {
         return showHouseSQL.getLatestHouse(num);
     }
 
-    public List<House> getSpecificKindHouse(int num){
-        return showHouseSQL.getSpecificKindHouse(num);
+    public List<House> getSpecificKindHouse(int id, int num){
+        return showHouseSQL.getSpecificKindHouse(id, num);
     }
 
     public List<House> getHouseByID(int id){
