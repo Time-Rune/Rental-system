@@ -5,7 +5,7 @@ import java.util.Date;
 public class House {
     private int HID;
     private String Hname;
-    private String Hkind;
+    private int Hkind;
     private int Hcost;
     private String Hphoto;
     private int Harea;
@@ -22,7 +22,7 @@ public class House {
         return "House{" +
                 "HID=" + HID +
                 ", Hname='" + Hname + '\'' +
-                ", Hkind='" + Hkind + '\'' +
+                ", Hkind=" + Hkind +
                 ", Hcost=" + Hcost +
                 ", Hphoto='" + Hphoto + '\'' +
                 ", Harea=" + Harea +
@@ -34,14 +34,6 @@ public class House {
                 ", Howner=" + Howner +
                 ", Hdate=" + Hdate +
                 '}';
-    }
-
-    public Date getHdate() {
-        return Hdate;
-    }
-
-    public void setHdate(Date hdate) {
-        Hdate = hdate;
     }
 
     public int getHID() {
@@ -60,11 +52,11 @@ public class House {
         Hname = hname;
     }
 
-    public String getHkind() {
+    public int getHkind() {
         return Hkind;
     }
 
-    public void setHkind(String hkind) {
+    public void setHkind(int hkind) {
         Hkind = hkind;
     }
 
@@ -138,5 +130,13 @@ public class House {
 
     public void setHowner(int howner) {
         Howner = howner;
+    }
+
+    public Date getHdate() {
+        return Hdate;
+    }
+
+    public void setHdate(Date hdate) {
+        Hdate = hdate;
     }
 }

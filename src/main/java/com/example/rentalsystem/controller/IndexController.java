@@ -1,28 +1,38 @@
 package com.example.rentalsystem.controller;
 
 import com.example.rentalsystem.entity.House;
-import com.example.rentalsystem.service.ServiceShowLatestHouse;
+import com.example.rentalsystem.repository.ShowHouseSQL;
+import com.example.rentalsystem.service.ServiceShowHouse;
+import com.example.rentalsystem.utils.TypeConversion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class IndexController {
     @Autowired
-    private ServiceShowLatestHouse serviceShowLatestHouse;
+    private ServiceShowHouse serviceShowHouse;
     /**
      * 主页
      */
     @GetMapping("/index")
     public String pageIndex(Model model){
-        List<House> houses = serviceShowLatestHouse.getLastestHouse(4);
+        addLatestHouse(model);
+        addCommercialOffice(model);
+        addHotelHouse(model);
+        addOrdinaryResidence(model);
+        return "index";
+    }
+
+    /**
+     * 传输最新房源数据
+     * @param model
+     */
+    private void addLatestHouse(Model model){
+        List<House> houses = serviceShowHouse.getLastestHouse(4);
         /*
         最新房源展示
          */
@@ -33,6 +43,29 @@ public class IndexController {
         for(int i = 0; i < houses.size(); i++){
             model.addAttribute("Latesthouses" + i, houses.get(i));
         }
-        return "index";
+    }
+    private void addCommercialOffice(Model model){
+        int houseId = TypeConversion.changeHouseTypeToNumber("商业办公");
+        List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId);
+        for(int i = 0; i < houses.size(); i++){
+            model.addAttribute("CommercialOffice" + i, houses.get(i));
+        }
+    }
+    private void addOrdinaryResidence(Model model){
+        int houseId = TypeConversion.changeHouseTypeToNumber("普通民宅");
+        List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId);
+        for(int i = 0; i < houses.size(); i++){
+            model.addAttribute("CommercialOffice" + i, houses.get(i));
+        }
+    }
+    private void addHotelHouse(Model model){
+        int houseId = TypeConversion.changeHouseTypeToNumber("酒店住宅");
+        List<House> houses = serviceShowHouse.getSpecificKindHouse(houseId);
+        for(int i = 0; i < houses.size(); i++){
+            model.addAttribute("CommercialOffice" + i, houses.get(i));
+        }
+    }
+    private void addLatestNews(Model model){
+
     }
 }
