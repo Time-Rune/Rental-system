@@ -28,4 +28,7 @@ public interface ShowHouseSQL {
     @Select("select * from house where HID = #{id}")
     List<House> getHouseByID(int id);
 
+    @Select("select * from house")
+    List<House> getAllHouse();
+
 }

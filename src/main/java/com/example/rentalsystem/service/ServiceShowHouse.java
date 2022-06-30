@@ -23,5 +23,9 @@ public class ServiceShowHouse {
     public List<House> getHouseByID(int id){
         return showHouseSQL.getHouseByID(id);
     }
+
+    public List<House> getAllHouse(){
+        return showHouseSQL.getAllHouse();
+    }
 }
 
