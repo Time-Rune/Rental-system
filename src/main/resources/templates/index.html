@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME</title>
-<!--    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png">-->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png">
     <link rel="stylesheet" href="/static/css/adminLogin/login.css">
     <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/slide.css">
 </head>
 <body>
     <div class="wrap">
@@ -20,12 +21,12 @@
                 <ul>
                     <!-- <img src="/11.jpeg" alt=""> -->
                     <img src="/static/assets/images/logo/2.webp" alt="" class="nav-img">
-                    <li><a href="">首页</a></li>
+                    <li><a href="/templates/index.html">首页</a></li>
                     <li><a href="">新闻公告</a></li>
                     <li><a href="">商业办公</a></li>
                     <li><a href="">普通民宅</a></li>
                     <li><a href="">酒店公寓</a></li>
-                    <li><a href="">全部房源</a></li>
+                    <li><a href="/templates/allhouse.html">全部房源</a></li>
                     <li><a href="">留言交流</a></li>
                 </ul>
             </div>
@@ -36,27 +37,124 @@
             <button id="searchbtn">搜索</button>
         </div>
         <div class="slideshow">
-            <div id="slideshow-imgs">
-                <img src="/static/assets/images/bg/1.jpg" alt="" id="slideshow-img">
+            <div id="outer">
+                <!-- 放置图片 -->
+                <ul id="imglist">
+                    <li>
+                        <img src="/static/assets/images/slide-imgs/1.jpg" alt="" class="slide-img">
+                    </li>
+                    <li>
+                        <img src="/static/assets/images/slide-imgs/2.jpg" alt="" class="slide-img">
+                    </li>
+                    <li>
+                        <img src="/static/assets/images/slide-imgs/3.jpg" alt="" class="slide-img">
+                    </li>
+                    <li>
+                        <img src="/static/assets/images/slide-imgs/4.jpg" alt="" class="slide-img">
+                    </li>
+                    <li>
+                        <img src="/static/assets/images/slide-imgs/1.jpg" alt="" class="slide-img">
+                    </li>
+                </ul>
+                <!-- 创建导航按钮 -->
+                <div id="slide-navbtn">
+                    <a href="javascript:;" class="slide-a"></a>
+                    <a href="javascript:;" class="slide-a"></a>
+                    <a href="javascript:;" class="slide-a"></a>
+                    <a href="javascript:;" class="slide-a"></a>
+                    <a href="javascript:;" class="slide-a"></a>
+                </div>
             </div>
         </div>
         <div class="main">
             <div class="main-lelf">
-                <div class="new-h">新闻公告</div>
-                <div>
-                
+                <div id="new-head">
+                    <h2>新闻公告</h2>
                 </div>
-                <h2>这是左侧栏</h2>
+                <div id="new-content">
+                    <ul>
+                        <li><a href="/templates/new.html">新闻一</a></li>
+                        <li><a href="">新闻一</a></li>
+                        <li><a href="">新闻一</a></li>
+                        <li><a href="">新闻一</a></li>
+                        <li><a href="">新闻一</a></li>
+                        <li><a href="">新闻一</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="main-right">
-                <h2>这是右侧栏</h2>
+                <div id="right-head">
+                    <h2>最新房源</h2>
+                </div>
+                <div id="right-content">
+                    <ul>
+                        <li>
+                            <img th:src="${Latesthouses0.Hphoto}" alt="">
+                            <p th:text="${Latesthouses0.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${Latesthouses0.Hcost}+'/月'">＄7600/月</h2>
+                        </li>
+                        <li>
+                            <img th:src="${Latesthouses1.Hphoto}" alt="">
+                            <p th:text="${Latesthouses1.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${Latesthouses1.Hcost}+'/月'">＄7600/月</h2>
+                        </li>
+                        <li>
+                            <img th:src="${Latesthouses2.Hphoto}" alt="">
+                            <p th:text="${Latesthouses2.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${Latesthouses2.Hcost}+'/月'">＄7600/月</h2>
+                        </li>
+                        <li>
+                            <img th:src="${Latesthouses3.Hphoto}" alt="">
+                            <p th:text="${Latesthouses3.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${Latesthouses3.Hcost}+'/月'">＄7600/月</h2>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="content">
-            <h2>这是房源内容</h2>
+            <div class="house-type">
+                <div class="house-type-head">
+                    <h2>商务办公</h2>
+                </div>
+                <div id="house-type-content">
+                    <ul>
+                        <li>
+                            <img th:src="${Latesthouses0.Hphoto}" alt="">
+                            <p th:text="${Latesthouses0.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${Latesthouses0.Hcost}+'/月'">＄7600/月</h2>
+                        </li>
+                        <li>
+                            <img th:src="${Latesthouses1.Hphoto}" alt="">
+                            <p th:text="${Latesthouses1.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${Latesthouses1.Hcost}+'/月'">＄7600/月</h2>
+                        </li>
+                        <li>
+                            <img th:src="${Latesthouses2.Hphoto}" alt="">
+                            <p th:text="${Latesthouses2.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${Latesthouses2.Hcost}+'/月'">＄7600/月</h2>
+                        </li>
+                        <li>
+                            <img th:src="${Latesthouses3.Hphoto}" alt="">
+                            <p th:text="${Latesthouses3.Hname}">环境很好，阳光充足！</p>
+                            <h2 th:text="'￥'+${Latesthouses3.Hcost}+'/月'">＄7600/月</h2>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="house-type">
+                <div class="house-type-head">
+                    <h2>普通民宅</h2>
+                </div>
+            </div>
+            <div class="house-type">
+                <div class="house-type-head">
+                    <h2>酒店公寓</h2>
+                </div>
+            </div>
         </div>
         <div class="footer">
-            <h2>这是页面底端</h2>
+            <h2></h2>
         </div>
     </div>
     <!-- <%--				登录框--%> -->
@@ -93,12 +191,14 @@
     <div id="bg" class="bg"></div>
     <div id="ScrollHeadersPlaceholder"></div>
 <!-- jQuery JS -->
-<script src="/assets/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="/static/assets/js/vendor/jquery-3.3.1.min.js"></script>
 <!-- login.js  -->
 <script type="text/javascript" src="../static/js/login.js"></script>
 <!-- register.js -->
 <script type="text/javascript" src="../static/js/register.js"></script>
 <!-- forget.js -->
 <script type="text/javascript" src="../static/js/forget.js"></script>
+<!-- slide.js -->
+<script type="text/javascript" src="../static/js/slide.js"></script>
 </body>
 </html>

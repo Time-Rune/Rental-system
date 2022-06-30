@@ -29,7 +29,7 @@ public class LoginController {
         for(int i = 0; i < houses.size(); i++){
             model.addAttribute("Latesthouses" + i, houses.get(i));
         }
-        return "success";
+        return "index";
     }
 //    登录注册
     @PostMapping("/login")
