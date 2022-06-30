@@ -70,6 +70,6 @@ public class IndexController {
     private void addLatestNews(Model model){
         int numbersOfNews = 5;
         List<News> newslist = serviceNews.getLatestNews(numbersOfNews);
-        model.addAttribute("LatestNews", newslist);
+        model.addAttribute("LatestNewsList", newslist);
     }
 }
