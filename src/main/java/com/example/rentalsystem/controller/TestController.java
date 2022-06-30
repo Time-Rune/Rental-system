@@ -18,6 +18,7 @@ import java.util.List;
 
 import static java.lang.Math.min;
 
+
 @Slf4j
 @Controller
 public class TestController {
@@ -25,18 +26,10 @@ public class TestController {
     private ServiceShowHouse serviceShowHouse;
 
     @GetMapping("/login")
-    public String login(int kind, Model model){
-        List<House> houses = serviceShowHouse.getSpecificKindHouse(kind);
-
-        for (int i = 0;i < 2;++ i){
-            model.addAttribute("house" + i, houses.get(i).toString());
-        }
-
+    public String login(int kind,int num, Model model) {
+        List<House> houses = serviceShowHouse.getSpecificKindHouse(kind, num);
+        model.addAttribute("houses", houses);
         return "success";
     }
+
 }
-//        System.out.format("main_count = %d\n", timecounter.getCounter());
-//        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-//        Date date = new Date(System.currentTimeMillis());
-//        System.out.println(formatter.format(date));
-//        model.addAttribute("mess", formatter.format(date));
