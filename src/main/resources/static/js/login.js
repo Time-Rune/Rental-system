@@ -170,6 +170,50 @@ $("#inputAccount").focus(function () {
 $("#inputPassword").focus(function () {
     $("#inputPasswordEmpty").css("display", "none");
 })
+$(function(){
+    $("#login-form").validate({
+        rules: {
+            "act": {
+                required: true
+            },
+            "password":{
+                required:true
+            }
+        },
+        messages:{
+            "username":{
+                required:"用户名不能为空"
+            },
+            "password":{
+                required:"密码不能为空"
+            }
+        },
+        submitHandler:function(form){
+            $(form).ajaxSubmit({
+                dataType:'json',
+                success:function(data){
+                    if(data.success){
+                        $.messager.confirm("提示信息","登录成功",function(){
+                            window.location.href="/personal";
+                        })
+                    }else{
+                        $.messager.popup(data.msg);
+                    } }
+            });
+        },
+        //自定义错误样式
+        errorClass:"text-danger",
+        //未通过验证,进行高亮处理或其他处理；
+        highlight:function(input){
+            $(input).closest(".form-group").addClass("has-error");
+        },
+        //通过验证,清除高亮效果或其他处理；
+        unhighlight:function(input){
+            $(input).closest(".form-group").removeClass("has-error");
+        }
+    });
+});
+
 
 
 

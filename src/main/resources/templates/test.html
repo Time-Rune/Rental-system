@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    #loginForm {
+        width: 300px;
+        height: 200px;
+        background-color: white;
+        margin-left: 20px;
+        border: 1px solid #2ea734;
+        border-radius: 5px;
+    }
+    .form-head {
+        width: 300px;
+        height: 35px;
+        background-color: white;
+        border-bottom: 1px solid #2ea734;
+    }
+    .form-head h2 {
+        font-size: 16px;
+        color: black;
+        text-align: center;
+        padding-top: 5px;
+    }
+    #form-form div{
+        width: 300px;
+        height: 55px;
+    }
+    #loginBtn {
+        width: 100px;
+        height: 25px;
+        margin-left: 80px;
+        background-color: #2ea734;
+        border: 0;
+        border-radius: 5px;
+    }
+</style>
+<body>
+    <div id="loginForm">
+        <div class="form-head">
+            <h2>登录框</h2>
+        </div>
+        <form action="" id="form-form">
+            <div>
+                <span>密码</span>
+                <input type="text" placeholder="请输入用户名...." name="username">
+            </div>
+            <div>
+                <span>密码</span>
+                <input type="password" placeholder="请输入密码..." name="password">
+            </div>
+            <input type="submit" id="loginBtn" value="登录" class="loginSubmit"/>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+	$(function(){
+		$("#loginForm").validate({
+            rules: {
+                "username": {
+                    required: true
+                },
+                "password":{
+                    required:true
+                }
+            },
+            messages:{
+                "username":{
+                    required:"用户名不能为空"
+                },
+                "password":{
+                    required:"密码不能为空"
+                }
+            },
+            submitHandler:function(form){
+                $(form).ajaxSubmit({
+                    dataType:'json',
+                    success:function(data){
+                        if(data.success){
+                            $.messager.confirm("提示信息","登录成功",function(){
+                                window.location.href="/personal";
+                            })
+                        }else{
+                            $.messager.popup(data.msg);
+                        } }
+                });
+            },
+            //自定义错误样式
+            errorClass:"text-danger",
+            //未通过验证,进行高亮处理或其他处理；
+            highlight:function(input){
+                $(input).closest(".form-group").addClass("has-error");
+            },
+            //通过验证,清除高亮效果或其他处理；
+            unhighlight:function(input){
+                $(input).closest(".form-group").removeClass("has-error");
+            }
+		});
+	});
+	
+</script>
+</html>
