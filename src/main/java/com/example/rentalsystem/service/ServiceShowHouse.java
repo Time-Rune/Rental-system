@@ -20,6 +20,11 @@ public class ServiceShowHouse {
         return showHouseSQL.getSpecificKindHouse(id, num);
     }
 
+    public List<House> searchHouseByName(String Keyword){
+        String Key0 = "%" + Keyword + "%";
+        return showHouseSQL.searchHouseByName(Key0);
+    }
+
     public List<House> getAllSpecificKindHouse(int id){
         return showHouseSQL.getAllSpecificKindHouse(id);
     }
