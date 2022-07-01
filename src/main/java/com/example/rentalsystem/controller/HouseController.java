@@ -27,7 +27,7 @@ public class HouseController {
     @GetMapping("/housedetail")
     public String getHouseDetial(int houseid, Model model){
         House house = serviceShowHouse.getHouseByID(houseid).get(0);
-        model.addAttribute("house", house.toString());
+        model.addAttribute("house", house);
         return "housedetail";
     }
     /**

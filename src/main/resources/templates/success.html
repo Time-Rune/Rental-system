@@ -5,8 +5,8 @@
     <title>测试</title>
 </head>
 <body>
-    <div th:each="house:${houses}">
-        房源信息：：<h1 th:text="${house}"/>
+    <div th:each="house:${allHousesList}">
+        房源信息：：<h1 th:text="${house.HID}"/>
     </div>
 </body>
 </html>
