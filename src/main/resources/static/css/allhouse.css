@@ -1,0 +1,44 @@
+/* 右边房源详细设置 */
+#allhouse-right-head {
+    border-bottom: 1px solid #e6e4e4;
+    height: 35px;
+    width: 100%;
+    color: #31c27c;
+    background-color: #cefae4;
+}
+
+#allhouse-right-head h2 {
+    font-size: 16px;
+    padding-left: 3px;
+    padding-top: 6px;
+}
+#allhouse-right-content ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+}
+#allhouse-right-content ul li{
+    margin-top: 40px;
+    width: 200px;
+    height: 260px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid green;
+}
+#allhouse-right-content ul li img {
+    width: 180px;
+    height: 200px;
+}
+#allhouse-right-content ul li h2 {
+    width: 180px;
+    height: 30px;
+    font-size: 14px;
+    color: #de4252;
+}
+#allhouse-right-content ul li p {
+    width: 180px;
+    height: 30px;
+    font-size: 14px;
+    color: #6a6464;
+    padding-bottom: 10px;
+}
