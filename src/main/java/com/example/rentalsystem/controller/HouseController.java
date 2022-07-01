@@ -29,6 +29,7 @@ public class HouseController {
         serviceShowHouse.increaseHouseHclick(houseid);
         House house = serviceShowHouse.getHouseByID(houseid).get(0);
         model.addAttribute("house", house);
+        addHotHouse(model);
         return "housedetail";
     }
     /**
@@ -67,7 +68,6 @@ public class HouseController {
     }
     /**
      * @param model allCommonHouseList 普通民宅列表 hotHousesList 热门房源列表
-     * @param numbersOfHousePerPage 每页显示的数量
      * @param pageNumber 当前页码，默认为1
      * @param numbersOfHousePerPage 每页展示房源的数量，默认为5
      * @return commonhouse.html
