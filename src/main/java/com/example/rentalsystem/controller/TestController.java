@@ -23,7 +23,7 @@ public class TestController {
     @Autowired
     private ServiceShowHouse serviceShowHouse;
 
-    @GetMapping("/login")
+    @GetMapping("/login2")
     public String login(int num, Model model) {
         List<House> houses = serviceShowHouse.getLastestHouse(num);
         model.addAttribute("houses", houses);
