@@ -16,8 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import static java.lang.Math.min;
-
 
 @Slf4j
 @Controller
@@ -26,8 +24,8 @@ public class TestController {
     private ServiceShowHouse serviceShowHouse;
 
     @GetMapping("/login")
-    public String login(int kind,int num, Model model) {
-        List<House> houses = serviceShowHouse.getSpecificKindHouse(kind, num);
+    public String login(int num, Model model) {
+        List<House> houses = serviceShowHouse.getLastestHouse(num);
         model.addAttribute("houses", houses);
         return "success";
     }
