@@ -62,4 +62,12 @@ public class HouseController {
         model.addAttribute("allCommercialOfficeList", reslist);
         return "/commercialoffice";
     }
+
+    @GetMapping("/searchhouse")
+    public String searchHouseByName(@RequestParam(defaultValue = "") String keyword, Model model){
+        List<House> houses = serviceShowHouse.searchHouseByName(keyword);
+        model.addAttribute("allHousesList", houses);
+        return "searchhouse";
+    }
+
 }
