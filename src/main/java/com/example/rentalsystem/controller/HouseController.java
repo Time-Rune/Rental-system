@@ -118,7 +118,7 @@ public class HouseController {
 
     private void addHotHouse(Model model){
         //sum: 热门房源展示数量
-        int sum = 5;
+        int sum = 4;
         List<House> houses = serviceShowHouse.getHotHouse(sum);
         model.addAttribute("HotHousesList", houses);
     }
