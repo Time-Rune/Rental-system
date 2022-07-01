@@ -18,7 +18,6 @@ public class ServiceNews {
 
     public News getNewsByID(int id){
         List<News> showNews = newsSQL.getNewsByID(id);
-        News news = showNews.get(0);
-        return news;
+        return showNews.get(0);
     }
 }

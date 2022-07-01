@@ -16,25 +16,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static java.lang.Math.min;
+
+
 @Slf4j
 @Controller
 public class TestController {
     @Autowired
-    private Timecounter timecounter;
-    @Autowired
     private ServiceShowHouse serviceShowHouse;
 
-    @GetMapping("/test")
-    public String login(String account, String password, Model model){
-        System.out.format("main_count = %d\n", timecounter.getCounter());
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-        Date date = new Date(System.currentTimeMillis());
-        System.out.println(formatter.format(date));
-        model.addAttribute("mess", formatter.format(date));
-
-        List<House> houses = serviceShowHouse.getLastestHouse(3);
+    @GetMapping("/login")
+    public String login(int kind,int num, Model model) {
+        List<House> houses = serviceShowHouse.getSpecificKindHouse(kind, num);
         model.addAttribute("houses", houses);
-
         return "success";
     }
+
 }

@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>测试</title>
 </head>
 <body>
-    <p th:text="${news.ntext}" alt=""></p>
+    <div th:each="house:${houses}">
+        房源信息：：<h1 th:text="${house}"/>
+    </div>
 </body>
 </html>
+
+
+<!--    <ol>-->
+<!--        <li th:text="${house0}"></li>-->
+<!--        <li th:text="${house1}"></li>-->
+<!--        <li th:text="${house2}"></li>-->
+<!--        <li th:text="${house3}"></li>-->
+<!--        <li th:text="${house4}"></li>-->
+<!--    </ol>-->
+<!--    <img th:src="${Latesthouses0.Hphoto}">-->
