@@ -42,7 +42,7 @@ public class HouseController {
         List<House> reslist = new ArrayList<>();
         for(int i = (pageNumber-1)*numbersOfHousePerPage; i < pageNumber*numbersOfHousePerPage; i++)
             reslist.add(houses.get(i));
-        model.addAttribute("allhouses", reslist);
+        model.addAttribute("allHousesList", reslist);
         return "allhouse";
     }
 
@@ -59,7 +59,7 @@ public class HouseController {
         List<House> reslist = new ArrayList<>();
         for(int i = (pageNumber-1)*numbersOfHousePerPage; i < pageNumber*numbersOfHousePerPage; i++)
             reslist.add(houses.get(i));
-        model.addAttribute("allhouses", reslist);
-        return "allhouse";
+        model.addAttribute("allCommercialOfficeList", reslist);
+        return "/commercialoffice";
     }
 }
