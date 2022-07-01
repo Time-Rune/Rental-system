@@ -46,6 +46,7 @@ public class HouseController {
         for(int i = (pageNumber-1)*numbersOfHousePerPage; i < pageNumber*numbersOfHousePerPage; i++)
             reslist.add(houses.get(i));
         model.addAttribute("allHousesList", reslist);
+        addHotHouse(model);
         return "allhouse";
     }
 
