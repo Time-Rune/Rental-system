@@ -22,13 +22,13 @@
                 <ul>
                     <!-- <img src="/11.jpeg" alt=""> -->
                     <img src="/static/assets/images/logo/2.webp" alt="" class="nav-img">
-                    <li><a href="">首页</a></li>
+                    <li><a href="/index">首页</a></li>
                     <li><a href="">新闻公告</a></li>
                     <li><a href="">商业办公</a></li>
                     <li><a href="">普通民宅</a></li>
                     <li><a href="">酒店公寓</a></li>
                     <li><a href="">全部房源</a></li>
-                    <li><a href="/house/housedetail">留言交流</a></li>
+                    <li><a href="">留言交流</a></li>
                 </ul>
             </div>
         </div>
@@ -41,8 +41,8 @@
             <div id="new-nav">
                 <!-- <h2>当前页面</h2> -->
                 <span>当前页面,</span>
-                <a href="/templates/index.html">首页</a>
-                <a href="">>全部商品</a>
+                <a href="/index">首页</a>
+                <a href="/house/allhouse">>全部商品</a>
                 <span>
                     >房源
                 </span>
@@ -79,20 +79,20 @@
                     </div>
                     <div id="house-top-content">
                         <div class="house-top-content-img">
-                            <img src="/static/assets/images/slide-imgs/3.jpg" alt="">
+                            <img th:src="${house.Hphoto}" alt="">
                         </div>
                         <div class="house-detail-content">
                             <div id="house-detail-head" >
                                 <h2>标题</h2>
                             </div>
                             <div id="house-detail-p">
-                                <p>租金：</p>
-                                <p>房源类型：</p>
-                                <p>发布日期：</p>
-                                <p>面积：</p>
-                                <p>楼层：</p>
-                                <p>朝向：</p>
-                                <p>点击数：</p>
+                                <p th:text="'租金：'+ ${house.Hcost}">租金：</p>
+                                <p th:text="'房源类型：'+ ${house.Hkind}">房源类型：</p>
+                                <p th:text="'发布日期：'+ ${house.Hdate}">发布日期：</p>
+                                <p th:text="'面积：'+ ${house.Harea}">面积：</p>
+                                <p th:text="'楼层：'+ ${house.Hfloor}">楼层：</p>
+                                <p th:text="'朝向：'+ ${house.Hdirection}">朝向：</p>
+                                <p th:text="'点击数：'+ ${house.Hclick}">点击数：</p>
                             </div>
                             <div id="house-detail-host">
                                 <button>联系房东</button>
@@ -104,7 +104,7 @@
                             <span>房源描述</span>
                         </div>
                         <div id="house-detail">
-                            <p>房源内容</p>
+                            <p th:text="${house.Hintroduce}">房源内容</p>
                         </div>
                     </div>
                 </div>
