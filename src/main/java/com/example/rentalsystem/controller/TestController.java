@@ -24,10 +24,10 @@ public class TestController {
     private ServiceShowHouse serviceShowHouse;
 
     @GetMapping("/login")
-    public String login(int num, Model model) {
-        List<House> houses = serviceShowHouse.getLastestHouse(num);
-        model.addAttribute("houses", houses);
-        return "success";
+    public String login(Model model) {
+//        List<House> houses = serviceShowHouse.getLastestHouse(num);
+//        model.addAttribute("houses", houses);
+        return "Manage";
     }
 
 }
