@@ -4,6 +4,7 @@ import com.example.rentalsystem.entity.House;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,9 @@ public interface ShowHouseSQL {
     @Select("select * from house where house.Hkind = #{kind} order by House.Hdate desc limit #{sum}")
     List<House> getAllSpecificKindHouse(int kind);
 
+    @Select("select * from house order by House.Hclick desc limit #{sum}")
+    List<House> getHotHouse(int sum);
+
     @Select("select * from house where Hname like #{keyword}")
     List<House> searchHouseByName(String keyword);
 
@@ -33,5 +37,8 @@ public interface ShowHouseSQL {
 
     @Select("select * from house")
     List<House> getAllHouse();
+
+    @Update("update house set house.Hclick=house.Hclick+1 where HID=#{id}")
+    void increaseHouseHclick(int id);
 
 }

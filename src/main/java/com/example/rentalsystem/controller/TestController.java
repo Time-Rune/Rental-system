@@ -25,11 +25,11 @@ public class TestController {
     @Autowired
     private ServiceShowHouse serviceShowHouse;
 
-    @GetMapping("/login")
-    public String login(int kind,int num, Model model) {
-        List<House> houses = serviceShowHouse.getSpecificKindHouse(kind, num);
-        model.addAttribute("houses", houses);
-        return "success";
-    }
+//    @GetMapping("/login")
+//    public String login(int kind,int num, Model model) {
+//        List<House> houses = serviceShowHouse.getSpecificKindHouse(kind, num);
+//        model.addAttribute("houses", houses);
+//        return "success";
+//    }
 
 }
