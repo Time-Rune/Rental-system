@@ -7,9 +7,10 @@
     <title>HOME</title>
 <!--    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png">-->
     <link rel="stylesheet" href="/static/css/adminLogin/login.css">
-    <link rel="stylesheet" href="//static/css/index.css">
+    <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="/static/css/new.css">
     <link rel="stylesheet" href="/static/css/house.css">
+    <link rel="stylesheet" href="/static/css/allhouse.css">
 </head>
 <body>
     <div class="wrap">
@@ -41,7 +42,8 @@
             <div id="new-nav">
                 <!-- <h2>当前页面</h2> -->
                 <span>当前页面,</span>
-                <a href="/templates/index.html">首页</a>
+                <a href="/index">首页</a>
+                <a href="">>全部商品</a>
                 <span>
                     >房源
                 </span>
@@ -73,20 +75,15 @@
                     </div>
                 </div>
                 <div class="house-main-right">
-                    <div id="house-right-head">
-                        <h2>房源列表</h2>
+                    <div id="allhouse-right-head">
+                        <h2>房源信息</h2>
                     </div>
-                    <div id="house-right-content">
+                    <div id="allhouse-right-content">
                         <ul>
-                            <li>
-                                <img th:src="${Houses0.Hphoto}" alt="">
-                                <p th:text="">环境很好，阳光充足！</p>
-                                <h2>＄7600/月</h2>
-                            </li>
-                            <li>
-                                <img th:src="${Houses0.Hphoto}" alt="">
-                                <p th:text="">环境很好，阳光充足！</p>
-                                <h2>＄7600/月</h2>
+                            <li th:each="house:${allHousesList}">
+                                <img th:src="${house.Hphoto}" alt="">
+                                <p th:text="${house.Hname}">环境很好，阳光充足！</p>
+                                <h2 th:text="'￥'+${house.Hcost}+'/月'">＄7600/月</h2>
                             </li>
                         </ul>
                     </div>

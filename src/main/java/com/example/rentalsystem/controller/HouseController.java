@@ -37,7 +37,7 @@ public class HouseController {
      * @return allhouse.html
      */
     @GetMapping("/allhouse")
-    public String getAllHouse(@RequestParam(defaultValue = "1") int pageNumber, @RequestParam(defaultValue = "5") int numbersOfHousePerPage, Model model){
+    public String getAllHouse(@RequestParam(defaultValue = "1") int pageNumber, @RequestParam(defaultValue = "6") int numbersOfHousePerPage, Model model){
         List<House> houses = serviceShowHouse.getAllHouse();
         List<House> reslist = new ArrayList<>();
         for(int i = (pageNumber-1)*numbersOfHousePerPage; i < pageNumber*numbersOfHousePerPage; i++)

@@ -27,41 +27,94 @@
     color: #31c27c;
     background-color: #cefae4;
 }
+
 #house-right-head h2 {
     font-size: 16px;
     padding-left: 3px;
     padding-top: 6px;
 }
-#house-right-content {
-    border-bottom: 2px solid #e6e4e4;
-}
-#house-right-content ul {
+/* 房屋信息-图片-内容 */
+#house-top-content {
     display: flex;
-    justify-content:flex-start;
-    list-style: none;
+    width: 800px;
+    height: 345px;
+    /* border-bottom: 2px solid red; */
+    /* padding-top: 10px; */
 }
-#house-right-content ul li{
+.house-top-content-img {
+    width: 300px;
+    height: 300px;
+    border: 2px solid white;
+}
+.house-top-content-img img {
+    width: 300px;
+    height: 300px;
+}
+.house-detail-content {
+    width: 490px;
+    height: 300px;
+    /* border: 1px solid red; */
+    margin-left: 12px;
+    margin-top: 3px;
+}
+#house-detail-head {
+    width: 482px;
+    height: 30px;
+    /* background-color: #2aaf6c; */
+    border-bottom: 2px solid #dedbdb;
+    color: #4e514f;
+    padding: 4px 0 0 2px ;
+    /* 上右下左 */
+}
+#house-detail-head h2 {
+    font-size: 16px;
+}
+#house-detail-p {
+    width: 483px;
+    height: 210px;
+    border-bottom:  1px solid #dedbdb;
+    margin-top: 3px;
+}
+#house-detail-p p {
+    width: 490px;
+    height: 30px;
+    margin-left: 4px;
+    font-size: 14px;
+}
+#house-detail-host {
+    width: 490px;
+    height: 30px;
+    margin-top: 10px;
+    border: 0;
+}
+#house-detail-host button {
+    width: 100px;
+    height: 35px;
+    background: #2aaf6c;
+    color: white;
+    border: 0;
+    border-radius: 5px;
     margin-left: 5px;
-    margin-top: 40px;
-    width: 200px;
-    height: 360px;
 }
-#house-right-content ul li img {
-    width: 180px;
-    height: 200px;
+#house-bottom-content {
+    width: 800px;
+    height: 518px;
 }
-#house-right-content ul li h2 {
-    width: 180px;
-    height: 30px;
-    font-size: 14px;
-    color: #de4252;
+#house-detail-title {
+    width: 100px;
+    height: 35px;
+    background: #2aaf6c;
 }
-#house-right-content ul li p {
-    width: 180px;
-    height: 30px;
-    font-size: 14px;
-    color: #6a6464;
-    padding-bottom: 10px;
+#house-detail-title span {
+    display: block;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 16px;
+    color: white;
+}
+#house-detail {
+    width: 100%;
+    border-top: 2px solid #31c27c;
 }
 /* 房源左边详情 */
 #house-adr-head {
@@ -103,7 +156,7 @@
 /* 热门房源 */
 #hoting-house {
     width: 400px;
-    height: 750px;
+    height: 708px;
     border: 1px solid #2aaf6c;
     margin-top: 5px;
     border-radius: 7px;
