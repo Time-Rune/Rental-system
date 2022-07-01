@@ -22,7 +22,7 @@ public interface ShowHouseSQL {
     @Select("select * from house where house.Hkind = #{kind} order by House.Hdate desc limit #{sum}")
     List<House> getAllSpecificKindHouse(int kind);
 
-    @Select("select * from house where Hname like '%#{keyword}%'")
+    @Select("select * from house where Hname like #{keyword}")
     List<House> searchHouseByName(String keyword);
 
     @Select("select max(House.HID) from House")
