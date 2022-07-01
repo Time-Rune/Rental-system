@@ -36,5 +36,13 @@ public class ServiceShowHouse {
     public List<House> getAllHouse(){
         return showHouseSQL.getAllHouse();
     }
+
+    public void increaseHouseHclick(int id){
+        showHouseSQL.increaseHouseHclick(id);
+    }
+
+    public List<House> getHotHouse(int sum){
+        return showHouseSQL.getHotHouse(sum);
+    }
 }
 

@@ -63,13 +63,16 @@
                         <div id="hoting-house-head">
                             <h2>热门房源</h2>
                         </div>
-                        <div id="hoting-house-list">
-                            <div>
-                                <img src="" alt="">
-                                <span><a href="">标题</a></span>
-                                <span>￥5000/月</span>
-                            </div>   
-                            <div></div>
+                        <div class="hoting-house-list">
+                            <div class="hoting-house-list-div" th:each="house:${allHousesList}">
+                                <div class="hoting-house-list-img">
+                                    <a th:href="@{/house/housedetail(houseid=${house.HID})}"><img th:src="${house.Hphoto}" alt=""></a>
+                                </div>
+                                <div class="hoting-house-list-content">
+                                    <span class="hoting-house-list-head"><a th:href="@{/house/housedetail(houseid=${house.HID})}" th:text="${house.Hname}">标题</a></span>
+                                    <h2 th:text="'￥'+${house.Hcost}+'/月'">￥5000/月</h2>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

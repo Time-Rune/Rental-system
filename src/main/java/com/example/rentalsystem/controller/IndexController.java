@@ -71,4 +71,14 @@ public class IndexController {
         List<News> newslist = serviceNews.getLatestNews(numbersOfNews);
         model.addAttribute("LatestNewsList", newslist);
     }
+
+    /**
+     * 展示热门房源
+     */
+    private void addHotHouse(Model model){
+        //sum: 热门房源展示数量
+        int sum = 5;
+        List<House> houses = serviceShowHouse.getHotHouse(sum);
+        model.addAttribute("HotHousesList", houses);
+    }
 }
