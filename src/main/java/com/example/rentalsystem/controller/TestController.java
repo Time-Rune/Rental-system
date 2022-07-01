@@ -23,11 +23,11 @@ public class TestController {
     @Autowired
     private ServiceShowHouse serviceShowHouse;
 
-    @GetMapping("/login2")
-    public String login(int num, Model model) {
-        List<House> houses = serviceShowHouse.getLastestHouse(num);
-        model.addAttribute("houses", houses);
-        return "success";
+    @GetMapping("/login")
+    public String login(Model model) {
+//        List<House> houses = serviceShowHouse.getLastestHouse(num);
+//        model.addAttribute("houses", houses);
+        return "Manage";
     }
 
 }
