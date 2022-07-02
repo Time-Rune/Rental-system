@@ -40,7 +40,7 @@ public class LoginController {
         }else{
             System.out.println("登录成功");
             UserContext.putCurrentUserIntoSession(user);
-            response.getWriter().print("login success");
+            response.getWriter().print(UserContext.getCurrentInfo().toString());
         }
 //        return ajaxResult;
     }
