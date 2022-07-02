@@ -1,4 +1,5 @@
 window.onload = function(){
+    // alert("你好")
     // 获取ul
     var imgList = document.getElementById("imglist");
     // 获取所有img标签

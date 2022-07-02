@@ -13,7 +13,7 @@ public interface UserSQL {
     @Insert("Insert into User(UID,Uaccount,Upassword,Uname,Usex,Ubirth,Uphone,Uregtime)" +
             "values(#{uid},#{uaccount},#{upassword},#{uname},#{usex},#{ubirth},#{uphone},#{uregtime})")
     void addNewUser(int uid, String uaccount, String upassword, String uname, String usex,
-                    Date ubirth, String uphone, String uregtime);
+                    String ubirth, String uphone, String uregtime);
     @Select("select * from User where UID = #{uid}")
     List<User> selectUser(int uid);
 

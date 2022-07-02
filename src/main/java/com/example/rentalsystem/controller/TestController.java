@@ -19,11 +19,12 @@ import java.util.List;
 
 @Slf4j
 @Controller
+@RequestMapping("demo")
 public class TestController {
     @Autowired
     private ServiceShowHouse serviceShowHouse;
 
-    @GetMapping("/login")
+//    @GetMapping("/login")
     public String login(Model model) {
 //        List<House> houses = serviceShowHouse.getLastestHouse(num);
 //        model.addAttribute("houses", houses);

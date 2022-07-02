@@ -43,13 +43,16 @@
         border: 0;
         border-radius: 5px;
     }
+    #login-res {
+        margin-left: 200px;
+    }
 </style>
 <body>
     <div id="loginForm">
         <div class="form-head">
             <h2>登录框</h2>
         </div>
-        <form action="" id="form-form">
+        <form action="loginsubmit" id="form-form">
             <div>
                 <span>密码</span>
                 <input type="text" placeholder="请输入用户名...." name="username">
@@ -59,6 +62,7 @@
                 <input type="password" placeholder="请输入密码..." name="password">
             </div>
             <input type="submit" id="loginBtn" value="登录" class="loginSubmit"/>
+            <p id="login-res"></p>
         </form>
     </div>
 </body>
@@ -91,6 +95,7 @@
                             })
                         }else{
                             $.messager.popup(data.msg);
+                            window.location.href="/login";
                         } }
                 });
             },
@@ -98,7 +103,8 @@
             errorClass:"text-danger",
             //未通过验证,进行高亮处理或其他处理；
             highlight:function(input){
-                $(input).closest(".form-group").addClass("has-error");
+                $(login-res).html("用户名或密码错误")
+                // $(input).closest(".form-group").addClass("has-error");
             },
             //通过验证,清除高亮效果或其他处理；
             unhighlight:function(input){

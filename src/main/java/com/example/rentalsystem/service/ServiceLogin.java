@@ -12,9 +12,16 @@ public class ServiceLogin {
     @Resource
     loginSQL loginSQL;
 
-    public User loginService(String username, String password){
+    public Object loginService(String username, String password){
         List<User> list = loginSQL.loginUser(username, password);
-        User user = list.get(0);
-        return user;
+        Object res;
+        try {
+            User user = list.get(0);
+            res = user;
+        }catch (IndexOutOfBoundsException e){
+            System.out.println(e);
+            res = null;
+        }
+        return res;
     }
 }

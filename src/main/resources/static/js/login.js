@@ -56,6 +56,7 @@ img.onclick = function (){
 
 //不同用户的登录和注册转化
 window.onload = function(){
+    alert('hhhhh')
     var loginTitleItem = document.getElementsByClassName("login-title-item");
     var loginIt = loginTitleItem[0].getElementsByTagName("div");
 
