@@ -25,7 +25,7 @@ public class LoginController {
         return "test";
     }
 
-    @RequestMapping(value = "/loginsubmit", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "loginsubmit", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public AjaxResult loginController(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("success!");
