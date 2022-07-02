@@ -1,35 +1,47 @@
 package com.example.rentalsystem.controller;
 
-import com.example.rentalsystem.entity.House;
-import com.example.rentalsystem.service.ServiceShowHouse;
-import lombok.extern.slf4j.Slf4j;
+import com.example.rentalsystem.entity.User;
+import com.example.rentalsystem.service.ServiceLogin;
+import com.example.rentalsystem.utils.AjaxResult;
+import com.example.rentalsystem.utils.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Map;
 
-@RestController
-//@RequestMapping("/")
+@Controller
+@RequestMapping("/")
 public class LoginController {
+    @Autowired
+    private ServiceLogin serviceLogin;
 
-    
+    @GetMapping("/login")
+    public String login(String test){
+        System.out.println(test);
+        return "test";
+    }
 
+    @RequestMapping(value = "/loginsubmit", method = RequestMethod.POST, produces = "application/json")
+//    @ResponseBody
+    public void loginController(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("success!");
+        String username = request.getParameter("act");
+        String password = request.getParameter("psw");
+        System.out.println("username = " + username + " password = " + password);
+        AjaxResult ajaxResult = new AjaxResult();
+        User user = (User) serviceLogin.loginService(username, password);
+        if(user == null){
+            ajaxResult.setMsg("用户名或密码错误");
+            System.out.println("用户名或密码错误");
+        }else{
+            System.out.println("登录成功");
+            UserContext.putCurrentUserIntoSession(user);
+            response.getWriter().print("login success");
+        }
+//        return ajaxResult;
+    }
 }
-
-
-//@GetMapping("/login2")
-//    public String login(String account, String password, Model model){
-//        List<House> houses = serviceShowHouse.getLastestHouse(4);
-//        House test = new House();
-//        test.setHphoto("/XHS_1656418008466e5128622-da5a-3a04-aaae-66d82326.jpg");
-//        model.addAttribute("Houses0", test);
-//
-//        for(int i = 0; i < houses.size(); i++){
-//            model.addAttribute("Latesthouses" + i, houses.get(i));
-//        }
-//        return "index";
-//    }
