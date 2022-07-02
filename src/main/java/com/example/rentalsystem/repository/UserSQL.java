@@ -17,6 +17,9 @@ public interface UserSQL {
     @Select("select * from User where UID = #{uid}")
     List<User> selectUser(int uid);
 
+    @Select("select * from User")
+    List<User> selectAllUser();
+
     @Select("select max(User.UID) from User")
     int getMaxUID();
 
