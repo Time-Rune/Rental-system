@@ -57,12 +57,12 @@
     cursor: pointer;
 }
 
-.active{
+/* .active{
     color: #00A7D1;
-}
+} */
 
 .register-title-item div:hover{
-    color: #00A7D1;
+    color: #31c27c;
 }
 
 .register-title span img {

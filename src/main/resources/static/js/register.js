@@ -57,31 +57,31 @@ regimg.onclick = function (){
         reginput.value = text;
         reginput.type = 'password';
         flag=1;
-        regimg.src = "/assets/images/icon-img/eye-hide.png";
+        regimg.src = "/static/assets/images/icon-img/eye-hide.png";
     }else{
         let psw = reginput.value;
         reginput.value = psw;
         reginput.type = 'text';
-        regimg.src = "/assets/images/icon-img/eye-show.png";
+        regimg.src = "/static/assets/images/icon-img/eye-show.png";
         flag = 0;
     }
 }
 
-$(document).on('click', '.eye', function(e){
-    if(flag==0){
-        let text = reginput.value;
-        reginput.value = text;
-        reginput.type = 'password';
-        flag=1;
-        regimg.src = "/assets/images/icon-img/eye-hide.png";
-    }else{
-        let psw = reginput.value;
-        reginput.value = psw;
-        reginput.type = 'text';
-        regimg.src = "/assets/images/icon-img/eye-show.png";
-        flag = 0;
-    }
-});
+// $(document).on('click', '.eye', function(e){
+//     if(flag==0){
+//         let text = reginput.value;
+//         reginput.value = text;
+//         reginput.type = 'password';
+//         flag=1;
+//         regimg.src = "/static/assets/images/icon-img/eye-hide.png";
+//     }else{
+//         let psw = reginput.value;
+//         reginput.value = psw;
+//         reginput.type = 'text';
+//         regimg.src = "/static/assets/images/icon-img/eye-show.png";
+//         flag = 0;
+//     }
+// });
 
 //鼠标移出时，恢复按钮样式
 function registerBtnMouseOutEvent(event) {

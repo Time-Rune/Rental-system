@@ -64,7 +64,7 @@
                             <h2>热门房源</h2>
                         </div>
                         <div class="hoting-house-list">
-                            <div class="hoting-house-list-div" th:each="house:${allHousesList}">
+                            <div class="hoting-house-list-div" th:each="house:${HotHousesList}">
                                 <div class="hoting-house-list-img">
                                     <a th:href="@{/house/housedetail(houseid=${house.HID})}"><img th:src="${house.Hphoto}" alt=""></a>
                                 </div>
@@ -121,6 +121,6 @@
 <!-- register.js -->
 <script type="text/javascript" src="../static/js/register.js"></script>
 <!-- forget.js -->
-<script type="text/javascript" src="../static/js/forget.js"></script>
+<!-- <script type="text/javascript" src="../static/js/forget.js"></script> -->
 </body>
 </html>

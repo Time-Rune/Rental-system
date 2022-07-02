@@ -44,68 +44,15 @@ img.onclick = function (){
         input.value = text;
         input.type = 'password';
         flag=1;
-        img.src = "/assets/images/icon-img/eye-hide.png";
+        img.src = "/static/assets/images/icon-img/eye-hide.png";
     }else{
         let psw = input.value;
         input.value = psw;
         input.type = 'text';
-        img.src = "/assets/images/icon-img/eye-show.png";
+        img.src = "/static/assets/images/icon-img/eye-show.png";
         flag = 0;
     }
 }
-
-//不同用户的登录和注册转化
-window.onload = function(){
-    alert('hhhhh')
-    var loginTitleItem = document.getElementsByClassName("login-title-item");
-    var loginIt = loginTitleItem[0].getElementsByTagName("div");
-
-    for(let i=0;i<loginIt.length;i++){
-        loginIt[i].onclick = function(){
-            for(let j=0;j<loginIt.length;j++){
-                loginIt[j].className = '';
-            }
-            this.className = "active";
-            loginIt[i].index = i;
-            if (loginIt[i].innerText === "用户登录") {
-                $("#loginRole").val("user");
-                $('#icons-login').attr('class','icons-user');
-                $('#icons-register').attr('class','icons-user');
-            } else {
-                $("#loginRole").val("admin");
-                $('#icons-login').attr('class','icons-admin');
-                $('#icons-register').attr('class','icons-admin');
-            }
-            $("#inputAccountEmpty").css("display", "none");
-            $("#inputPasswordEmpty").css("display", "none");
-        }
-    }
-    var registerTitleItem = document.getElementsByClassName("register-title-item");
-    var registerIt = registerTitleItem[0].getElementsByTagName("div");
-
-    for( let i=0;i<registerIt.length;i++){
-        registerIt[i].onclick = function(){
-            for(let j=0;j<registerIt.length;j++){
-                registerIt[j].className = '';
-            }
-            this.className = "active";
-            registerIt[i].index = i;
-            if (registerIt[i].innerText === "用户注册") {
-                $("#registerRole").val("user");
-                $('#icons-login').attr('class','icons-user');
-                $('#icons-register').attr('class','icons-user');
-            } else {
-                $("#registerRole").val("admin");
-                $('#icons-login').attr('class','icons-admin');
-                $('#icons-register').attr('class','icons-admin');
-            }
-            $("#inputEmailEmpty").css("display", "none");
-            $("#inputActEmpty").css("display", "none");
-            $("#inputPswEmpty").css("display", "none");
-        }
-    }
-}
-
 //为按钮绑定鼠标事件
 $("#loginBtn").on("mouseover", {inputType1: "Account", inputType2: "Password"}, loginBtnMouseOverEvent);
 $("#loginBtn").on("mouseout", {inputType1: "Account", inputType2: "Password"}, loginBtnMouseOutEvent);
@@ -177,15 +124,15 @@ $(function(){
             "act": {
                 required: true
             },
-            "password":{
+            "psw":{
                 required:true
             }
         },
         messages:{
-            "username":{
+            "act":{
                 required:"用户名不能为空"
             },
-            "password":{
+            "psw":{
                 required:"密码不能为空"
             }
         },
@@ -199,6 +146,7 @@ $(function(){
                         })
                     }else{
                         $.messager.popup(data.msg);
+                        window.location.href="/login";
                     } }
             });
         },
@@ -206,7 +154,8 @@ $(function(){
         errorClass:"text-danger",
         //未通过验证,进行高亮处理或其他处理；
         highlight:function(input){
-            $(input).closest(".form-group").addClass("has-error");
+            $(login-res).html("用户名或密码错误")
+            // $(input).closest(".form-group").addClass("has-error");
         },
         //通过验证,清除高亮效果或其他处理；
         unhighlight:function(input){
@@ -214,7 +163,6 @@ $(function(){
         }
     });
 });
-
 
 
 

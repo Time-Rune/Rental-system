@@ -183,19 +183,19 @@
 /* 每个热门房源的大小设置 */
 .hoting-house-list-div {
     width: 398px;
-    height: 180px;
+    height: 150px;
     border: 1px solid green;
-    margin-top: 3px;
+    margin-bottom: 8px;
     display: flex;
 } 
 .hoting-house-list-img {
     width: 180px;
-    height: 176px;
-    border: 1px solid green;
+    height: 151px;
+    /*border: 1px solid green;*/
 }
 .hoting-house-list-img img {
     width: 180px;
-    height: 176px;
+    height: 151px;
 }
 .hoting-house-list-content h2 {
     font-size: 14px;

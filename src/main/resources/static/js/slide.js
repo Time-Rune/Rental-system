@@ -40,7 +40,7 @@ window.onload = function(){
         allA[index].style.backgroundColor = "red";
     };
     autoChange();
-    创建一个函数来自动切换
+    // 创建一个函数来自动切换
     function autoChange(){
         setInterval(function(){
             index++;

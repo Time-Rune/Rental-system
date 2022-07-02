@@ -221,7 +221,7 @@
 <!-- register.js -->
 <script type="text/javascript" src="/static/js/register.js"></script>
 <!-- forget.js -->
-<script type="text/javascript" src="/static/js/forget.js"></script>
+<!-- <script type="text/javascript" src="/static/js/forget.js"></script> -->
 <!-- slide.js -->
 <script type="text/javascript" src="/static/js/slide.js"></script>
 <!--<script src="assets/js/plugins/instafeed.js"></script>-->
@@ -236,6 +236,56 @@
 <script src="../static/assets/js/plugins/elevatezoom.js"></script>
 <script src="../static/assets/js/plugins/sticky-sidebar.js"></script>
 <script type="text/javascript" src="../static/assets/js/plugins/jquery-1.9.0.min.js"></script>
-<script type="text/javascript" src="../static/assets/js/plugins/jquery-form.js"></script>
+<!-- <script type="text/javascript" src="../static/assets/js/plugins/jquery-form.js"></script>-->
+<script>
+    var loginTitleItem = document.getElementsByClassName("login-title-item");
+    var loginIt = loginTitleItem[0].getElementsByTagName("div");
+
+    for(let i=0;i<loginIt.length;i++){
+        loginIt[i].onclick = function(){
+            // alert('成功啦');
+            for(let j=0;j<loginIt.length;j++){
+                loginIt[j].className = '';
+            }
+            this.className = "active";
+            loginIt[i].index = i;
+            if (loginIt[i].innerText === "用户登录") {
+                $("#loginRole").val("user");
+                $('#icons-login').attr('class','icons-user');
+                $('#icons-register').attr('class','icons-user');
+            } else {
+                $("#loginRole").val("admin");
+                $('#icons-login').attr('class','icons-admin');
+                $('#icons-register').attr('class','icons-admin');
+            }
+            $("#inputAccountEmpty").css("display", "none");
+            $("#inputPasswordEmpty").css("display", "none");
+        }
+    }
+    var registerTitleItem = document.getElementsByClassName("register-title-item");
+    var registerIt = registerTitleItem[0].getElementsByTagName("div");
+
+    for( let i=0;i<registerIt.length;i++){
+        registerIt[i].onclick = function(){
+            for(let j=0;j<registerIt.length;j++){
+                registerIt[j].className = '';
+            }
+            this.className = "active";
+            registerIt[i].index = i;
+            if (registerIt[i].innerText === "用户注册") {
+                $("#registerRole").val("user");
+                $('#icons-login').attr('class','icons-user');
+                $('#icons-register').attr('class','icons-user');
+            } else {
+                $("#registerRole").val("admin");
+                $('#icons-login').attr('class','icons-admin');
+                $('#icons-register').attr('class','icons-admin');
+            }
+            $("#inputEmailEmpty").css("display", "none");
+            $("#inputActEmpty").css("display", "none");
+            $("#inputPswEmpty").css("display", "none");
+        }
+    }
+</script>
 </body>
 </html>
