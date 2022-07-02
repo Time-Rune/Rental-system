@@ -118,62 +118,104 @@ $("#inputAccount").focus(function () {
 $("#inputPassword").focus(function () {
     $("#inputPasswordEmpty").css("display", "none");
 })
+//表单提交顺序
 $(function(){
-    $("#login-form").validate({
-        rules: {
-            "act": {
-                required: true
-            },
-            "psw":{
-                required:true
-            }
-        },
-        messages:{
-            "act":{
-                required:"用户名不能为空"
-            },
-            "psw":{
-                required:"密码不能为空"
-            }
-        },
-        submitHandler:function(form){
-            $(form).ajaxSubmit({
-                dataType:'json',
-                success:function(data){
-                    if(data.success){
-                        $.messager.confirm("提示信息","登录成功",function(){
-                            window.location.href="/personal";
-                        })
-                    }else{
-                        $.messager.popup(data.msg);
-                        window.location.href="/login";
-                    } }
-            });
-        },
-        //自定义错误样式
-        errorClass:"text-danger",
-        //未通过验证,进行高亮处理或其他处理；
-        highlight:function(input){
-            $(login-res).html("用户名或密码错误")
-            // $(input).closest(".form-group").addClass("has-error");
-        },
-        //通过验证,清除高亮效果或其他处理；
-        unhighlight:function(input){
-            $(input).closest(".form-group").removeClass("has-error");
+    var options = {
+        type: 'POST',
+        success:showResponse,
+        dataType: 'json',
+        error : function(xhr, status, err) {
+            alert("操作失败");
         }
+    };
+    $("#login-form").submit(function(){
+        $(this).ajaxSubmit(options);
+        return false;  //防止表单自动提交
     });
 });
-// 防止表单跳转
-function loginsave() {
-    $("#loginBtn").attr("disabled", true);
-// jquery 表单提交
-    $("#login-form").ajaxSubmit(function(message) {
-        alert('用户名或密码错误！');
-        $("#loginBtn").attr("disabled", false);
-// 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
-    });
-    return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转
+/**
+ * 保存操作
+ */
+function toSave(){
+    $("#login-form").submit();
 }
+/**
+ * 保存后，执行回调
+ * @param responseText
+ * @param statusText
+ * @param xhr
+ * @param $form
+ */
+// function showResponse(responseText, statusText, xhr, $form){
+function showResponse(responseText){
+    if(responseText.msg == "1"){
+        /**
+         * 请求成功后的操作
+         */
+        // alert(responseText.msg);
+        alert("登录成功");
+        window.location.href="/index";
+    } else {
+        alert("登录失败");
+        // alert(responseText.msg);
+    }
+}
+// $(function(){
+//     $("#login-form").validate({
+//         rules: {
+//             "act": {
+//                 required: true
+//             },
+//             "psw":{
+//                 required:true
+//             }
+//         },
+//         messages:{
+//             "act":{
+//                 required:"用户名不能为空"
+//             },
+//             "psw":{
+//                 required:"密码不能为空"
+//             }
+//         },
+//         submitHandler:function(form){
+//             $(form).ajaxSubmit({
+//                 dataType:'json',
+//                 success:function(data){
+//                     if(data.success){
+//                         $.messager.confirm("提示信息","登录成功",function(){
+//                             window.location.href="/personal";
+//                         })
+//                     }else{
+//                         $.messager.popup(data.msg);
+//                         window.location.href="/login";
+//                     } }
+//             });
+//         },
+//         //自定义错误样式
+//         errorClass:"text-danger",
+//         //未通过验证,进行高亮处理或其他处理；
+//         highlight:function(input){
+//             $(login-res).html("用户名或密码错误")
+//             // $(input).closest(".form-group").addClass("has-error");
+//         },
+//         //通过验证,清除高亮效果或其他处理；
+//         unhighlight:function(input){
+//             $(input).closest(".form-group").removeClass("has-error");
+//         }
+//     });
+// });
+// 防止表单跳转
+// function loginsave() {
+//     $("#loginBtn").attr("disabled", true);
+// // jquery 表单提交
+//     $("#login-form").ajaxSubmit(function(message) {
+//         alert('用户名或密码错误！');
+//         $("#loginBtn").attr("disabled", false);
+// // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
+//     });
+//     return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转
+// }
 
 
 

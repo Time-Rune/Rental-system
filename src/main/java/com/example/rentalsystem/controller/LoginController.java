@@ -27,7 +27,7 @@ public class LoginController {
 
     @RequestMapping(value = "loginsubmit", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    public void loginController(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public AjaxResult loginController(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("success!");
         String username = request.getParameter("act");
         String password = request.getParameter("psw");
@@ -35,13 +35,14 @@ public class LoginController {
         AjaxResult ajaxResult = new AjaxResult();
         User user = (User) serviceLogin.loginService(username, password);
         if(user == null){
-            ajaxResult.setMsg("用户名或密码错误");
+            ajaxResult.setMsg("0");
             System.out.println("用户名或密码错误");
         }else{
+            ajaxResult.setMsg("1");
             System.out.println("登录成功");
             UserContext.putCurrentUserIntoSession(user);
-            response.getWriter().print(UserContext.getCurrentInfo().toString());
+//            response.getWriter().print(UserContext.getCurrentInfo().toString());
         }
-//        return ajaxResult;
+        return ajaxResult;
     }
 }
