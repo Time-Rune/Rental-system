@@ -26,8 +26,8 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/loginsubmit", method = RequestMethod.POST, produces = "application/json")
-//    @ResponseBody
-    public void loginController(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @ResponseBody
+    public AjaxResult loginController(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("success!");
         String username = request.getParameter("act");
         String password = request.getParameter("psw");
@@ -42,6 +42,6 @@ public class LoginController {
             UserContext.putCurrentUserIntoSession(user);
             response.getWriter().print(UserContext.getCurrentInfo().toString());
         }
-//        return ajaxResult;
+        return ajaxResult;
     }
 }
