@@ -154,7 +154,7 @@ function showResponse(responseText){
          */
         // alert(responseText.msg);
         alert("登录成功");
-        window.location.href="/index";
+        window.location.href="/logintest";
     } else {
         alert("登录失败");
         // alert(responseText.msg);

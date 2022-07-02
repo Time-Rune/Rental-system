@@ -6,6 +6,7 @@ import com.example.rentalsystem.utils.AjaxResult;
 import com.example.rentalsystem.utils.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,5 +45,10 @@ public class LoginController {
 //            response.getWriter().print(UserContext.getCurrentInfo().toString());
         }
         return ajaxResult;
+    }
+
+    @GetMapping("/logintest")
+    public String loginTest(Model model){
+        return "/temp/index";
     }
 }
