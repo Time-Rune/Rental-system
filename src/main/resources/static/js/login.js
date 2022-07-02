@@ -168,7 +168,7 @@ function loginsave() {
     $("#loginBtn").attr("disabled", true);
 // jquery 表单提交
     $("#login-form").ajaxSubmit(function(message) {
-        alert('用户账号注册成功！请登录！');
+        alert('用户名或密码错误！');
         $("#loginBtn").attr("disabled", false);
 // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
     });

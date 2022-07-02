@@ -22,16 +22,16 @@ closeButton.onclick = function () {
 }
 //3.阻止跳转
 //用户
-function save() {
-    $("#registerBtn").attr("disabled", true);
-// jquery 表单提交
-    $("#register-form").ajaxSubmit(function(message) {
-        alert('用户账号注册成功！请登录！');
-        $("#registerBtn").attr("disabled", false);
-// 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
-    });
-    return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转
-}
+// function save() {
+//     $("#registerBtn").attr("disabled", true);
+// // jquery 表单提交
+//     $("#register-form").ajaxSubmit(function(message) {
+//         alert('用户名或密码错误！');
+//         $("#registerBtn").attr("disabled", false);
+// // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
+//     });
+//     return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转
+// }
 
 //为按钮绑定鼠标事件
 $("#registerBtn").on("mouseover", {inputType1: "Email", inputType2: "Act", inputType3: "Psw"}, registerBtnMouseOverEvent);
