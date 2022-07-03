@@ -6,53 +6,48 @@
 	<meta name="author" content="Yuan-Programmer" />
 
 	<title>后台管理</title>
+	
 	<link href="/static/cssManage/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
 	<link href="/static/cssManage/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
 	<link href="/static/cssManage/plugins/iCheck/custom.css" rel="stylesheet">
 	<link href="/static/cssManage/animate.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="/static/cssManage/table.css">
 	<link href="/static/cssManage/style.min862f.css?v=4.1.0" rel="stylesheet">
 	<script src="/static/jsManage/jquery-3.4.1/jquery-3.4.1.js"></script>
 </head>
 
-<!--<body>-->
-<!--<h1>23242324</h1>-->
-<!--</body>-->
+
 <body class="gray-bg">
-<div class="wrapper wrapper-content animated fadeInRight ">
+<div class="wrapper wrapper-content animated fadeInRight">
 	<div class="row">
-		<div class="col-sm-6 col-sm-6-after">
+		<div class="col-sm-6 col-lg-6-after">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>用户管理</h5>
 					<div class="ibox-tools">
-						<button id="addUserBtn" class="btn btn-xs btn-rounded btn-primary"><i class="fa fa-plus"></i> 添加</button>
+						<button id="user-addUserBtn" class="btn btn-xs btn-rounded btn-primary"><i class="fa fa-plus"></i> 添加</button>
 					</div>
 				</div>
-				<div class="ibox-content ">
+				<div class="ibox-content">
 					<div class="input-group">
 						<input id="search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
 							        <button id="findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
 					</div>
-					<div id="userTable" th:fragment="userTable" class="">
-						<table class="footable table table-stripped toggle-arrow-tiny ">
+					<div id="user-userTable" th:fragment="user-userTable">
+						<table class="footable table table-stripped toggle-arrow-tiny">
 							<thead>
 							<tr>
 								<th>编号</th>
 								<th>用户名</th>
 								<th>昵称</th>
 								<th>密码</th>
-								<th>出生日期</th>
 							</tr>
 							</thead>
 							<tbody>
 							<tr th:each="user: ${user_list}">
 								<td th:text="${user?.UID}">1</td>
-								<td th:text="${user?.Uaccount}">ydw</td>
-								<td th:text="${user?.Uname}">袁德伟</td>
-								<td th:text="${user?.Upassword}">123</td>
-								<td th:text="${user?.Upassword}">123</td>
-								<!-- <td th:text="${user?.Upassword}">123</td> -->
+								<td th:text="${user?.Uaccount}">acc</td>
+								<td th:text="${user?.Uname}">Name</td>
+								<td th:text="${user?.Upassword}">pass</td>
 								<td style="width: 50px;">
 									<button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
 										<i class="fa fa-edit"></i> 修改
@@ -74,7 +69,7 @@
 </div>
 
 <!-- 添加用户的弹出框 -->
-<div id="modal-form-add" class="modal fade" aria-hidden="true">
+<div id="user-modal-form-add" class="modal fade" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-body">
@@ -88,29 +83,23 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">用户名：</label>
 									<div class="col-sm-8">
-										<input id="addUserName" type="text" placeholder="用户名" class="form-control">
+										<input id="UserAddAccount" type="text" placeholder="用户名" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">昵称：</label>
 									<div class="col-sm-8">
-										<input id="addNickname" type="text" placeholder="昵称" class="form-control">
+										<input id="UserAddName" type="text" placeholder="昵称" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">密码：</label>
 									<div class="col-sm-8">
-										<input id="addPassword" type="text" placeholder="密码" class="form-control">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label">密码：</label>
-									<div class="col-sm-8">
-										<input id="addPassword" type="text" placeholder="密码" class="form-control">
+										<input id="UserAddPassword" type="text" placeholder="密码" class="form-control">
 									</div>
 								</div>
 								<div>
-									<button id="addSubmitBtn" class="btn btn-primary btn-primary pull-right m-t-n-xs" type="button"><i class="fa fa-check"></i>&nbsp;提交
+									<button id="user-addSubmitBtn" class="btn btn-primary btn-primary pull-right m-t-n-xs" type="button"><i class="fa fa-check"></i>&nbsp;提交
 									</button>
 								</div>
 							</form>
@@ -137,25 +126,25 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">编号：</label>
 									<div class="col-sm-8">
-										<input id="updateUserId" type="text" placeholder="编号" class="form-control" disabled>
+										<input id="UserUpdateId" type="text" placeholder="编号" class="form-control" disabled>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">用户名：</label>
 									<div class="col-sm-8">
-										<input id="updateUsername" type="text" placeholder="用户名" class="form-control">
+										<input id="UserUpdateAccount" type="text" placeholder="用户名" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">昵称：</label>
 									<div class="col-sm-8">
-										<input id="updateNickname" type="text" placeholder="昵称" class="form-control">
+										<input id="UserUpdateName" type="text" placeholder="昵称" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">密码：</label>
 									<div class="col-sm-8">
-										<input id="updatePassword" type="text" placeholder="密码" class="form-control">
+										<input id="UserUpdatePassword" type="text" placeholder="密码" class="form-control">
 									</div>
 								</div>
 								<div>
@@ -186,7 +175,7 @@
 				'id': id
 			},
 			success: function (data) {
-				$('#userTable').html(data)
+				$('#user-userTable').html(data)
 			},
 			error: function (err) {
 				console.log(err)
@@ -199,10 +188,10 @@
 	function updateBtn(id, username, nickname, password) {
 		// 传递数据到弹出框
 		$('#modal-form-update').modal('show');
-		$('#updateUserId').val(id)
-		$('#updateUsername').val(username)
-		$('#updateNickname').val(nickname)
-		$('#updatePassword').val(password)
+		$('#UserUpdateId').val(id)
+		$('#UserUpdateAccount').val(username)
+		$('#UserUpdateName').val(nickname)
+		$('#UserUpdatePassword').val(password)
 	}
 
 </script>
