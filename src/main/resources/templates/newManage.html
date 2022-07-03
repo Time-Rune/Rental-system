@@ -86,7 +86,7 @@
                                     <input id="user-search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
                                                 <button id="user-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
                                 </div>
-                                <div id="user-userTable" th:fragment="userTable">
+                                <div id="user-userTable" th:fragment="user-userTable">
                                     <table class="footable table table-stripped toggle-arrow-tiny">
                                         <thead>
                                         <tr>
@@ -112,7 +112,7 @@
 <!--                                            用户注册时间-->
                                             <td th:text="${user?.Uregtime}">用户注册时间</td>
                                             <td style="width: 50px;">
-                                                <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                <button th:onclick="user_updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]],[[${user?.Usex}]],[[${user?.Ubirth}]],[[${user?.Uphone}]],[[${user?.Uregtime}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改
                                                 </button>
                                             </td>
@@ -988,7 +988,7 @@
 				'id': id
 			},
 			success: function (data) {
-				$('#userTable').html(data)
+				$('#user-userTable').html(data)
 			},
 			error: function (err) {
 				console.log(err)
@@ -998,14 +998,63 @@
 	}
 
 	// 点击修改按钮
-	function updateBtn(id, username, nickname, password) {
+	function user_updateBtn(id, account, name, password, sex, birth, phone, regtime) {
 		// 传递数据到弹出框
-		$('#modal-form-update').modal('show');
-		$('#updateUserId').val(id)
-		$('#updateUsername').val(username)
-		$('#updateNickname').val(nickname)
-		$('#updatePassword').val(password)
+		$('#user-modal-form-update').modal('show');
+		$('#user-updateId').val(id)
+		$('#user-updateUaccount').val(account)
+		$('#user-updateUpassword').val(password)
+		$('#user-updateUname').val(name)
+        $('#user-updateUsex').val(sex)
+        $('#user-updateUbirth').val(birth)
+        $('#user-updateUphone').val(phone)
+        $('#user-updateSubmitBtn').val(regtime)
 	}
+
+    function admin_updateBtn(id, username, nickname, password) {
+        // 传递数据到弹出框
+        $('#modal-form-update').modal('show');
+        $('#updateUserId').val(id)
+        $('#updateUsername').val(username)
+        $('#updateNickname').val(nickname)
+        $('#updatePassword').val(password)
+    }
+
+    function house_updateBtn(id, username, nickname, password) {
+        // 传递数据到弹出框
+        $('#modal-form-update').modal('show');
+        $('#updateUserId').val(id)
+        $('#updateUsername').val(username)
+        $('#updateNickname').val(nickname)
+        $('#updatePassword').val(password)
+    }
+
+    function news_updateBtn(id, username, nickname, password) {
+        // 传递数据到弹出框
+        $('#modal-form-update').modal('show');
+        $('#updateUserId').val(id)
+        $('#updateUsername').val(username)
+        $('#updateNickname').val(nickname)
+        $('#updatePassword').val(password)
+    }
+
+    function contract_updateBtn(id, username, nickname, password) {
+        // 传递数据到弹出框
+        $('#modal-form-update').modal('show');
+        $('#updateUserId').val(id)
+        $('#updateUsername').val(username)
+        $('#updateNickname').val(nickname)
+        $('#updatePassword').val(password)
+    }
+
+    function word_updateBtn(id, username, nickname, password) {
+        // 传递数据到弹出框
+        $('#modal-form-update').modal('show');
+        $('#updateUserId').val(id)
+        $('#updateUsername').val(username)
+        $('#updateNickname').val(nickname)
+        $('#updatePassword').val(password)
+    }
 
 
 </script>

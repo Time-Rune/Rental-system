@@ -32,18 +32,18 @@ public interface UserSQL {
     @Delete("delete from User where UID = #{uid}")
     void deleteUser(int uid);
 
-    @Update("updata User set Uphoto=#{uphoto} where UID = #{uid}")
+    @Update("update User set Uphoto=#{uphoto} where UID = #{uid}")
     void updateHead(int uid, String uphoto);
 
     // 修改密码
-    @Update("updata User set Upassword=#{password} where UID = #{uid}")
+    @Update("update User set Upassword=#{password} where UID = #{uid}")
     void updatePassword(int uid, String password);
 
     @Update("update User set Uaccount=#{account} where UID = #{uid}")
     void updateAccount(int uid, String account);
 
     // 修改名称，性别，生日，电话
-    @Update("updata User set Uname=#{name},Usex=#{sex},Ubirth=#{birth},Uphone=#{phone} where UID=#{uid}")
+    @Update("update User set Uname=#{name},Usex=#{sex},Ubirth=#{birth},Uphone=#{phone} where UID=#{uid}")
     void updateInformation(int uid, String name, String sex, String birth, String phone);
 
 }

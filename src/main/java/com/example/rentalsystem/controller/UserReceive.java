@@ -20,9 +20,9 @@ public class UserReceive {
 //                http.getParameter("name"), http.getParameter("sex"),
 //                http.getParameter("birth"), http.getParameter("phone"));
         serviceUser.insertUser(http.getParameter("account"), http.getParameter("password"),
-                http.getParameter("name"), "男",
-                "2020-02-14", "12312321");
-        ModelAndView view = new ModelAndView("Manage::user-userTable");
+                http.getParameter("name"), http.getParameter("sex"),
+                http.getParameter("birth"), http.getParameter("phone"));
+        ModelAndView view = new ModelAndView("newManage::user-userTable");
         view.addObject("user_list", serviceUser.selectAllUser());
         return view;
     }
@@ -30,7 +30,7 @@ public class UserReceive {
     @PostMapping(value = "/delete")
     public ModelAndView deleteUser(HttpServletRequest httpServletRequest){
         serviceUser.deleteUser(Integer.parseInt(httpServletRequest.getParameter("id")));
-        ModelAndView view = new ModelAndView("Manage::user-userTable");
+        ModelAndView view = new ModelAndView("newManage::user-userTable");
         view.addObject("user_list", serviceUser.selectAllUser());
         return view;
     }
@@ -40,14 +40,14 @@ public class UserReceive {
         serviceUser.updateUser(Integer.parseInt(http.getParameter("id")), http.getParameter("account"),
                 http.getParameter("password"), http.getParameter("name"), http.getParameter("sex"),
                 http.getParameter("birth"), http.getParameter("phone"));
-        ModelAndView view = new ModelAndView("Manage::userTable");
+        ModelAndView view = new ModelAndView("newManage::user-userTable");
         view.addObject("user_list", serviceUser.selectAllUser());
         return view;
     }
 
     @PostMapping(value = "/select")
     public ModelAndView searchUser(HttpServletRequest http){
-        ModelAndView view = new ModelAndView("Manage::userTable");
+        ModelAndView view = new ModelAndView("newManage::user-userTable");
         view.addObject("user_list", serviceUser.searchUser(http.getParameter("search")));
         return view;
     }

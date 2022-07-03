@@ -32,10 +32,12 @@ $('#user-findBtn').click(function () {
 $('#user-addSubmitBtn').click(function () {
     //变量
 
-	var account = $('#UserAddAccount').val()
-	var name = $('#UserAddName').val()
-	var password = $('#UserAddPassword').val()
-
+	var account = $('#user-addUaccount').val()
+	var name = $('#user-addUname').val()
+	var password = $('#user-addUpassword').val()
+	var sex = $('#user-addUsex').val()
+	var birth = $('#user-addUbirth').val()
+	var phone = $('#user-addUphone').val()
 
 	// 非空效验
 	if (account.length == 0){
@@ -44,6 +46,12 @@ $('#user-addSubmitBtn').click(function () {
 		alert("昵称不能为空")
 	}else if (password.length == 0){
 		alert("密码不能为空")
+	}else if (sex.length == 0){
+		alert("性别不能为空")
+	}else if (birth.length == 0){
+		alert("生日不能为空")
+	}else if (phone.length == 0){
+		alert("电话不能为空")
 	}else {
 		$.ajax({
 			type: 'POST',
@@ -52,12 +60,15 @@ $('#user-addSubmitBtn').click(function () {
 				'account': account, //用户名
 				'name': name, //昵称
 				'password': password, //密码
+				'sex': sex,
+				'birth': birth,
+				'phone': phone,
 			},
 			success: function (data) {
 				// 关闭modal框
 				$('#user-modal-form-add').modal('hide')
 				// 清空modal框里上一次的数据
-				document.getElementById("addForm").reset()
+				document.getElementById("user-addForm").reset()
 				// 局部刷新
 				$('#user-userTable').html(data)
 			},
@@ -72,10 +83,13 @@ $('#user-addSubmitBtn').click(function () {
 // 用户 修改提交
 $('#user-updateSubmitBtn').click(function () {
     //变量
-	var id = $('#UserUpdateId').val()
-	var account = $('#UserUpdateAccount').val()
-	var name = $('#UserUpdateName').val()
-	var password = $('#UserUpdatePassword').val()
+	var id = $('#user-updateId').val()
+	var account = $('#user-updateUaccount').val()
+	var name = $('#user-updateUname').val()
+	var password = $('#user-updateUpassword').val()
+	var sex = $('#user-updateUsex').val()
+	var birth = $('#user-updateUbirth').val()
+	var phone = $('#user-updateUphone').val()
 
 	if (account.length == 0){
 		alert("用户名不能为空")
@@ -83,6 +97,12 @@ $('#user-updateSubmitBtn').click(function () {
 		alert("昵称不能为空")
 	}else if (password.length == 0){
 		alert("密码不能为空")
+	}else if (sex.length == 0){
+		alert("性别不能为空")
+	}else if (birth.length == 0){
+		alert("出生日期不能为空")
+	}else if (phone.length == 0){
+		alert("电话不能为空")
 	}else {
 		$.ajax({
 			type: 'POST',
@@ -92,12 +112,15 @@ $('#user-updateSubmitBtn').click(function () {
 				'account': account, //用户名
 				'name': name, //昵称
 				'password': password, //密码
+				'sex': sex,
+				'birth': birth,
+				'phone': phone,
 			},
 			success: function (data) {
 				// 关闭modal框
 				$('#user-modal-form-update').modal('hide')
 				// 清空modal框里上一次的数据
-				document.getElementById("updateForm").reset()
+				document.getElementById("user-updateForm").reset()
 				// 局部刷新
 				$('#user-userTable').html(data)
 			},

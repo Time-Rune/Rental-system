@@ -18,7 +18,7 @@ public class UserController {
     public ModelAndView login(Model model) {
 //        List<House> houses = serviceShowHouse.getLastestHouse(num);
 //        model.addAttribute("houses", houses);
-        ModelAndView view = new ModelAndView("Manage");
+        ModelAndView view = new ModelAndView("NewManage");
         view.addObject("user_list", serviceUser.selectAllUser());
         return view;
     }
