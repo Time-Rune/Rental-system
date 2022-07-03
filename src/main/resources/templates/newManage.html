@@ -107,7 +107,7 @@
                                             <td th:text="${user?.Upassword}">用户密码</td>
                                             <td th:text="${user?.Uname}">用户姓名</td>
                                             <td th:text="${user?.Usex}">用户性别</td>
-                                            <td th:text="${user?.Ubirth">用户生日</td>
+                                            <td th:text="${user?.Ubirth}">用户生日</td>
                                             <td th:text="${user?.Uphone}">用户电话</td>
 <!--                                            用户注册时间-->
                                             <td th:text="${user?.Uregtime}">用户注册时间</td>
@@ -291,12 +291,12 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="user: ${user_list}">
-                                            <td th:text="${user?.AID}">管理员ID</td>
-                                            <td th:text="${user?.Aaccount}">管理员账号</td>
-                                            <td th:text="${user?.Aname}">管理员姓名</td>
-                                            <td th:text="${user?.Apassword}">管理员密码</td>
-                                            <td th:text="${user?.Aphone}">管理员电话</td>
+                                        <tr th:each="admin: ${admin_list}">
+                                            <td th:text="${admin?.AID}">管理员ID</td>
+                                            <td th:text="${admin?.Aaccount}">管理员账号</td>
+                                            <td th:text="${admin?.Aname}">管理员姓名</td>
+                                            <td th:text="${admin?.Apassword}">管理员密码</td>
+                                            <td th:text="${admin?.Aphone}">管理员电话</td>
                                             <td style="width: 50px;">
                                                 <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改

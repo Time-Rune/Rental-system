@@ -31,14 +31,16 @@ $('#user-findBtn').click(function () {
 // 用户 添加
 $('#user-addSubmitBtn').click(function () {
     //变量
-	var username = $('#addUserName').val()
-	var nickname = $('#addNickname').val()
-	var password = $("#addPassword").val()
+
+	var account = $('#UserAddAccount').val()
+	var name = $('#UserAddName').val()
+	var password = $('#UserAddPassword').val()
+
 
 	// 非空效验
-	if (username.length == 0){
+	if (account.length == 0){
 		alert("用户名不能为空")
-	}else if(nickname.length == 0){
+	}else if(name.length == 0){
 		alert("昵称不能为空")
 	}else if (password.length == 0){
 		alert("密码不能为空")
@@ -47,9 +49,9 @@ $('#user-addSubmitBtn').click(function () {
 			type: 'POST',
 			url: '/user/insert',
 			data: {
-				'username': username, //用户名
-				'nickname': nickname, //昵称
-				'password': password //密码
+				'account': account, //用户名
+				'name': name, //昵称
+				'password': password, //密码
 			},
 			success: function (data) {
 				// 关闭modal框
@@ -70,26 +72,26 @@ $('#user-addSubmitBtn').click(function () {
 // 用户 修改提交
 $('#user-updateSubmitBtn').click(function () {
     //变量
-	var id = $('#updateUserId').val()
-	var username = $('#updateUsername').val()
-	var nickname = $('#updateNickname').val()
-	var password = $("#updatePassword").val()
+	var id = $('#UserUpdateId').val()
+	var account = $('#UserUpdateAccount').val()
+	var name = $('#UserUpdateName').val()
+	var password = $('#UserUpdatePassword').val()
 
-	if (username.length ==0) {
-		alert('用户名不能为空')
-	}else if (nickname.length == 0) {
-		alert('昵称不能为空')
-	}else if (password.length == 0) {
-		alert('密码不能为空')
+	if (account.length == 0){
+		alert("用户名不能为空")
+	}else if(name.length == 0){
+		alert("昵称不能为空")
+	}else if (password.length == 0){
+		alert("密码不能为空")
 	}else {
 		$.ajax({
 			type: 'POST',
 			url: '/user/update',
 			data: {
 				'id': id,
-				'username': username,
-				'nickname': nickname,
-				'password': password
+				'account': account, //用户名
+				'name': name, //昵称
+				'password': password, //密码
 			},
 			success: function (data) {
 				// 关闭modal框
