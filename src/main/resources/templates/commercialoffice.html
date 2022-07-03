@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <!--    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png">-->
+    <link rel="stylesheet" href="/static/css/adminLogin/login.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/new.css">
+    <link rel="stylesheet" href="/static/css/house.css">
+    <link rel="stylesheet" href="/static/css/allhouse.css">
+</head>
+<body>
+<div class="wrap">
+    <div class="header">
+        <div class="header-wel">
+            <span>欢迎光临本站！</span>
+            <span><a href="" id="adminBtn">登录</a></span>
+        </div>
+        <div class="nav">
+            <ul>
+                <!-- <img src="/11.jpeg" alt=""> -->
+                <img src="/static/assets/images/logo/2.webp" alt="" class="nav-img">
+                <li><a href="/index">首页</a></li>
+                <li><a href="">新闻公告</a></li>
+                <li><a href="/house/commercialoffice">商业办公</a></li>
+                <li><a href="/house/commonhouse">普通民宅</a></li>
+                <li><a href="/house/hotelhouse">酒店公寓</a></li>
+                <li><a href="/house/allhouse">全部房源</a></li>
+                <li><a href="/house/housedetail?houseid=0">留言交流</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="search">
+        <img id="search-img" src="/static/assets/images/logo/1.webp" alt="">
+        <input type="text">
+        <button id="searchbtn">搜索</button>
+    </div>
+    <div id="new">
+        <div id="new-nav">
+            <!-- <h2>当前页面</h2> -->
+            <span>当前页面,</span>
+            <a href="/index">首页</a>
+            <a href="">>全部商品</a>
+            <span>
+                    >房源
+                </span>
+        </div>
+        <div class="house-main">
+            <div class="house-main-lelf">
+                <div id="house-adr-head">
+                    <h2>房源类型</h2>
+                </div>
+                <div id="house-adr-type">
+                    <ul>
+                        <li><a href="/templates/new.html">商业办公</a></li>
+                        <li><a href="">普通民宅</a></li>
+                        <li><a href="">酒店公寓</a></li>
+                    </ul>
+                </div>
+                <div id="hoting-house">
+                    <div id="hoting-house-head">
+                        <h2>热门房源</h2>
+                    </div>
+                    <div class="hoting-house-list">
+                        <div class="hoting-house-list-div" th:each="house:${HotHousesList}">
+                            <div class="hoting-house-list-img">
+                                <a th:href="@{/house/housedetail(houseid=${house.HID})}"><img th:src="${house.Hphoto}" alt=""></a>
+                            </div>
+                            <div class="hoting-house-list-content">
+                                <span class="hoting-house-list-head"><a th:href="@{/house/housedetail(houseid=${house.HID})}" th:text="${house.Hname}">标题</a></span>
+                                <h2 th:text="'￥'+${house.Hcost}+'/月'">￥5000/月</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="house-main-right">
+                <div id="allhouse-right-head">
+                    <h2>房源信息</h2>
+                </div>
+                <div id="allhouse-right-content">
+                    <ul>
+                        <li th:each="house:${allCommercialOfficeList}">
+                            <a class="alla" th:href="@{/house/housedetail(houseid=${house.HID})}"><img th:src="${house.Hphoto}" alt=""></a>
+                            <a class="alla" th:href="@{/house/housedetail(houseid=${house.HID})}"><p th:text="${house.Hname}">环境很好，阳光充足！</p></a>
+                            <h2 th:text="'￥'+${house.Hcost}+'/月'">＄7600/月</h2>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery JS -->
+<script src="/static/assets/js/vendor/jquery-3.3.1.min.js"></script>
+<!-- login.js  -->
+<script type="text/javascript" src="../static/js/login.js"></script>
+<!-- register.js -->
+<script type="text/javascript" src="../static/js/register.js"></script>
+<!-- forget.js -->
+<!-- <script type="text/javascript" src="../static/js/forget.js"></script> -->
+</body>
+</html>

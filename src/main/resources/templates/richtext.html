@@ -2,43 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png">
+    <link rel="stylesheet" href="/static/css/adminLogin/login.css">
+    <link rel="stylesheet" href="/static/css/index.css">
     <!-- 引入 css -->
     <link href="https://unpkg.com/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/message.css">
 </head>
 <body>
-    <p>富文本测试</p>
-    <div id="container">
-        <div id="toolbar-container"></div>
-        <div id="editor-container"></div>
+    <div class="wrap">
+        <div class="header">
+            <div class="header-wel">
+                <span>欢迎光临本站！</span>
+                <span><a href="" id="adminBtn">登录</a></span>
+            </div>
+            <div class="nav">
+                <ul>
+                    <!-- <img src="/11.jpeg" alt=""> -->
+                    <img src="/static/assets/images/logo/2.webp" alt="" class="nav-img">
+                    <li><a href="/index">首页</a></li>
+                    <li><a href="">新闻公告</a></li>
+                    <li><a href="/house/commercialoffice">商业办公</a></li>
+                    <li><a href="/house/commonhouse">普通民宅</a></li>
+                    <li><a href="/house/hotelhouse">酒店公寓</a></li>
+                    <li><a href="/house/allhouse">全部房源</a></li>
+                    <li><a href="/house/housedetail?houseid=0">留言交流</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="search">
+            <img id="search-img" src="/static/assets/images/logo/1.webp" alt="">
+            <input type="text">
+            <button id="searchbtn">搜索</button>
+        </div>
+        <div class="message">
+        <div id="message-nav">
+            <!-- <h2>当前页面</h2> -->
+            <span>当前页面,</span>
+            <a href="/index">首页</a>
+            <span th:text="'>'+${news.Nheader}">
+                >《标题内容》
+            </span>
+        </div>
+        <div class="message-body">
+                <div class="messages">
+                    <div class="message-head">
+                        <h2>欢迎你留言交流！</h2>
+                    </div>
+                    <div class="message-border">
+                       <div class="send-message">
+                            <div id="container">
+                                <div id="toolbar-container"></div>
+                                <div id="editor-container"></div>
+                            </div>
+                       </div> 
+                       <div class="message-content">
+                           <div class="message-content-each">
+                               <div class="each-image">
+                                   <img src="/static/assets/images/bg/11.jpeg" alt="">
+                               </div>
+                               <div class="each-content">
+                                   <h2>昵称</h2>
+                                   <p class="each-content-time">2022/07/03</p>
+                                   <p class="each-content-text">这是留言内容！</p>
+                               </div>
+                           </div>
+                       </div> 
+                    </div>
+                </div>
+            </div> 
+        </div>
+        
+        <!-- <p>富文本测试</p>
+        <div id="container">
+            <div id="toolbar-container"></div>
+            <div id="editor-container"></div>
+        </div> -->
+    
     </div>
-    <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
-    <script>
-        const { createEditor, createToolbar } = window.wangEditor
+<!-- jQuery JS -->
+<script src="/static/assets/js/vendor/jquery-3.3.1.min.js"></script>
+<!-- login.js  -->
+<script type="text/javascript" src="../static/js/login.js"></script>
+<!-- register.js -->
+<script type="text/javascript" src="../static/js/register.js"></script>
+<!-- forget.js -->
+<!-- <script type="text/javascript" src="../static/js/forget.js"></script> -->
+<!-- richtext.js -->
+<!-- 引入 js -->
+<script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
+<script src="/static/js/richtext-set.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-        // 编辑器配置
-        const editorConfig = {}
-        editorConfig.placeholder = '请输入内容'
-        editorConfig.onChange = (editor) => {
-            // 当编辑器选区、内容变化时，即触发
-            console.log('content', editor.children)
-            console.log('html', editor.getHtml())
-        }
-        // 工具栏配置
-        const toolbarConfig = {}
-        // 创建编辑器
-        const editor = createEditor({
-            selector: '#editor-container',
-            config: editorConfig,
-            mode: 'default' // 或 'simple' 参考下文
-        })
-        // 创建工具栏
-        const toolbar = createToolbar({
-            editor,
-            selector: '#toolbar-container',
-            config: toolbarConfig,
-            mode: 'default' // 或 'simple' 参考下文
-        })
-    </script>
 </body>
 </html>

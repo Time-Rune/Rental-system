@@ -94,6 +94,18 @@ function move(obj, attr, target, speed, callback) {
         }
     }
 
-
+//来刷新界面用户数据
+    var spanValue = document.getElementById("login-after").innerHTML;
+    // alert(spanValue);
+    if(spanValue == 'null你好,欢迎光临本站！'){
+        // alert('是空的哈哈哈')
+        // alert(spanValue);
+        $("#head-wel-login-before").css("display", "block");
+        $("#head-wel-login-after").css("display", "none");
+    }else{
+        // alert('你好呀');
+        $("#head-wel-login-before").css("display", "none");
+        $("#head-wel-login-after").css("display", "block");
+    }
 
 }

@@ -36,8 +36,9 @@
     background-color: aliceblue;
 }
 #news-head h2{
-    font-size: 18px;
+    font-size: 14px;
     display: inline;
+    color: rgb(85, 90, 94);
 }
 #news img {
     width: 300px;
@@ -49,6 +50,7 @@
 #news span {
     display: block;
     margin-top: 20px;
-    font-size: 16ox;
-    border-top:  2px solid rgb(176, 201, 215);
+    font-size: 13ox;
+    border-top: 2px solid rgb(176, 201, 215);
+    padding-left: 3px;
 }
