@@ -45,17 +45,17 @@
 							</thead>
 							<tbody>
 							<tr th:each="user: ${user_list}">
-								<td th:text="${user?.id}">1</td>
-								<td th:text="${user?.username}">ydw</td>
-								<td th:text="${user?.nickname}">袁德伟</td>
-								<td th:text="${user?.password}">123</td>
+								<td th:text="${user?.UID}">1</td>
+								<td th:text="${user?.Uaccount}">ydw</td>
+								<td th:text="${user?.Uname}">袁德伟</td>
+								<td th:text="${user?.Upassword}">123</td>
 								<td style="width: 50px;">
-									<button th:onclick="updateBtn([[${user?.id}]],[[${user?.username}]],[[${user?.nickname}]],[[${user?.password}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+									<button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
 										<i class="fa fa-edit"></i> 修改
 									</button>
 								</td>
 								<td style="width: 50px;">
-									<button th:onclick="|deleteBtn(${user?.id})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+									<button th:onclick="|deleteBtn(${user?.UID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
 										<i class="fa fa-trash"></i> 删除
 									</button>
 								</td>
