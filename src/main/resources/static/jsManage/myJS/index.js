@@ -41,7 +41,7 @@ $('#user-addSubmitBtn').click(function () {
 
 	// 非空效验
 	if (account.length == 0){
-		alert("用户名不能为空")
+		alert("账号不能为空")
 	}else if(name.length == 0){
 		alert("昵称不能为空")
 	}else if (password.length == 0){
@@ -92,7 +92,7 @@ $('#user-updateSubmitBtn').click(function () {
 	var phone = $('#user-updateUphone').val()
 
 	if (account.length == 0){
-		alert("用户名不能为空")
+		alert("账号不能为空")
 	}else if(name.length == 0){
 		alert("昵称不能为空")
 	}else if (password.length == 0){
@@ -163,33 +163,37 @@ $('#admin-findBtn').click(function () {
 // 管理员 添加
 $('#admin-addSubmitBtn').click(function () {
     //变量
-	var username = $('#addUserName').val()
-	var nickname = $('#addNickname').val()
-	var password = $("#addPassword").val()
+	var account = $('#admin-addAaccount').val()
+	var name = $('#admin-addAname').val()
+	var password = $("#admin-addApassword").val()
+	var phone = $("#admin-addAphone").val()
 
 	// 非空效验
-	if (username.length == 0){
-		alert("用户名不能为空")
-	}else if(nickname.length == 0){
+	if (account.length == 0){
+		alert("账号不能为空")
+	}else if(name.length == 0){
 		alert("昵称不能为空")
 	}else if (password.length == 0){
 		alert("密码不能为空")
+	}else if (phone.length == 0){
+		alert("电话不能为空")
 	}else {
 		$.ajax({
 			type: 'POST',
-			url: '/user/insert',
+			url: '/admin/insert',
 			data: {
-				'username': username, //用户名
-				'nickname': nickname, //昵称
-				'password': password //密码
+				'account': account, //用户名
+				'name': name, //昵称
+				'password': password, //密码
+				'phone': phone,
 			},
 			success: function (data) {
 				// 关闭modal框
 				$('#admin-modal-form-add').modal('hide')
 				// 清空modal框里上一次的数据
-				document.getElementById("addForm").reset()
+				document.getElementById("admin-addForm").reset()
 				// 局部刷新
-				$('#admin-userTable').html(data)
+				$('#AdminTable').html(data)
 			},
 			error: function (err) {
 				console.log(err)
@@ -202,34 +206,38 @@ $('#admin-addSubmitBtn').click(function () {
 // 管理员 修改提交
 $('#admin-updateSubmitBtn').click(function () {
     //变量
-	var id = $('#updateUserId').val()
-	var username = $('#updateUsername').val()
-	var nickname = $('#updateNickname').val()
-	var password = $("#updatePassword").val()
+	var id = $('#admin-updateId').val()
+	var account = $('#admin-updateAaccount').val()
+	var name = $('#admin-updateAname').val()
+	var password = $("#admin-updateApassword").val()
+	var phone = $("#admin-updateAphone").val()
 
-	if (username.length ==0) {
-		alert('用户名不能为空')
-	}else if (nickname.length == 0) {
+	if (account.length ==0) {
+		alert('账号不能为空')
+	}else if (name.length == 0) {
 		alert('昵称不能为空')
 	}else if (password.length == 0) {
 		alert('密码不能为空')
+	}else if (phone.length == 0) {
+		alert('电话不能为空')
 	}else {
 		$.ajax({
 			type: 'POST',
-			url: '/user/update',
+			url: '/admin/update',
 			data: {
 				'id': id,
-				'username': username,
-				'nickname': nickname,
-				'password': password
+				'account': account,
+				'name': name,
+				'password': password,
+				'phone': phone,
 			},
 			success: function (data) {
 				// 关闭modal框
 				$('#admin-modal-form-update').modal('hide')
 				// 清空modal框里上一次的数据
-				document.getElementById("updateForm").reset()
+				document.getElementById("admin-updateForm").reset()
 				// 局部刷新
-				$('#admin-userTable').html(data)
+				$('#AdminTable').html(data)
 			},
 			error: function (err) {
 				console.log(err)
