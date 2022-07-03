@@ -41,6 +41,7 @@ public class LoginController {
         }else{
             ajaxResult.setMsg("1");
             System.out.println("登录成功");
+            UserContext.removeCurrentUser();
             UserContext.putCurrentUserIntoSession(user);
 //            response.getWriter().print(UserContext.getCurrentInfo().toString());
         }

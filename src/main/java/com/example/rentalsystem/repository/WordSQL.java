@@ -13,7 +13,7 @@ import java.util.List;
 public interface WordSQL {
     @Insert("insert into Word(WID, Wtext, Wpost, Wdate, Wclick) " +
             "values(#{wid}, #{text}, #{post}, #{date}, #{click})")
-    void insertWord(int wid, String text, int post, Date date, int click);
+    void insertWord(int wid, String text, int post, String date, int click);
 
     @Select("select * from Word")
     List<Word> getWords();
