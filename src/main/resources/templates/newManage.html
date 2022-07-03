@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Yuan-Programmer" />
+
+	<title>后台管理</title>
+	<!-- index中的所有css（含上边栏） -->
+    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/images/favicon.png">
+    <link rel="stylesheet" href="/static/css/adminLogin/login.css">
+    <link rel="stylesheet" href="/static/css/adminLogin/register.css">
+    <!--    <link rel="stylesheet" href="/static/css/adminLogin/login.css">-->
+    <link rel="stylesheet" href="/static/css/newManage-index.css">
+    <link rel="stylesheet" href="/static/css/slide.css">
+
+
+
+    <!-- 白色显示框的css -->
+    <!-- 显示栏列长度的css未修改？ -->
+	<link href="/static/cssManage/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<link href="/static/cssManage/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+	<link href="/static/cssManage/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="/static/cssManage/animate.min.css" rel="stylesheet">
+	<link href="/static/cssManage/style.min862f.css?v=4.1.0" rel="stylesheet">
+	<script src="/static/jsManage/jquery-3.4.1/jquery-3.4.1.js"></script>
+</head>
+
+
+<body class="gray-bg">
+
+
+<!-- 上边栏 -->
+<div class="header-part">
+    <div class="header">
+
+        <div class="nav">
+            <ul>
+                <img src="/static/assets/images/logo/2.webp" alt="" class="nav-img">
+                <!-- <li><a href="/templates/index.html">房屋租赁系统</a></li> -->
+                <li><a href="">房屋租赁系统</a></li>
+            </ul>
+        </div>
+
+
+        <div class="header-wel">
+            <span>欢迎光临本站！</span>
+            <span><a href="" id="adminBtn">登录</a></span>
+            <!-- 为什么登录弹不出来框 -->
+        </div>
+    </div>
+</div>
+
+<div class="middle-part">
+    <div class="bigManage">
+        <!-- 左侧的菜单列表 -->
+        <div>
+            <div class="left-list">
+                <ul>
+                    <li><a href="" id="-userBtn">用户</a></li>
+                    <li><a href="" id="-adminBtn">管理员</a></li>
+                    <li><a href="" id="-conBtn">租赁合同</a></li>
+                    <li><a href="" id="-houseBtn">房屋</a></li>
+                    <li><a href="" id="-mesBtn">留言交流</a></li>
+                    <li><a href="" id="-newsBtn">新闻公告</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 右侧的白色显示栏 -->
+
+        <!--用户显示栏：编号，账号，密码，姓名，性别，生日，电话，注册时间-->
+        <div style="" id="userbox">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>用户管理</h5>
+                                <div class="ibox-tools">
+                                    <button id="user-addUserBtn" class="btn btn-xs btn-rounded btn-primary"><i class="fa fa-plus"></i> 添加</button>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="input-group">
+                                    <input id="user-search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
+                                                <button id="user-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
+                                </div>
+                                <div id="user-userTable" th:fragment="userTable">
+                                    <table class="footable table table-stripped toggle-arrow-tiny">
+                                        <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>账号</th>
+                                            <th>密码</th>
+                                            <th>姓名</th>
+                                            <th>性别</th>
+                                            <th>生日</th>
+                                            <th>电话</th>
+                                            <th>注册时间</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="user: ${user_list}">
+                                            <td th:text="${user?.UID}">用户ID</td>
+                                            <td th:text="${user?.Uaccount}">用户账号</td>
+                                            <td th:text="${user?.Upassword}">用户密码</td>
+                                            <td th:text="${user?.Uname}">用户姓名</td>
+                                            <td th:text="${user?.Usex}">用户性别</td>
+                                            <td th:text="${user?.Ubirth">用户生日</td>
+                                            <td th:text="${user?.Uphone}">用户电话</td>
+<!--                                            用户注册时间-->
+                                            <td th:text="${user?.Uregtime}">用户注册时间</td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-edit"></i> 修改
+                                                </button>
+                                            </td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="|deleteBtn(${user?.UID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-trash"></i> 删除
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--用户增加弹出框：账号，密码，姓名，性别，生日，电话-->
+        <div id="user-modal-form-add" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 b-r">
+                                <div class="ibox-title">
+                                    <h5>添加新的用户</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <form id="user-addForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">账号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-addUaccount" type="text" placeholder="账号" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">密码：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-addUpassword" type="text" placeholder="密码" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">姓名：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-addUname" type="text" placeholder="姓名" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">性别：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-addUsex" type="text" placeholder="性别" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">生日：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-addUbirth" type="text" placeholder="生日" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">电话：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-addUphone" type="text" placeholder="电话" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button id="user-addSubmitBtn" class="btn btn-primary btn-primary pull-right m-t-n-xs" type="button"><i class="fa fa-check"></i>&nbsp;提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--用户修改弹出框：编号，账号，密码，姓名，性别，生日，电话-->
+        <div id="user-modal-form-update" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 b-r">
+                                <div class="ibox-title">
+                                    <h5>修改用户信息</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <form id="user-updateForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">编号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-updateId" type="text" placeholder="编号" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">账号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-updateUaccount" type="text" placeholder="账号" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">密码：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-updateUpassword" type="text" placeholder="密码" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">姓名：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-updateUname" type="text" placeholder="姓名" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">性别：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-updateUsex" type="text" placeholder="性别" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">生日：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-updateUbirth" type="text" placeholder="生日" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">电话：</label>
+                                            <div class="col-sm-8">
+                                                <input id="user-updateUphone" type="text" placeholder="电话" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button id="user-updateSubmitBtn" class="btn btn-primary btn-primary pull-right m-t-n-xs" type="button"><i class="fa fa-check"></i>&nbsp;提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--管理员显示栏：编号，账号，密码，姓名，电话-->
+        <div style="" id="adminbox">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>管理员管理</h5>
+                                <div class="ibox-tools">
+                                    <button id="admin-addUserBtn" class="btn btn-xs btn-rounded btn-primary"><i class="fa fa-plus"></i> 添加</button>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="input-group">
+                                    <input id="admin-search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
+                                                <button id="admin-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
+                                </div>
+                                <div id="admin-userTable" th:fragment="userTable">
+                                    <table class="footable table table-stripped toggle-arrow-tiny">
+                                        <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>账号</th>
+                                            <th>姓名</th>
+                                            <th>密码</th>
+                                            <th>电话</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="user: ${user_list}">
+                                            <td th:text="${user?.AID}">管理员ID</td>
+                                            <td th:text="${user?.Aaccount}">管理员账号</td>
+                                            <td th:text="${user?.Aname}">管理员姓名</td>
+                                            <td th:text="${user?.Apassword}">管理员密码</td>
+                                            <td th:text="${user?.Aphone}">管理员电话</td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-edit"></i> 修改
+                                                </button>
+                                            </td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="|deleteBtn(${user?.UID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-trash"></i> 删除
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--管理员增加弹出框：账号，密码，姓名，电话-->
+        <div id="admin-modal-form-add" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 b-r">
+                                <div class="ibox-title">
+                                    <h5>添加新的管理员</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <form id="admin-addForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">账号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="admin-addAaccount" type="text" placeholder="账号" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">密码：</label>
+                                            <div class="col-sm-8">
+                                                <input id="admin-addApassword" type="text" placeholder="密码" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">姓名：</label>
+                                            <div class="col-sm-8">
+                                                <input id="admin-addAname" type="text" placeholder="姓名" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">电话：</label>
+                                            <div class="col-sm-8">
+                                                <input id="admin-addAphone" type="text" placeholder="电话" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button id="admin-addSubmitBtn" class="btn btn-primary btn-primary pull-right m-t-n-xs" type="button"><i class="fa fa-check"></i>&nbsp;提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--管理员修改弹出框：编号，账号，密码，姓名，电话-->
+        <div id="admin-modal-form-update" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 b-r">
+                                <div class="ibox-title">
+                                    <h5>修改管理员信息</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <form id="admin-updateForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">编号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="admin-updateId" type="text" placeholder="编号" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">账号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="admin-updateAaccount" type="text" placeholder="账号" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">密码：</label>
+                                            <div class="col-sm-8">
+                                                <input id="admin-updateApassword" type="text" placeholder="密码" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">姓名：</label>
+                                            <div class="col-sm-8">
+                                                <input id="admin-updateAname" type="text" placeholder="姓名" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">电话：</label>
+                                            <div class="col-sm-8">
+                                                <input id="admin-updateAphone" type="text" placeholder="电话" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button id="admin-updateSubmitBtn" class="btn btn-primary btn-primary pull-right m-t-n-xs" type="button"><i class="fa fa-check"></i>&nbsp;提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--合同显示栏：合同ID，房东姓名，租房人姓名，开始时间，结束时间，房子名称-->
+        <div style="" id="conbox">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>租赁合同管理</h5>
+                                <div class="ibox-tools">
+                                    <button id="con-addUserBtn" class="btn btn-xs btn-rounded btn-primary"><i class="fa fa-plus"></i> 添加</button>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="input-group">
+                                    <input id="con-search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
+                                                <button id="con-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
+                                </div>
+                                <div id="con-userTable" th:fragment="userTable">
+                                    <table class="footable table table-stripped toggle-arrow-tiny">
+                                        <thead>
+                                        <tr>
+                                            <th>合同编号</th>
+                                            <th>房东姓名</th>
+                                            <th>租房人姓名</th>
+                                            <th>开始时间</th>
+                                            <th>结束时间</th>
+                                            <th>房屋编号</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="user: ${user_list}">
+                                            <td th:text="${user?.UID}">1</td>
+                                            <td th:text="${user?.Uaccount}">ydw</td>
+                                            <td th:text="${user?.Uname}">袁德伟</td>
+                                            <td th:text="${user?.Upassword}">123</td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-edit"></i> 修改
+                                                </button>
+                                            </td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="|deleteBtn(${user?.UID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-trash"></i> 删除
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--合同增加弹出框：房东姓名，租房人姓名，开始时间，结束时间，房子名称-->
+        <div id="con-modal-form-add" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 b-r">
+                                <div class="ibox-title">
+                                    <h5>添加新的合同</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <form id="con-addForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">房东姓名：</label>
+                                            <div class="col-sm-8">
+                                                <input id="con-addUID1" type="text" placeholder="房东姓名" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">租房人姓名：</label>
+                                            <div class="col-sm-8">
+                                                <input id="con-addUID2" type="text" placeholder="租房人姓名" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">开始时间：</label>
+                                            <div class="col-sm-8">
+                                                <input id="con-addUbegin" type="text" placeholder="开始时间" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">结束时间：</label>
+                                            <div class="col-sm-8">
+                                                <input id="con-addUend" type="text" placeholder="结束时间" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">房子编号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="con-addHID" type="text" placeholder="房子编号" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button id="con-addSubmitBtn" class="btn btn-primary btn-primary pull-right m-t-n-xs" type="button"><i class="fa fa-check"></i>&nbsp;提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--合同修改弹出框：合同ID，房东姓名，租房人姓名，开始时间，结束时间，房子名称-->
+        <div id="con-modal-form-update" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 b-r">
+                                <div class="ibox-title">
+                                    <h5>修改合同信息</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <form id="con-updateForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">合同编号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="con-updateId" type="text" placeholder="合同编号" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">房东姓名：</label>
+                                            <div class="col-sm-8">
+                                                <input id="con-updateUID1" type="text" placeholder="房东姓名" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">出租人姓名：</label>
+                                            <div class="col-sm-8">
+                                                <input id="con-updateUID2" type="text" placeholder="出租人姓名" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">开始时间：</label>
+                                            <div class="col-sm-8">
+                                                <input id="con-updateUbegin" type="text" placeholder="开始时间" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">结束时间：</label>
+                                            <div class="col-sm-8">
+                                                <input id="con-updateUend" type="text" placeholder="结束时间" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">房屋编号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="con-updateHID" type="text" placeholder="房屋编号" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button id="con-updateSubmitBtn" class="btn btn-primary btn-primary pull-right m-t-n-xs" type="button"><i class="fa fa-check"></i>&nbsp;提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--房屋显示栏：房子ID，名称，类型，租金，大小，层数，朝向，拥有人编号，点击数，发布日期-->
+        <div style="" id="housebox">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>房屋管理</h5>
+                                <div class="ibox-tools">
+                                    <button id="house-addUserBtn" class="btn btn-xs btn-rounded btn-primary"><i class="fa fa-plus"></i> 添加</button>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="input-group">
+                                    <input id="house-search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
+                                                <button id="house-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
+                                </div>
+                                <div id="house-userTable" th:fragment="userTable">
+                                    <table class="footable table table-stripped toggle-arrow-tiny">
+                                        <thead>
+                                        <tr>
+                                            <th>房屋编号</th>
+                                            <th>名称</th>
+                                            <th>类型</th>
+                                            <th>大小</th>
+                                            <th>层数</th>
+                                            <th>朝向</th>
+                                            <th>层数</th>
+                                            <th>拥有人姓名</th>
+                                            <th>点击量</th>
+                                            <th>发布日期</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="user: ${user_list}">
+                                            <td th:text="${user?.UID}">1</td>
+                                            <td th:text="${user?.Uaccount}">ydw</td>
+                                            <td th:text="${user?.Uname}">袁德伟</td>
+                                            <td th:text="${user?.Upassword}">123</td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-edit"></i> 修改
+                                                </button>
+                                            </td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="|deleteBtn(${user?.UID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-trash"></i> 删除
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--房屋修改弹出框：房子ID，名称，类型，租金，大小，层数，朝向，拥有人编号，点击数，发布日期-->
+        <div id="house-modal-form-update" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 b-r">
+                                <div class="ibox-title">
+                                    <h5>修改房屋信息</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <form id="house-updateForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">房屋编号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="house-updateId" type="text" placeholder="房屋编号" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">名称：</label>
+                                            <div class="col-sm-8">
+                                                <input id="house-updateHname" type="text" placeholder="名称" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">类型：</label>
+                                            <div class="col-sm-8">
+                                                <input id="house-updateHkind" type="text" placeholder="类型" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">租金：</label>
+                                            <div class="col-sm-8">
+                                                <input id="house-updateHcost" type="text"> placeholder="租金" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">大小：</label>
+                                            <div class="col-sm-8">
+                                                <input id="house-updateHarea" type="text" placeholder="大小" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">层数：</label>
+                                            <div class="col-sm-8">
+                                                <input id="house-updateHfloor" type="text" placeholder="层数" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">朝向：</label>
+                                            <div class="col-sm-8">
+                                                <input id="house-updateHdirection" type="text" placeholder="朝向" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">拥有人编号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="house-updateHowner" type="text" placeholder="拥有人编号" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">点击量：</label>
+                                            <div class="col-sm-8">
+                                                <input id="house-updateHclick" type="text" placeholder="点击量" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">发布日期：</label>
+                                            <div class="col-sm-8">
+                                                <input id="house-updateHdate" type="text" placeholder="发布日期" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button id="house-updateSubmitBtn" class="btn btn-primary btn-primary pull-right m-t-n-xs" type="button"><i class="fa fa-check"></i>&nbsp;提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--留言显示栏：留言编号，留言人姓名，内容，日期，点击量-->
+        <div style="" id="mesbox">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>留言管理</h5>
+                                <div class="ibox-tools">
+                                    <button id="word-addUserBtn" class="btn btn-xs btn-rounded btn-primary"><i class="fa fa-plus"></i> 添加</button>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="input-group">
+                                    <input id="word-search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
+                                                <button id="message-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
+                                </div>
+                                <div id="word-userTable" th:fragment="userTable">
+                                    <table class="footable table table-stripped toggle-arrow-tiny">
+                                        <thead>
+                                        <tr>
+                                            <th>留言编号</th>
+                                            <th>留言人编号</th>
+                                            <th>内容</th>
+                                            <th>发布日期</th>
+                                            <th>点击量</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="user: ${user_list}">
+                                            <td th:text="${user?.UID}">1</td>
+                                            <td th:text="${user?.Uaccount}">ydw</td>
+                                            <td th:text="${user?.Uname}">袁德伟</td>
+                                            <td th:text="${user?.Upassword}">123</td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-edit"></i> 修改
+                                                </button>
+                                            </td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="|deleteBtn(${user?.UID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-trash"></i> 删除
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--留言修改弹出框：留言编号，留言人编号，日期，点击量-->
+        <div id="word-modal-form-update" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 b-r">
+                                <div class="ibox-title">
+                                    <h5>修改留言信息</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <form id="word-updateForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">留言编号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="word-updateId" type="text" placeholder="留言编号" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">留言人编号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="word-updateWpost" type="text" placeholder="留言人编号" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">发布日期：</label>
+                                            <div class="col-sm-8">
+                                                <input id="word-updateWdate" type="text" placeholder="日期" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">点击量：</label>
+                                            <div class="col-sm-8">
+                                                <input id="word-updateWclick" type="text" placeholder="点击量" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button id="word-updateSubmitBtn" class="btn btn-primary btn-primary pull-right m-t-n-xs" type="button"><i class="fa fa-check"></i>&nbsp;提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--新闻显示栏：新闻编号，发布人编号，新闻标题，新闻内容，发布日期，点击量-->
+        <div style="" id="newsbox">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>新闻公告管理</h5>
+                                <div class="ibox-tools">
+                                    <button id="news-addUserBtn" class="btn btn-xs btn-rounded btn-primary"><i class="fa fa-plus"></i> 添加</button>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="input-group">
+                                    <input id="news-search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
+                                                <button id="news-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
+                                </div>
+                                <div id="news-userTable" th:fragment="userTable">
+                                    <table class="footable table table-stripped toggle-arrow-tiny">
+                                        <thead>
+                                        <tr>
+                                            <th>新闻编号</th>
+                                            <th>发布人编号</th>
+                                            <th>标题</th>
+                                            <th>内容</th>
+                                            <th>点击量</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="user: ${user_list}">
+                                            <td th:text="${user?.UID}">1</td>
+                                            <td th:text="${user?.Uaccount}">ydw</td>
+                                            <td th:text="${user?.Uname}">袁德伟</td>
+                                            <td th:text="${user?.Upassword}">123</td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-edit"></i> 修改
+                                                </button>
+                                            </td>
+                                            <td style="width: 50px;">
+                                                <button th:onclick="|deleteBtn(${user?.UID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+                                                    <i class="fa fa-trash"></i> 删除
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--新闻修改弹出框：新闻编号，发布人编号，新闻标题，发布日期，点击量-->
+        <div id="news-modal-form-update" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 b-r">
+                                <div class="ibox-title">
+                                    <h5>修改新闻公告信息</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <form id="news-updateForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">新闻编号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="news-updateId" type="text" placeholder="新闻编号" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">发布人编号：</label>
+                                            <div class="col-sm-8">
+                                                <input id="news-updateNpost" type="text" placeholder="发布人编号" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">新闻标题：</label>
+                                            <div class="col-sm-8">
+                                                <input id="news-updateNheader" type="text" placeholder="新闻标题" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">发布日期：</label>
+                                            <div class="col-sm-8">
+                                                <input id="news-updateNdate" type="text" placeholder="发布日期" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">点击量：</label>
+                                            <div class="col-sm-8">
+                                                <input id="news-updateNclick" type="text" placeholder="点击量" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button id="news-updateSubmitBtn" class="btn btn-primary btn-primary pull-right m-t-n-xs" type="button"><i class="fa fa-check"></i>&nbsp;提交
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="footer-part">
+    <span>
+        Copyright © 房屋租赁系统 All Rights Reserved.
+    </span> 
+</div>
+
+<!-- 左侧菜单与右边显示栏联动 -->
+<script src="/static/js/newManage-js.js"></script>
+
+
+<script src="/static/jsManage/jquery.min.js?v=2.1.4"></script>
+<script src="/static/jsManage/bootstrap.min.js?v=3.3.6"></script>
+<script src="/static/jsManage/plugins/peity/jquery.peity.min.js"></script>
+<script src="/static/jsManage/content.min.js?v=1.0.0"></script>
+<script src="/static/jsManage/plugins/iCheck/icheck.min.js"></script>
+<script src="/static/jsManage/demo/peity-demo.min.js"></script>
+<script src="/static/jsManage/myJS/index.js"></script>
+<script th:inline="javascript">
+	function deleteBtn(id) {
+		$.ajax({
+			type: 'POST',
+			url: '/user/delete',
+			data: {
+				'id': id
+			},
+			success: function (data) {
+				$('#userTable').html(data)
+			},
+			error: function (err) {
+				console.log(err)
+				alert("操作失败，请刷新重新尝试！")
+			}
+		})
+	}
+
+	// 点击修改按钮
+	function updateBtn(id, username, nickname, password) {
+		// 传递数据到弹出框
+		$('#modal-form-update').modal('show');
+		$('#updateUserId').val(id)
+		$('#updateUsername').val(username)
+		$('#updateNickname').val(nickname)
+		$('#updatePassword').val(password)
+	}
+
+
+</script>
+</body>
+</html>
