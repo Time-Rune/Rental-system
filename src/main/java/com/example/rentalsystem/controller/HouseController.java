@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/house")
@@ -61,7 +62,7 @@ public class HouseController {
         int kind = TypeConversion.changeHouseTypeToNumber("商业办公");
         List<House> houses = serviceShowHouse.getAllSpecificKindHouse(kind);
         List<House> reslist = new ArrayList<>();
-        for(int i = (pageNumber-1)*numbersOfHousePerPage; i < pageNumber*numbersOfHousePerPage; i++)
+        for(int i = (pageNumber-1)*numbersOfHousePerPage; i < Math.min(houses.size(), pageNumber*numbersOfHousePerPage); i++)
             reslist.add(houses.get(i));
         model.addAttribute("allCommercialOfficeList", reslist);
         addHotHouse(model);
@@ -78,7 +79,7 @@ public class HouseController {
         int kind = TypeConversion.changeHouseTypeToNumber("普通民宅");
         List<House> houses = serviceShowHouse.getAllSpecificKindHouse(kind);
         List<House> reslist = new ArrayList<>();
-        for(int i = (pageNumber-1)*numbersOfHousePerPage; i < pageNumber*numbersOfHousePerPage; i++)
+        for(int i = (pageNumber-1)*numbersOfHousePerPage; i < Math.min(houses.size(), pageNumber*numbersOfHousePerPage); i++)
             reslist.add(houses.get(i));
         model.addAttribute("allCommonHouseList", reslist);
         addHotHouse(model);
@@ -96,7 +97,7 @@ public class HouseController {
         int kind = TypeConversion.changeHouseTypeToNumber("酒店式公寓");
         List<House> houses = serviceShowHouse.getAllSpecificKindHouse(kind);
         List<House> reslist = new ArrayList<>();
-        for(int i = (pageNumber-1)*numbersOfHousePerPage; i < pageNumber*numbersOfHousePerPage; i++)
+        for(int i = (pageNumber-1)*numbersOfHousePerPage; i < Math.min(houses.size(), pageNumber*numbersOfHousePerPage); i++)
             reslist.add(houses.get(i));
         model.addAttribute("allHotelHouseList", reslist);
         addHotHouse(model);
