@@ -1,5 +1,5 @@
 server:
-  port: 8089
+  port: 8083
   servlet:
 #    context-path: /
     #以下三行配置信息，修改jsp文件不用重启

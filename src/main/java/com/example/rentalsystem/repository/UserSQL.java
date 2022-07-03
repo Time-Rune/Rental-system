@@ -1,7 +1,6 @@
 package com.example.rentalsystem.repository;
 
 import com.example.rentalsystem.entity.User;
-import com.sun.org.apache.xpath.internal.objects.XString;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
