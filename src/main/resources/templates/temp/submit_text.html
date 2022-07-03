@@ -49,8 +49,22 @@
         <div id="editor-container"></div>
         <button id="Bt-submit">提交</button>
     </div>
+    <div id="viewname" th:fragment="viewname">
+        <p th:utext="${testword?.content}">ddd</p>
+    </div>
+    <div>
+        <p>待抓取数据</p>
+    </div>
     <div id="wordTable">
-
+        <table class="footable table table-stripped toggle-arrow-tiny">
+            <thead>
+                <tr>
+                    <th>头像</th>
+                    <th>用户名</th>
+                    <th>内容</th>
+                </tr>
+            </thead>
+        </table>
     </div>
     <style>
         #Bt-submit{
