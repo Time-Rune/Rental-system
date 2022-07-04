@@ -31,11 +31,19 @@ document.getElementById('textsubmit').addEventListener('click', function () {
     var param = { Text: text }
     var params = JSON.stringify(param);
     $.ajax({
-        url: "/demo/processdata",
+        url: "/contact/processdata",
         type: "post",
         data: text,
         // data: {"username":"张三"},
-        dataType: "JSON",
-        success: function (response) {console.log("表单提交成功")}
+        dataType: "text",
+        success: function (response) {
+            console.log("表单提交成功")
+            alert("获取到新数据")
+            $('#userTable').html(response)
+        },
+        error: function (XMLHttpRequest){
+            alert(XMLHttpRequest.responseText)
+            $('#userTable').html(response)
+        }
     })
 }, false)

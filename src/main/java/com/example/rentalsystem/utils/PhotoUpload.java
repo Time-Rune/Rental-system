@@ -33,7 +33,6 @@ public class PhotoUpload {
         }
         else{
             System.out.println("文件为空");
-
             return 0;
         }
     }

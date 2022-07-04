@@ -62,7 +62,7 @@
                        <div class=""> 
                         <button id="textsubmit" class="textsubmit">发布留言</button>
                        </div>
-                       <div id="userTable" th:fragment="userTable" class="message-content">
+                       <div id="userTable" class="message-content">
                            <div class="message-content-each" th:each="word: ${wordList}">
                                <div class="each-image">
                                    <img th:src="${word.Uphoto}" alt="">
@@ -70,7 +70,7 @@
                                <div class="each-content">
                                    <h2 th:text="${word.Uname}">昵称</h2>
                                    <p th:text="${word.postTime}" class="each-content-time">2022/07/03</p>
-                                   <p th:utext="${word.content}" class="each-content-text">这是留言内容！</p>
+                                   <p class="each-content-text">这是留言内容！</p>
                                </div>
                            </div>
                        </div> 
