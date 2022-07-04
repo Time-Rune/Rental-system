@@ -287,11 +287,11 @@
     font-size: 14px;
 }
 /* 提交合同 */
-.submitPaperinfo-box {
+#submitPaperinfo-box {
     width: 500px;
     height: 360px;
     margin-top: 15px;
-    margin-left: 30px;
+    margin-left: 40px;
     background-color: #f3f3f4;;
 }
 .submitPaperinfo {
