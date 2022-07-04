@@ -624,23 +624,27 @@
                                             <th>房屋编号</th>
                                             <th>名称</th>
                                             <th>类型</th>
+                                            <th>租金</th>
                                             <th>大小</th>
                                             <th>层数</th>
                                             <th>朝向</th>
-                                            <th>层数</th>
                                             <th>拥有人姓名</th>
-                                            <th>点击量</th>
                                             <th>发布日期</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="user: ${user_list}">
-                                            <td th:text="${user?.UID}">null</td>
-                                            <td th:text="${user?.Uaccount}">null</td>
-                                            <td th:text="${user?.Uname}">null</td>
-                                            <td th:text="${user?.Upassword}">null</td>
+                                        <tr th:each="house: ${house_list}">
+                                            <td th:text="${house?.HID}">null</td>
+                                            <td th:text="${house?.Hname}">null</td>
+                                            <td th:text="${house?.Hkind}">null</td>
+                                            <td th:text="${house?.Hcost}">null</td>
+                                            <td th:text="${house?.Harea}">null</td>
+                                            <td th:text="${house?.Hfloor}">null</td>
+                                            <td th:text="${house?.Hdirection}">null</td>
+                                            <td th:text="${house?.Howner}">null</td>
+                                            <td th:text="${house?.Hdate}">null</td>
                                             <td style="width: 50px;">
-                                                <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                <button th:onclick="updateBtn([[${user?.UID}]],)" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改
                                                 </button>
                                             </td>
