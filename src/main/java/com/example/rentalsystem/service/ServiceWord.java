@@ -58,4 +58,17 @@ public class ServiceWord {
         User user = UserContext.getCurrentUser();
         return user;
     }
+
+    public void deleteWord(int id){
+        wordSQL.deleteWord(id);
+    }
+
+    public void updateWord(int id, int post, int click, String date){
+        wordSQL.updateWord(id, post, click, date);
+    }
+
+    public List<Word> searchWord(String key){
+        String key0 = "%" + key + "%";
+        return wordSQL.searchWord(key0);
+    }
 }
