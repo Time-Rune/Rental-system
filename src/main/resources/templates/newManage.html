@@ -332,7 +332,7 @@
                                         </thead>
                                         <tbody>
                                         <tr th:each="admins: ${admin_list}">
-                                            <td th:text="${admins?.AID}">管理员ID</td>
+                                            <td th:text="${admins?.AID}" >管理员ID</td>
                                             <td th:text="${admins?.Aaccount}">管理员账号</td>
                                             <td th:text="${admins?.Aname}">管理员姓名</td>
                                             <td th:text="${admins?.Apassword}">管理员密码</td>
@@ -464,7 +464,7 @@
 
 
 
-        <!--合同显示栏：合同ID，房东姓名，租房人姓名，开始时间，结束时间，房子名称-->
+        <!--合同显示栏：合同ID，房东姓名，租房人姓名，开始时间，结束时间，房子ID-->
         <div style="" id="conbox">
             <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row">
@@ -502,7 +502,7 @@
                                             <td th:text="${con?.Uend}">null</td>
                                             <td th:text="${con?.HID}">null</td>
                                             <td style="width: 50px;">
-                                                <button th:onclick="con_updateBtn([[${con?.CID}]],[[${con?.UID1}]],[[${con?.UID2}]],[[${con?.Ubegin}]],[[${con?.Uend}]],[[${con?.HID}]],)" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                <button th:onclick="con_updateBtn([[${con?.CID}]],[[${con?.UID1}]],[[${con?.UID2}]],[[${con?.Ubegin}]],[[${con?.Uend}]],[[${con?.HID}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改
                                                 </button>
                                             </td>
@@ -522,7 +522,7 @@
             </div>
         </div>
 
-        <!--合同增加弹出框：房东姓名，租房人姓名，开始时间，结束时间，房子名称-->
+        <!--合同增加弹出框：房东姓名，租房人姓名，开始时间，结束时间，房子ID-->
         <div id="con-modal-form-add" class="modal fade" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -577,7 +577,7 @@
             </div>
         </div>
 
-        <!--合同修改弹出框：合同ID，房东姓名，租房人姓名，开始时间，结束时间，房子名称-->
+        <!--合同修改弹出框：合同ID，房东姓名，租房人姓名，开始时间，结束时间，房子ID-->
         <div id="con-modal-form-update" class="modal fade" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -684,7 +684,7 @@
                                             <td th:text="${house?.Howner}">null</td>
                                             <td th:text="${house?.Hdate}">null</td>
                                             <td style="width: 50px;">
-                                                <button th:onclick="house_updateBtn([[${house?.HID}]],[[${house?.Hname}]],[[${house?.Hkind}]],[[${house?.Hcost}]],[[${house?.Harea}]],[[${house?.Hfloor}]],[[${house?.Hdirection}]],[[${house?.Howner}]],[[${house?.Hdate}]],)" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                <button th:onclick="house_updateBtn([[${house?.HID}]],[[${house?.Hname}]],[[${house?.Hkind}]],[[${house?.Hcost}]],[[${house?.Harea}]],[[${house?.Hfloor}]],[[${house?.Hdirection}]],[[${house?.Howner}]],[[${house?.Hclick}]],[[${house?.Hdate}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改
                                                 </button>
                                             </td>
@@ -801,7 +801,7 @@
                                     <input id="word-search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
                                                 <button id="message-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
                                 </div>
-                                <div id="word-userTable" th:fragment="userTable">
+                                <div id="WordTable" th:fragment="WordTable">
                                     <table class="footable table table-stripped toggle-arrow-tiny">
                                         <thead>
                                         <tr>
@@ -813,18 +813,19 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="user: ${user_list}">
-                                            <td th:text="${user?.UID}">1</td>
-                                            <td th:text="${user?.Uaccount}">ydw</td>
-                                            <td th:text="${user?.Uname}">袁德伟</td>
-                                            <td th:text="${user?.Upassword}">123</td>
-                                            <td style="width: 50px;">
-                                                <button th:onclick="con_updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                        <tr th:each="user: ${word_list}">
+                                            <td th:text="${word?.WID}">null</td>
+                                            <td th:text="${word?.Wpost}">null</td>
+                                            <td th:text="${word?.Wtext}">null</td>
+                                            <td th:text="${word?.Wdate}">null</td>
+                                            <td th:text="${word?.Wclick}">null</td>
+                                            <td style="width: 50px;">               <!--留言修改弹出框：留言编号，留言人编号，日期，点击量-->
+                                                <button th:onclick="con_updateBtn([[${word?.WID}]],[[${word?.Wpost}]],[[${word?.Wdate}]],[[${word?.Wclick}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改
                                                 </button>
                                             </td>
                                             <td style="width: 50px;">
-                                                <button th:onclick="|deleteBtn(${user?.UID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+                                                <button th:onclick="|deleteBtn(${word?.WID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-trash"></i> 删除
                                                 </button>
                                             </td>
@@ -906,7 +907,7 @@
                                     <input id="news-search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
                                                 <button id="news-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
                                 </div>
-                                <div id="news-userTable" th:fragment="userTable">
+                                <div id="NewsTable" th:fragment="NewsTable">
                                     <table class="footable table table-stripped toggle-arrow-tiny">
                                         <thead>
                                         <tr>
@@ -918,18 +919,19 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="user: ${user_list}">
-                                            <td th:text="${user?.UID}">1</td>
-                                            <td th:text="${user?.Uaccount}">ydw</td>
-                                            <td th:text="${user?.Uname}">袁德伟</td>
-                                            <td th:text="${user?.Upassword}">123</td>
-                                            <td style="width: 50px;">
-                                                <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                        <tr th:each="user: ${news_list}">
+                                            <td th:text="${news?.NID}">null</td>
+                                            <td th:text="${news?.Npost}">null</td>
+                                            <td th:text="${news?.Nheader}">null</td>
+                                            <td th:text="${news?.Ntext}">null</td>
+                                            <td th:text="${news?.Nclick}">null</td>
+                                            <td style="width: 50px;">               <!--新闻修改弹出框：新闻编号，发布人编号，新闻标题，发布日期，点击量-->
+                                                <button th:onclick="updateBtn([[${news?.NID}]],[[${news?.Npost}]],[[${news?.Nheader}]],[[${news?.Ndate}]],[[${news?.Nclick}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改
                                                 </button>
                                             </td>
                                             <td style="width: 50px;">
-                                                <button th:onclick="|deleteBtn(${user?.UID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+                                                <button th:onclick="|deleteBtn(${news?.NID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-trash"></i> 删除
                                                 </button>
                                             </td>
@@ -1006,7 +1008,7 @@
     <div class="sroll-word">
         <!-- <marquee behavior="scroll" direction="up">欢迎使用HAZU房屋租赁系统！</marquee> -->
         <a>常见问题</a><span>|</span><a>帮助中心</a><span>|</span><a>意见反馈</a><span>|</span>
-        <a herf="http://www.hzau.edu.cn/" target="_blank">了解HZAU</a><span>|</span><a>加入HZAU</a><span>|</span><a>推广服务</a>
+        <a herf="http://www.hzau.edu.cn/">了解HZAU</a><span>|</span><a>加入HZAU</a><span>|</span><a>推广服务</a>
     </div>
 </div>
 
@@ -1090,6 +1092,40 @@
         })
     }
 
+    function word_deleteBtn(id) {
+        $.ajax({
+            type: 'POST',
+            url: '/word/delete',
+            data: {
+                'id': id
+            },
+            success: function (data) {
+                $('#WordTable').html(data)
+            },
+            error: function (err) {
+                console.log(err)
+                alert("操作失败，请刷新重新尝试！")
+            }
+        })
+    }
+
+    function news_deleteBtn(id) {
+        $.ajax({
+            type: 'POST',
+            url: '/news/delete',
+            data: {
+                'id': id
+            },
+            success: function (data) {
+                $('#NewsTable').html(data)
+            },
+            error: function (err) {
+                console.log(err)
+                alert("操作失败，请刷新重新尝试！")
+            }
+        })
+    }
+
 	// 点击修改按钮
 	function user_updateBtn(id, account, name, password, sex, birth, phone) {
 		// 传递数据到弹出框
@@ -1113,6 +1149,7 @@
         $('#admin-updateAphone').val(phone)
     }
 
+    <!--合同修改弹出框：合同ID，房东姓名，租房人姓名，开始时间，结束时间，房子名称-->
     function con_updateBtn(id, UID1, UID2, begin, end, hid) {
         // 传递数据到弹出框
         $('#con-modal-form-update').modal('show');
@@ -1124,16 +1161,8 @@
         $('#con-updateHID').val(hid)
     }
 
-    function news_updateBtn(id, username, nickname, password) {
-        // 传递数据到弹出框
-        $('#modal-form-update').modal('show');
-        $('#updateUserId').val(id)
-        $('#updateUsername').val(username)
-        $('#updateNickname').val(nickname)
-        $('#updatePassword').val(password)
-    }
-
-    function house_updateBtn(id,name,kind,cost,area,floor,direct,owner,date) {
+    <!--房屋显示栏：房子ID，名称，类型，租金，大小，层数，朝向，拥有人编号，点击数，发布日期-->
+    function house_updateBtn(id, name, kind, cost, area, floor, direct, owner, click, date) {
         // 传递数据到弹出框
         $('#house-modal-form-update').modal('show');
         $('#house-updateId').val(id)
@@ -1144,16 +1173,29 @@
         $('#house-updateHfloor').val(floor)
         $('#house-updateHdirection').val(direct)
         $('#house-updateHowner').val(owner)
+        $('#house-updateHclick').val(click)
         $('#house-updateHdate').val(date)
     }
 
-    function word_updateBtn(id, username, nickname, password) {
+    <!--留言修改弹出框：留言编号，留言人编号，日期，点击量-->
+    function word_updateBtn(id, post, date, click) {
         // 传递数据到弹出框
-        $('#modal-form-update').modal('show');
-        $('#updateUserId').val(id)
-        $('#updateUsername').val(username)
-        $('#updateNickname').val(nickname)
-        $('#updatePassword').val(password)
+        $('#word-modal-form-update').modal('show');
+        $('#word-updateWID').val(id)
+        $('#word-updateWpost').val(post)
+        $('#word-updateWdate').val(date)
+        $('#word-updateWclick').val(click)
+    }
+
+    <!--新闻修改弹出框：新闻编号，发布人编号，新闻标题，发布日期，点击量-->
+    function news_updateBtn(id, post, header, date, click) {
+        // 传递数据到弹出框
+        $('news-#modal-form-update').modal('show');
+        $('#news-updateNID').val(id)
+        $('#news-updateNpost').val(post)
+        $('#news-updateNheader').val(header)
+        $('#news-updateNdate').val(date)
+        $('#news-updateNclick').val(click)
     }
 
 

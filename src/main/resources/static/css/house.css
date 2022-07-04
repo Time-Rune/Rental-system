@@ -191,15 +191,30 @@
 .hoting-house-list-img {
     width: 180px;
     height: 151px;
-    /*border: 1px solid green;*/
+    /* border: 1px solid green; */
+    /* background-color: pink; */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
 }
+
+
 .hoting-house-list-img img {
-    width: 180px;
-    height: 151px;
+    width: 140px;
+    height: 130px;
+    /* background-color: red; */
+    margin-top: 9px;
+    border-radius: 10px;
+    /* align-items: center; */
+    /* padding-left: 10px; */
+    /* padding-top: 2px; */
 }
 .hoting-house-list-content h2 {
     font-size: 14px;
     color: #f14122;
+    padding-bottom: 20px;
+    /* background-color: red; */
+    margin-bottom: 20px;
 }
 .hoting-house-list-content {
     width: 196px;
@@ -213,6 +228,12 @@
 .hoting-house-list-head a{
     text-decoration: none;
     color: #2d2e2e;
+    font-family: PingFangSC-Medium,PingFang SC;
+    /* background-color: red; */
+    /* width: 100px; */
+    /* padding-right: 20px; */
+    font-weight: 700;
+    /* margin-right: 10px; */
 }
 .hoting-house-list-head a:hover {
     color: #2aaf6c;
