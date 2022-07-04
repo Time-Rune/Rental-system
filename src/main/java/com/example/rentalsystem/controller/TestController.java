@@ -49,8 +49,11 @@ public class TestController {
         String name = user.getUname();
         List<ShowWord> showWordList = new ArrayList<>();
         List<Word> wordList = serviceWord.getPerPageWords(1, 10);
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String postTime  = simpleDateFormat.format(date);
         for(Word word: wordList){
-            ShowWord showWord = new ShowWord(name, photo, word.getWtext());
+            ShowWord showWord = new ShowWord(name, photo, word.getWtext(), postTime);
             showWordList.add(showWord);
             System.out.println(showWord.toString());
         }
@@ -78,7 +81,10 @@ public class TestController {
         List<ShowWord> showWordList = new ArrayList<>();
         List<Word> wordList = serviceWord.getPerPageWords(1, 10);
         for(Word word: wordList){
-            ShowWord showWord = new ShowWord(name, photo, word.getWtext());
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String postTime  = simpleDateFormat.format(date);
+            ShowWord showWord = new ShowWord(name, photo, word.getWtext(), postTime);
             showWordList.add(showWord);
             System.out.println(showWord.toString());
         }
