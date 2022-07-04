@@ -13,7 +13,7 @@
 /* 导航栏 */
 .nav {
     flex-flow: row nowrap;
-    width: 1300px;
+    width: 100%;
     height: 50px;
     /* border: 3px solid red; */
     /* background-color: azure; */
