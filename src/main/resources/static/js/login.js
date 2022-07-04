@@ -132,6 +132,10 @@ $(function(){
         $(this).ajaxSubmit(options);
         return false;  //防止表单自动提交
     });
+    $("#login-form").submit(function(){
+        $(this).ajaxSubmit(options);
+        return false;  //防止表单自动提交
+    });
 });
 /**
  * 保存操作
@@ -148,15 +152,17 @@ function toSave(){
  */
 // function showResponse(responseText, statusText, xhr, $form){
 function showResponse(responseText){
-    if(responseText.msg == "1"){
+    if(responseText.msg == "user"){
         /**
          * 请求成功后的操作
          */
         // alert(responseText.msg);
-        alert("登录成功");
+        alert("登录成功!");
         window.location.href="/index";
+    } else if(responseText.msg == "admin"){
+        window.location.href="/house/allhouse";
     } else {
-        alert("登录失败");
+        alert("账号或密码错误请重新登录！");
         // alert(responseText.msg);
     }
 }

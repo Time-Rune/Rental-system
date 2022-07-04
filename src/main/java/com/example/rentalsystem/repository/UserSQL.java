@@ -12,7 +12,7 @@ public interface UserSQL {
     // 插入一个用户
     @Insert("Insert into User(UID,Uaccount,Upassword,Uname,Usex,Ubirth,Uphoto,Uphone,Uregtime)" +
             "values(#{uid},#{uaccount},#{upassword},#{uname},#{usex},#{ubirth}," +
-            "'src/main/resources/static/其他默认图.jpeg',#{uphone},#{uregtime})")
+            "'src/main/resources/static/default.jpeg',#{uphone},#{uregtime})")
     void addNewUser(int uid, String uaccount, String upassword, String uname, String usex,
                     String ubirth, String uphone, String uregtime);
 

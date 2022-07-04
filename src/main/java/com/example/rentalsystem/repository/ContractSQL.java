@@ -1,10 +1,7 @@
 package com.example.rentalsystem.repository;
 
 import com.example.rentalsystem.entity.Contract;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
 import java.util.List;
@@ -12,11 +9,15 @@ import java.util.List;
 @Mapper
 public interface ContractSQL {
     @Insert("insert into Contract(CID, Cphoto, UID1, UID2, Ubegin, Uend, Hid)" +
-            "values(#{id}, #{photo}, #{uid1}, #{uid2}, #{begin}, #{end}, #{hid})")
-    void insertContract(int id, String photo, int uid1, int uid2, Date begin, Date end, int hid);
+            "values(#{id}, 'src/main/resources/static/default.jpeg', #{uid1}, #{uid2}, #{begin}, #{end}, #{hid})")
+    void insertContract(int id, int uid1, int uid2, String begin, String end, int hid);
 
     @Select("select * from Contract")
     List<Contract> getContract();
+
+    @Select("select * from Contract where CID like #{key} or UID1 like #{key} or UID2 like #{key} or " +
+            "Hid like #{key} or Ubegin like #{key} or Uend like #{key}")
+    List<Contract> searchContract(String key);
 
     @Select("select max(Contract.CID) from Contract")
     int getMaxCID();
@@ -24,4 +25,6 @@ public interface ContractSQL {
     @Delete("delete from Contract where CID = #{id}")
     void deleteContract(int id);
 
+    @Update("update Contract set UID1=#{uid1},UID2=#{uid2},Ubegin=#{begin},Uend=#{end},HID=#{hid} where CID = #{id}")
+    void updateContract(int id, int uid1, int uid2, String begin, String end, int hid);
 }

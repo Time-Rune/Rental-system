@@ -16,9 +16,6 @@ public class UserReceive {
 
     @PostMapping(value = "/insert")
     public ModelAndView insertUser(HttpServletRequest http) {
-//        serviceUser.insertUser(http.getParameter("account"), http.getParameter("password"),
-//                http.getParameter("name"), http.getParameter("sex"),
-//                http.getParameter("birth"), http.getParameter("phone"));
         serviceUser.insertUser(http.getParameter("account"), http.getParameter("password"),
                 http.getParameter("name"), http.getParameter("sex"),
                 http.getParameter("birth"), http.getParameter("phone"));
@@ -45,7 +42,7 @@ public class UserReceive {
         return view;
     }
 
-    @PostMapping(value = "/select")
+    @GetMapping(value = "/select")
     public ModelAndView searchUser(HttpServletRequest http){
         ModelAndView view = new ModelAndView("newManage::user-userTable");
         view.addObject("user_list", serviceUser.searchUser(http.getParameter("search")));
