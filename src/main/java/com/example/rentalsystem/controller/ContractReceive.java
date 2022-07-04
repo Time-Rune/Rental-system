@@ -52,4 +52,5 @@ public class ContractReceive {
         return view;
     }
 
+
 }

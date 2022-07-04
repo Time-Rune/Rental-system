@@ -1,10 +1,7 @@
 package com.example.rentalsystem.repository;
 
 import com.example.rentalsystem.entity.News;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
 import java.util.List;
@@ -26,5 +23,15 @@ public interface NewsSQL {
 
     @Select("select * from News where NID = #{id}")
     List<News> getNewsByID(int id);
+
+    @Select("select * from News")
+    List<News> getAllNews();
+
+    @Update("update News set Npost=#{post},Nheader=#{header},Ndate=#{date},Nclick=#{click} where NID=#{id}")
+    void updateNews(int id, int post, String header, String date, int click);
+
+    @Select("select * from News where NID like #{key} or Nheader like #{key} or Npost like #{key} " +
+            "or Ndate like #{key} or Nclick like #{key}")
+    List<News> searchNews(String key);
 
 }

@@ -20,4 +20,21 @@ public class ServiceNews {
         List<News> showNews = newsSQL.getNewsByID(id);
         return showNews.get(0);
     }
+
+    public List<News> getAllNews(){
+        return newsSQL.getAllNews();
+    }
+
+    public void deleteNews(int id){
+        newsSQL.deleteNews(id);
+    }
+
+    public void updateNews(int id, int post, String header, String date, int click){
+        newsSQL.updateNews(id, post, header, date, click);
+    }
+
+    public List<News> searchNews(String key){
+        String key0 = "%" + key + "%";
+        return newsSQL.searchNews(key0);
+    }
 }
