@@ -14,4 +14,5 @@ public class ShowWord {
     private String Uname;
     private String Uphoto;
     private String content;
+    private String postTime;
 }

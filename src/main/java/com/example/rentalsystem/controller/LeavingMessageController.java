@@ -20,8 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -62,7 +65,10 @@ public class LeavingMessageController {
         List<ShowWord> showWordList = new ArrayList<>();
         List<Word> wordList = serviceWord.getPerPageWords(1, 10);
         for(Word word: wordList){
-            ShowWord showWord = new ShowWord(name, photo, word.getWtext());
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String postTime  = simpleDateFormat.format(date);
+            ShowWord showWord = new ShowWord(name, photo, word.getWtext(), postTime);
             showWordList.add(showWord);
             System.out.println(showWord.toString());
         }
