@@ -132,10 +132,6 @@ $(function(){
         $(this).ajaxSubmit(options);
         return false;  //防止表单自动提交
     });
-    $("#login-form").submit(function(){
-        $(this).ajaxSubmit(options);
-        return false;  //防止表单自动提交
-    });
 });
 /**
  * 保存操作

@@ -6,13 +6,59 @@
 </head>
 <body>
     <div class="uploadBox">
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" accept="image/*"/><br/>
-            <input type="submit" name="" id="" value="提交" />
+        <form   id="uploadForm"  method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="selectfile" onchange="uploadfile()">
+            <div>
+                <button id="upload" type="button" name="button" >上传</button>
+            </div>
         </form>
         <div class="abbre">
             <img src="" alt="">
         </div>
     </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        function uploadfile (){
+            var formData = new FormData($('#uploadForm')[0]);
+            $.ajax({
+                type: 'post',
+                url: "/fileprocess/userphotoupload", //上传文件的请求路径必须是绝对路劲
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+            }).success(function (data) {
+                console.log(data);
+                alert("上传成功"+data);
+                // filename=data;
+            }).error(function (data) {
+                alert("上传失败");
+            });
+        }
+        $( function(){
+            $("#upload").on("click", function () {
+                $("#selectfile").click();
+            });
+
+            // $("selectfile").on("change", function (){
+            //     var formData = new FormData($('#uploadForm')[0]);
+            //     $.ajax({
+            //         type: 'post',
+            //         url: "/fileprocess/userphotoupload", //上传文件的请求路径必须是绝对路劲
+            //         data: formData,
+            //         cache: false,
+            //         processData: false,
+            //         contentType: false,
+            //     }).success(function (data) {
+            //         console.log(data);
+            //         alert("上传成功"+data);
+            //         filename=data;
+            //     }).error(function (data) {
+            //         alert("上传失败");
+            //     });
+            // });
+        });
+    </script>
 </body>
 </html>

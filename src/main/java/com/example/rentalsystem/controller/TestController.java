@@ -41,56 +41,60 @@ public class TestController {
     @Autowired
     private ServiceWord serviceWord;
 
-//    @GetMapping("/submittext")
-    @RequestMapping("/submittext")
-    public String submitText(Model model){
-        User user = serviceWord.getPosterByID();
-        String photo = user.getUphoto();
-        String name = user.getUname();
-        List<ShowWord> showWordList = new ArrayList<>();
-        List<Word> wordList = serviceWord.getPerPageWords(1, 10);
-        Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String postTime  = simpleDateFormat.format(date);
-        for(Word word: wordList){
-            ShowWord showWord = new ShowWord(name, photo, word.getWtext(), postTime);
-            showWordList.add(showWord);
-            System.out.println(showWord.toString());
-        }
-        model.addAttribute("wordList", showWordList);
-        return "/temp/submit_text";
+    @GetMapping("upload")
+    public String uploadTest(){
+        return "/temp/file_upload";
     }
-
-    @RequestMapping(value = "/processdata", method = RequestMethod.POST, produces = "application/json")
-    public ModelAndView processData(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String htmltext = request.getParameter("Text");
-        System.out.println("HtmlText: " + htmltext);
-        Enumeration<String> paramName = request.getParameterNames();
-        String param = paramName.nextElement();
-        System.out.println("param: " + param);
-        User user = serviceWord.getPosterByID();
-        System.out.println("当前留言用户：" + user.getUname());
-        String photo = user.getUphoto();
-        String name = user.getUname();
-        serviceWord.insertWord(param);
-
-//        String richtext = "<h1>一级标题</h1><h2>二级标题</h2><p>正文</p>";
-//        model.addAttribute("testword", richtext);
-
-        ModelAndView modelAndView = new ModelAndView("/temp/submit_text::userTable");
-        List<ShowWord> showWordList = new ArrayList<>();
-        List<Word> wordList = serviceWord.getPerPageWords(1, 10);
-        for(Word word: wordList){
-            Date date = new Date();
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String postTime  = simpleDateFormat.format(date);
-            ShowWord showWord = new ShowWord(name, photo, word.getWtext(), postTime);
-            showWordList.add(showWord);
-            System.out.println(showWord.toString());
-        }
-        modelAndView.addObject("wordList", showWordList);
-        return modelAndView;
-    }
+////    @GetMapping("/submittext")
+//    @RequestMapping("/submittext")
+//    public String submitText(Model model){
+//        User user = serviceWord.getPosterByID();
+//        String photo = user.getUphoto();
+//        String name = user.getUname();
+//        List<ShowWord> showWordList = new ArrayList<>();
+//        List<Word> wordList = serviceWord.getPerPageWords(1, 10);
+//        Date date = new Date();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        String postTime  = simpleDateFormat.format(date);
+//        for(Word word: wordList){
+//            ShowWord showWord = new ShowWord(name, photo, word.getWtext(), postTime);
+//            showWordList.add(showWord);
+//            System.out.println(showWord.toString());
+//        }
+//        model.addAttribute("wordList", showWordList);
+//        return "/temp/submit_text";
+//    }
+//
+//    @RequestMapping(value = "/processdata", method = RequestMethod.POST, produces = "application/json")
+//    public ModelAndView processData(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        String htmltext = request.getParameter("Text");
+//        System.out.println("HtmlText: " + htmltext);
+//        Enumeration<String> paramName = request.getParameterNames();
+//        String param = paramName.nextElement();
+//        System.out.println("param: " + param);
+//        User user = serviceWord.getPosterByID();
+//        System.out.println("当前留言用户：" + user.getUname());
+//        String photo = user.getUphoto();
+//        String name = user.getUname();
+//        serviceWord.insertWord(param);
+//
+////        String richtext = "<h1>一级标题</h1><h2>二级标题</h2><p>正文</p>";
+////        model.addAttribute("testword", richtext);
+//
+//        ModelAndView modelAndView = new ModelAndView("/temp/submit_text::userTable");
+//        List<ShowWord> showWordList = new ArrayList<>();
+//        List<Word> wordList = serviceWord.getPerPageWords(1, 10);
+//        for(Word word: wordList){
+//            Date date = new Date();
+//            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//            String postTime  = simpleDateFormat.format(date);
+//            ShowWord showWord = new ShowWord(name, photo, word.getWtext(), postTime);
+//            showWordList.add(showWord);
+//            System.out.println(showWord.toString());
+//        }
+//        modelAndView.addObject("wordList", showWordList);
+//        return modelAndView;
+//    }
 //    @RequestMapping(value = "/freshdata")
 //    public ModelAndView freshData(HttpServletRequest request, HttpServletResponse response){
 //        ModelAndView modelAndView = new ModelAndView("/demo/submit_text::wordTable");

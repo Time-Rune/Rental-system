@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png"> -->
     <link rel="stylesheet" href="/static/css/adminLogin/login.css">
     <link rel="stylesheet" href="/static/css/index.css">
     <!-- 引入 css -->
@@ -70,7 +70,7 @@
                                <div class="each-content">
                                    <h2 th:text="${word.Uname}">昵称</h2>
                                    <p th:text="${word.postTime}" class="each-content-time">2022/07/03</p>
-                                   <p class="each-content-text">这是留言内容！</p>
+                                   <p th:utext="${word.content}" class="each-content-text">这是留言内容！</p>
                                </div>
                            </div>
                        </div> 

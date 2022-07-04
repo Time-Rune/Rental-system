@@ -39,7 +39,9 @@ document.getElementById('textsubmit').addEventListener('click', function () {
         success: function (response) {
             console.log("表单提交成功")
             alert("获取到新数据")
-            $('#userTable').html(response)
+            console.log(response)
+            window.location.reload()
+            // $('#userTable').html(response)
         },
         error: function (XMLHttpRequest){
             alert(XMLHttpRequest.responseText)
