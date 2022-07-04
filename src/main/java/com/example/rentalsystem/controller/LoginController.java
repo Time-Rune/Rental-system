@@ -1,5 +1,6 @@
 package com.example.rentalsystem.controller;
 
+import com.example.rentalsystem.entity.Admins;
 import com.example.rentalsystem.entity.User;
 import com.example.rentalsystem.service.ServiceLogin;
 import com.example.rentalsystem.utils.AjaxResult;
@@ -32,20 +33,36 @@ public class LoginController {
         System.out.println("success!");
         String username = request.getParameter("act");
         String password = request.getParameter("psw");
+        String role = request.getParameter("role");  //user或admin
         System.out.println("username = " + username + " password = " + password);
-        AjaxResult ajaxResult = new AjaxResult();
-        User user = (User) serviceLogin.loginService(username, password);
-        if(user == null){
-            ajaxResult.setMsg("0");
-            System.out.println("用户名或密码错误");
-        }else{
-            ajaxResult.setMsg("1");
-            System.out.println("登录成功");
-            UserContext.removeCurrentUser();
-            UserContext.putCurrentUserIntoSession(user);
-//            response.getWriter().print(UserContext.getCurrentInfo().toString());
+        if(role.equals("user")){
+            AjaxResult ajaxResult = new AjaxResult();
+            User user = (User) serviceLogin.loginService(username, password, role);
+            if(user == null){
+                ajaxResult.setMsg("error");
+                System.out.println("用户用户名或密码错误");
+            }else{
+                ajaxResult.setMsg("user");
+                System.out.println("用户登录成功");
+                UserContext.removeCurrentUser();
+                UserContext.putCurrentUserIntoSession(user);
+    //            response.getWriter().print(UserContext.getCurrentInfo().toString());
+            }
+            return ajaxResult;
         }
-        return ajaxResult;
+        else{
+            AjaxResult ajaxResult = new AjaxResult();
+            Admins admins = (Admins) serviceLogin.loginService(username, password, role);
+            if(admins == null){
+                ajaxResult.setMsg("error");
+                System.out.println("管理员用户名或密码错误");
+            }
+            else{
+                ajaxResult.setMsg("admin");
+                System.out.println("管理员登录成功");
+            }
+            return ajaxResult;
+        }
     }
 
     @GetMapping("/logintest")
