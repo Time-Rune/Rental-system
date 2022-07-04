@@ -46,4 +46,7 @@ public interface UserSQL {
     @Update("updata User set Uname=#{name},Usex=#{sex},Ubirth=#{birth},Uphone=#{phone} where UID=#{uid}")
     void updateInformation(int uid, String name, String sex, String birth, String phone);
 
+    @Select("select * from user where UID=#{id}")
+    List<User> getUserByID(int id);
+
 }
