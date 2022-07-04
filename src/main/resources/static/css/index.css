@@ -296,3 +296,10 @@
 #userBtn:hover {
     color: #676b69;
 }
+/*用户中心按钮*/
+#userBtn {
+    color: black;
+}
+#userBtn:hover{
+   color: #1a7bb9;
+}
