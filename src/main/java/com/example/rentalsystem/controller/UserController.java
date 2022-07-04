@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 
-@RequestMapping("demo")
+@RequestMapping("")
 public class UserController {
     @Autowired
     private ServiceUser serviceUser;
@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     private ServiceContract serviceContract;
 
-    @GetMapping("/login")
+    @GetMapping("/admincenter")
     public ModelAndView login(Model model) {
 //        List<House> houses = serviceShowHouse.getLastestHouse(num);
 //        model.addAttribute("houses", houses);
