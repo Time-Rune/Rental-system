@@ -7,7 +7,7 @@ var userMyPaper = document.getElementById("userMyPaper");
 
 // 用户信息
 userInfo.onclick = function(){
-    alert('用户信息获取成功！');
+    // alert('用户信息获取成功！');
     $("#userinfo-box").css("display", "block");
     $("#passwordinfo-box").css("display", "none");
     $("#postHouseinfo-box").css("display", "none");
@@ -18,7 +18,7 @@ userInfo.onclick = function(){
 
 // 修改密码
 userPsw.onclick = function(){
-    alert('修改密码获取成功！');
+    // alert('修改密码获取成功！');
     $("#userinfo-box").css("display", "none");
     $("#passwordinfo-box").css("display", "block");
     $("#postHouseinfo-box").css("display", "none");
@@ -29,7 +29,7 @@ userPsw.onclick = function(){
 
 // 发布房源
 userHouse.onclick = function(){
-    alert('发布房源获取成功！'); 
+    // alert('发布房源获取成功！'); 
     $("#userinfo-box").css("display", "none");
     $("#passwordinfo-box").css("display", "none");
     $("#postHouseinfo-box").css("display", "block");
@@ -40,7 +40,7 @@ userHouse.onclick = function(){
 
 // 我的房源
 myHouse.onclick = function(){
-    alert('我的房源获取成功！');
+    // alert('我的房源获取成功！');
     $("#userinfo-box").css("display", "none");
     $("#passwordinfo-box").css("display", "none");
     $("#postHouseinfo-box").css("display", "none");
@@ -51,7 +51,7 @@ myHouse.onclick = function(){
 
 // 提交合同
 userPaperSubmit.onclick = function(){
-    alert('提交合同获取成功！');
+    // alert('提交合同获取成功！');
     $("#userinfo-box").css("display", "none");
     $("#passwordinfo-box").css("display", "none");
     $("#postHouseinfo-box").css("display", "none");
@@ -62,7 +62,7 @@ userPaperSubmit.onclick = function(){
 
 // 我的合同
 userMyPaper.onclick = function(){
-    alert('我的合同获取成功！');
+    // alert('我的合同获取成功！');
     $("#userinfo-box").css("display", "none");
     $("#passwordinfo-box").css("display", "none");
     $("#postHouseinfo-box").css("display", "none");

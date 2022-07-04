@@ -161,7 +161,7 @@
                                                                   alt=""></a></span>
         </div>
 
-        <form id="login-form" action="loginsubmit" method="post"  style="display: block">
+        <form id="login-form" action="loginsubmit" method="post" onsubmit="return loginsave();" style="display: block">
             <div class="login-input">
                 <label>用户名:</label>
                 <i class="icons-user" id="icons-login"></i>
@@ -190,7 +190,7 @@
             <span><a id="closeButton" href="javascript:void(0)"><img src="/static/assets/images/icon-img/closeBtn.png"
                                                                      alt=""></a></span>
         </div>
-        <form id="register-form" action="RegisterServlet" method="post"  style="display: block">
+        <form id="register-form" action="RegisterServlet" method="post" onsubmit="return save();" style="display: block">
             <div class="register-input">
                 <label>邮箱:</label>
                 <i class="icons-email"></i>
