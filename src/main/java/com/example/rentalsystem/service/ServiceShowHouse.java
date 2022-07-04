@@ -30,8 +30,8 @@ public class ServiceShowHouse {
     }
 
     public List<House> searchHouse(String key){
-        String Key0 = "%" + key + "%";
-        return showHouseSQL.searchHouse(key);
+        String key0 = "%" + key + "%";
+        return showHouseSQL.searchHouse(key0);
     }
 
     public List<House> getAllSpecificKindHouse(int id){
@@ -46,8 +46,8 @@ public class ServiceShowHouse {
         showHouseSQL.insertHouse(nid, name, kind, cost, area, floor, direct, owner, nowd);
     }
 
-    public void updateHouse(String name, int kind, int cost, int area, int floor, int direct, int owner){
-        showHouseSQL.updateHouse(name, kind, cost, area, floor, direct, owner);
+    public void updateHouse(int id, String name, int kind, int cost, int area, int floor, int direct, int owner){
+        showHouseSQL.updateHouse(id, name, kind, cost, area, floor, direct, owner);
     }
 
     public void deleteHouse(int id){
