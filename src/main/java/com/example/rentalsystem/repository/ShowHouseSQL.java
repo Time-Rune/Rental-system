@@ -52,4 +52,7 @@ public interface ShowHouseSQL {
     @Update("update house set house.Hclick=house.Hclick+1 where HID=#{id}")
     void increaseHouseHclick(int id);
 
+    @Select("select * from house where Howner = #{id}")
+    List<House> getHouseByOwnerID(int id);
+
 }

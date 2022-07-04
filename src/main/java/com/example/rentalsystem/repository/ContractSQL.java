@@ -19,8 +19,15 @@ public interface ContractSQL {
             "Hid like #{key} or Ubegin like #{key} or Uend like #{key}")
     List<Contract> searchContract(String key);
 
+    @Select("select * from Contract where UID1 = #{id} or UID2 = #{id}")
+    List<Contract> getMyContract(int id);
+
     @Select("select max(Contract.CID) from Contract")
     int getMaxCID();
+
+    @Insert("insert into contract(CID, Cphoto, UID1, UID2, Ubegin, Uend, HID" +
+            "values(#{CID}, #{Cphoto}, #{UID1}, #{UID2}, #{Ubegin}, #{Uend}, #{HID})")
+    void insertContract(int CID, String Cphoto, String Ubegin, String Uend, int HID);
 
     @Delete("delete from Contract where CID = #{id}")
     void deleteContract(int id);
