@@ -4,6 +4,16 @@
     margin-top: 3px;
     border: 1px solid #e7eaec;
 }
+.textsubmit {
+    background-color: #1ab394;
+    border: 0;
+    border-radius: 3px;
+    width: 90px;
+    height: 38px;
+    color: #ffffff;
+    margin-left: 770px;
+    margin-top: 10px;
+}
 .message-body {
     background-color: #f3f3f4;
     /* background-color: aqua; */
@@ -85,7 +95,7 @@
     border-radius: 50%;
 }
 .each-content {
-    margin-left: 8px;
+    margin-left: 16px;
     margin-top: 3px;
 }
 .each-content h2 {
@@ -93,8 +103,11 @@
 }
 .each-content-time {
     color: #a6abae;
-    font-size: 12px;
+    font-size: 10.5px;
+    margin-top: 5px;
 }
 .each-content-text {
-    font-size: 13px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #505354;
 }

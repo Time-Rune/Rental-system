@@ -24,7 +24,7 @@ const toolbar = createToolbar({
     mode: 'simple' // 或 'simple' 参考下文
 })
 //绑定按钮
-document.getElementById('Bt-submit').addEventListener('click', function () {
+document.getElementById('textsubmit').addEventListener('click', function () {
     var text = editor.getHtml();
     alert(text)
     text=encodeURIComponent(text);
