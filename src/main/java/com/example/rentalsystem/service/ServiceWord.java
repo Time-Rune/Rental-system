@@ -8,6 +8,7 @@ import com.example.rentalsystem.utils.UserContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.SQLSyntaxErrorException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,20 +37,25 @@ public class ServiceWord {
     public void insertWord(String Wtext){
         User currentUser = UserContext.getCurrentUser();
         int WID = wordSQL.getMaxWID() + 1;
-//        int Wpost = currentUser.getUID();
-        int Wpost = 0;
+        int Wpost = currentUser.getUID();
+//        int Wpost = 0;
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String Wdate = simpleDateFormat.format(date.getTime());
-        wordSQL.insertWord(WID, Wtext, Wpost, Wdate, 0);
+        String WdetailTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date.getTime());
+        wordSQL.insertWord(WID, Wtext, Wpost, Wdate, 0, WdetailTime);
     }
 
-    public User getPosterByID(){
-//        User currentUser = UserContext.getCurrentUser();
-//        int id = currentUser.getUID();
-        int id = 0;
+    public User getPosterByID(int id){
+        //        int id = 0;\
+        System.out.println("id = " + id);
         List<User> list = userSQL.getUserByID(id);
         System.out.println("list_size = " + list.size());
         return list.get(0);
+    }
+
+    public User getCurrentPoster(){
+        User user = UserContext.getCurrentUser();
+        return user;
     }
 }

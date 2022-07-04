@@ -40,19 +40,34 @@ public class LeavingMessageController {
 
     @GetMapping("/showcontact")
     public String ShowContact(Model model){
+        List<ShowWord> showWordList = new ArrayList<>();
+        List<Word> wordList = serviceWord.getPerPageWords(1, 10);
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String postTime  = simpleDateFormat.format(date);
+        for(Word word: wordList){
+            User user = serviceWord.getPosterByID(word.getWpost());
+            String photo = user.getUphoto();
+            String name = user.getUname();
+            ShowWord showWord = new ShowWord(name, photo, word.getWtext(), postTime);
+            showWordList.add(showWord);
+            System.out.println(showWord.toString());
+        }
+        model.addAttribute("wordList", showWordList);
+
         addHotHouse(model);
         addLatestNews(model);
         return "richtext";
     }
 
     @RequestMapping(value = "/processdata", method = RequestMethod.POST, produces = "application/json")
-    public ModelAndView processData(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void processData(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
         String htmltext = request.getParameter("Text");
         System.out.println("HtmlText: " + htmltext);
         Enumeration<String> paramName = request.getParameterNames();
         String param = paramName.nextElement();
         System.out.println("param: " + param);
-        User user = serviceWord.getPosterByID();
+        User user = serviceWord.getCurrentPoster();
         System.out.println("当前留言用户：" + user.getUname());
         String photo = user.getUphoto();
         String name = user.getUname();
@@ -60,7 +75,6 @@ public class LeavingMessageController {
 
 //        String richtext = "<h1>一级标题</h1><h2>二级标题</h2><p>正文</p>";
 //        model.addAttribute("testword", richtext);
-
         ModelAndView modelAndView = new ModelAndView("/temp/submit_text::userTable");
         List<ShowWord> showWordList = new ArrayList<>();
         List<Word> wordList = serviceWord.getPerPageWords(1, 10);
@@ -72,8 +86,9 @@ public class LeavingMessageController {
             showWordList.add(showWord);
             System.out.println(showWord.toString());
         }
+        model.addAttribute("wordList", showWordList);
         modelAndView.addObject("wordList", showWordList);
-        return modelAndView;
+//        return modelAndView;
     }
 
     private void addHotHouse(Model model){

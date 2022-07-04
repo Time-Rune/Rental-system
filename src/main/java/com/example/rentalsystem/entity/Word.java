@@ -18,4 +18,5 @@ public class Word {
     private int Wpost;
     private Date Wdate;
     private int Wclick;
+    private String WdetailTime;
 }
