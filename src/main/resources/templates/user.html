@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png">
+    <link rel="stylesheet" href="/static/css/adminLogin/login.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/new.css">
+    <link rel="stylesheet" href="/static/css/user.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="header-wel">
+                <span>欢迎光临本站！</span>
+                <span><a href="" id="adminBtn">登录</a></span>
+            </div>
+            <div class="nav">
+                <ul>
+                    <!-- <img src="/11.jpeg" alt=""> -->
+                    <img src="/static/assets/images/logo/2.webp" alt="" class="nav-img">
+                    <li><a href="/index">首页</a></li>
+                    <li><a href="">新闻公告</a></li>
+                    <li><a href="/house/commercialoffice">商业办公</a></li>
+                    <li><a href="/house/commonhouse">普通民宅</a></li>
+                    <li><a href="/house/hotelhouse">酒店公寓</a></li>
+                    <li><a href="/house/allhouse">全部房源</a></li>
+					<li><a href="/contact/showcontact">留言交流</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="search">
+            <img id="search-img" src="/static/assets/images/logo/1.webp" alt="">
+            <input type="text">
+            <button id="searchbtn">搜索</button>
+        </div>
+        <div id="user">
+            <div id="new-nav">
+                <!-- <h2>当前页面</h2> -->
+                <span>当前页面,</span>
+                <a href="/index">首页</a>
+                <span th:text="'>'+${news.Nheader}">
+                    > 我的功能
+                </span>
+            </div>
+            <div class="user-content">
+                <div class="user-list-box">
+                    <div class="user-list">
+                        <div class="user-list-div">
+                            <img class="list-img1" src="/static/assets/images/icon-img/身份证.png" alt="">
+                            <span>用户中心</span>
+                            <img id="" class="list-img2" src="/static/assets/images/icon-img/右箭头.png" alt="">
+                        </div>
+                        <div class="user-list-div">
+                            <img class="list-img1" src="/static/assets/images/icon-img/身份证.png" alt="">
+                            <span>用户信息</span>
+                            <img id="userInfo" class="list-img2" src="/static/assets/images/icon-img/右箭头.png" alt="">
+                        </div>
+                        <div class="user-list-div">
+                            <img class="list-img1" src="/static/assets/images/icon-img/密码 (3).png" alt="">
+                            <span>修改密码</span>
+                            <img id="userPsw" class="list-img2" src="/static/assets/images/icon-img/右箭头.png" alt="">
+                        </div>
+                        <div class="user-list-div">
+                            <img class="list-img1" src="/static/assets/images/icon-img/房子.png" alt="">
+                            <span>发布房源</span>
+                            <img id="userHouse" class="list-img2" src="/static/assets/images/icon-img/右箭头.png" alt="">
+                        </div>
+                        <div class="user-list-div">
+                            <img class="list-img1" src="/static/assets/images/icon-img/房子.png" alt="">
+                            <span>我的房源</span>
+                            <img id="myHouse" class="list-img2" src="/static/assets/images/icon-img/右箭头.png" alt="">
+                        </div>
+                        <div class="user-list-div">
+                            <img class="list-img1" src="/static/assets/images/icon-img/合同.png" alt="">
+                            <span>提交合同</span>
+                            <img id="userPaperSubmit" class="list-img2" src="/static/assets/images/icon-img/右箭头.png" alt="">
+                        </div>
+                        <div class="user-list-div">
+                            <img class="list-img1" src="/static/assets/images/icon-img/获取 合同金.png" alt="">
+                            <span>我的合同</span>
+                            <img id="userMyPaper" class="list-img2" src="/static/assets/images/icon-img/右箭头.png" alt="">
+                        </div>
+                        <div class="user-btn">
+                            <button id="userBtn">安全退出</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="userinfo-box" style="display: none;">
+                    <div class="userinfo">
+                        <div class="info-head">
+                            <h2 class="info-person">个人资料</h2>
+                        </div>
+                        <div class="userinfo-content" >
+							<form id="updateForm" class="updata-form" >
+								<div class="form-group">
+									<label class="form-label">用户名：</label>
+									<div class="form-group-div">
+										<input type="text" placeholder="张三" class="form-input" disabled>
+									</div>
+								</div>
+					   			<div class="form-group">
+									<label class="form-label">姓名：</label>
+									<div class="form-group-div">
+										<input id="updateUsername" type="text" placeholder="用户名" class="form-input">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="form-label">性别：</label>
+									<div class="form-group-div">
+										<input id="updateSex" type="text" placeholder="性别" class="form-input">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="form-label">出生日期：</label>
+									<div class="form-group-div">
+										<input id="updateBirth" type="text" placeholder="出生日期" class="form-input">
+									</div>
+								</div>
+                                <div class="form-group">
+									<label class="form-label">联系QQ：</label>
+									<div class="form-group-div">
+										<input id="updateQQ" type="text" placeholder="联系QQ" class="form-input">
+									</div>
+								</div>
+                                <div class="form-group">
+									<label class="form-label">头像：</label>
+									<div class="form-group-div">
+										<input id="updateHeadPhoto" type="text" placeholder="头像" class="form-input">
+									</div>
+								</div>
+								<div class="infobtn">
+									<button id="updateSubmitBtn" class="infosubmirbtn">确认修改</button>
+								</div>
+							</form>    
+						</div> 
+                    </div>
+                </div>
+                <!-- 修改密码 -->
+                <div id="passwordinfo-box" style="display: none;">
+                    <div class="passwordinfo">
+                        <div class="info-head">
+                            <h2 class="info-person">修改密码</h2>
+                        </div>
+                        <div class="passwordinfo-content" >
+							<!-- 修改密码 -->
+                            <form id="passwordForm" class="password-form">
+                                <div class="form-group">
+                                    <label class="form-label">用户名：</label>
+                                    <div class="form-group-div">
+                                        <input type="text" placeholder="张三" class="form-input" disabled>
+                                    </div>
+                                </div>
+                                   <div class="form-group">
+                                    <label class="form-label">原密码：</label>
+                                    <div class="form-group-div">
+                                        <input id="beforepsw" type="password" placeholder="" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">新密码：</label>
+                                    <div class="form-group-div">
+                                        <input id="updatepsw" type="text" placeholder="新密码" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">确认密码：</label>
+                                    <div class="form-group-div">
+                                        <input id="updatepsw2" type="text" placeholder="确认密码" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="infobtn">
+                                    <button id="passwordSubmitBtn" class="infosubmirbtn">确认修改</button>
+                                </div>
+                            </form>
+						</div> 
+                    </div>
+                </div>
+                <!-- 发布房源 -->
+                <div id="postHouseinfo-box" style="display: none;">
+                    <div class="postHouseinfo">
+                        <div class="info-head">
+                            <h2 class="info-person">发布房源</h2>
+                        </div>
+                        <div class="postHouseinfo-content" >
+							<!-- 发布房源 -->
+                            <form id="postHouseForm" class="postHouse-form">
+                                <div class="form-group">
+                                    <label class="form-label">房屋名称：</label>
+                                    <div class="form-group-div">
+                                        <input type="text" placeholder="" class="form-input">
+                                    </div>
+                                </div>
+                                   <div class="form-group">
+                                    <label class="form-label">房屋类型：</label>
+                                    <div class="form-group-div">
+                                        <input type="radio" name="" value="1" checked="checked">商业办公
+                                        <input type="radio" name="" value="1">普通民宅
+                                        <input type="radio" name="" value="1">酒店公寓
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">出租价：</label>
+                                    <div class="form-group-div">
+                                        <input id="" type="text" placeholder="" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">图片：</label>
+                                    <div class="form-group-div">
+                                        <input id="" type="text" placeholder="" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">面积：</label>
+                                    <div class="form-group-div">
+                                        <input id="" type="text" placeholder="" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">楼层：</label>
+                                    <div class="form-group-div">
+                                        <input id="" type="text" placeholder="" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">朝向：</label>
+                                    <div class="form-group-div">
+                                        <input id="" type="text" placeholder="" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">描述：</label>
+                                    <div class="form-group-div">
+                                        <input id="" type="text" placeholder="" class="form-input home-detail">
+                                    </div>
+                                </div>
+                                <div class="infobtn">
+                                    <button id="postHouseSubmitBtn" class="infosubmirbtn">确认发布</button>
+                                </div>
+                            </form>
+						</div> 
+                    </div>
+                </div>
+                <!-- 我的房源 -->
+                <div id="myhouseinfo-box" style="display: none;">
+                    <div class="myhouseinfo">
+                        <div class="info-head myhouse-head">
+                            <h2 class="info-person">我的房源</h2>
+                        </div>
+                        <div class="myhouseinfo-content" >
+							<!-- 我的房源 -->
+                            <div class="myhouseinfo-content-list">
+                                <ul>
+                                    <li>房屋</li>
+                                    <li>出租价</li>
+                                    <li>房屋类型</li>
+                                    <li>面积</li>
+                                    <li>楼层</li>
+                                    <li>朝向</li>
+                                    <li>发布日期</li>
+                                    <li>点击数</li>
+                                    <li>状态</li>
+                                    <li>操作</li>
+                                </ul>
+                            </div>
+                            <!-- 房源展示 -->
+                            <div class="myhouseinfo-list">
+                                <ul>
+                                    <li>房屋</li>
+                                    <li>出租价</li>
+                                    <li>房屋类型</li>
+                                    <li>面积</li>
+                                    <li>楼层</li>
+                                    <li>朝向</li>
+                                    <li>发布日期</li>
+                                    <li>点击数</li>
+                                    <li>状态</li>
+                                    <li>操作</li>
+                                </ul>
+                            </div>
+						</div> 
+                    </div>
+                </div>
+                <!-- 提交合同 -->
+                 <div id="submitPaperinfo-box" style="display: none;">
+                    <div class="submitPaperinfo">
+                        <div class="info-head">
+                            <h2 class="info-person">提交合同</h2>
+                        </div>
+                        <div class="submitPaperinfo-content" >
+							<!-- 提交合同 -->
+                            <form id="submitPaperForm" class="submitPaper-form">
+                                <div class="form-group">
+                                    <label class="form-label">合同号：</label>
+                                    <div class="form-group-div">
+                                        <input type="text" placeholder="" class="form-input" disabled>
+                                    </div>
+                                </div>
+                                   <div class="form-group">
+                                    <label class="form-label">房屋：</label>
+                                    <div class="form-group-div">
+                                        <input type="radio" name="" value="1" checked="checked">商业办公
+                                        <input type="radio" name="" value="1">普通民宅
+                                        <input type="radio" name="" value="1">酒店公寓
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">合同：</label>
+                                    <div class="form-group-div">
+                                        <input id="" type="text" placeholder="" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">开始日期：</label>
+                                    <div class="form-group-div">
+                                        <input id="" type="text" placeholder="" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">结束日期：</label>
+                                    <div class="form-group-div">
+                                        <input id="" type="text" placeholder="" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="infobtn">
+                                    <button id="submitPaperSubmitBtn" class="infosubmirbtn">确认提交</button>
+                                </div>
+                            </form>
+						</div> 
+                    </div>
+                </div>
+                <!-- 我的合同 -->
+                <div id="myPaperinfo-box" style="display: block;">
+                    <div class="myhouseinfo">
+                        <div class="info-head myhouse-head">
+                            <h2 class="info-person">我的合同</h2>
+                        </div>
+                        <div class="myhouseinfo-content" >
+							<!-- 我的合同 -->
+                            <div class="myhouseinfo-content-list">
+                                <ul>
+                                    <li>合同号</li>
+                                    <li>房屋</li>
+                                    <li>创建日期</li>
+                                    <li>开始日期</li>
+                                    <li>结束日期</li>
+                                    <li>状态</li>
+                                    <li>操作</li>
+                                </ul>
+                            </div>
+                            <!-- 房源展示 -->
+                            <div class="myhouseinfo-list">
+                                <ul>
+                                    <li>合同号</li>
+                                    <li>房屋</li>
+                                    <li>创建日期</li>
+                                    <li>开始日期</li>
+                                    <li>结束日期</li>
+                                    <li>状态</li>
+                                    <li>删除</li>
+                                </ul>
+                            </div>
+						</div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- jQuery JS -->
+<script src="/static/assets/js/vendor/jquery-3.3.1.min.js"></script>
+<!-- login.js  -->
+<!-- <script type="text/javascript" src="../static/js/login.js"></script> -->
+<!-- register.js -->
+<!-- <script type="text/javascript" src="../static/js/register.js"></script> -->
+<!-- user.js -->
+<script type="text/javascript" src="../static/js/user.js"></script>
+<!-- forget.js -->
+<!-- <script type="text/javascript" src="../static/js/forget.js"></script> -->
+</body>
+</html>
