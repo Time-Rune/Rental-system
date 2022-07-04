@@ -16,9 +16,6 @@ public class UserReceive {
 
     @PostMapping(value = "/insert")
     public ModelAndView insertUser(HttpServletRequest http) {
-//        serviceUser.insertUser(http.getParameter("account"), http.getParameter("password"),
-//                http.getParameter("name"), http.getParameter("sex"),
-//                http.getParameter("birth"), http.getParameter("phone"));
         serviceUser.insertUser(http.getParameter("account"), http.getParameter("password"),
                 http.getParameter("name"), http.getParameter("sex"),
                 http.getParameter("birth"), http.getParameter("phone"));

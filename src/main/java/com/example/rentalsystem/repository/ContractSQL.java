@@ -25,6 +25,6 @@ public interface ContractSQL {
     @Delete("delete from Contract where CID = #{id}")
     void deleteContract(int id);
 
-    @Update("update Contract set UID1=#{uid1}, UID2=#{uid2}, HID=#{hid} where CID = #{id}")
-    void updateContract(int id, int uid1, int uid2, int hid);
+    @Update("update Contract set UID1=#{uid1},UID2=#{uid2},Ubegin=#{begin},Uend=#{end},HID=#{hid} where CID = #{id}")
+    void updateContract(int id, int uid1, int uid2, String begin, String end, int hid);
 }

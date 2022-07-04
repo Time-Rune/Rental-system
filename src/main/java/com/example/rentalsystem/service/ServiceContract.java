@@ -17,8 +17,8 @@ public class ServiceContract {
         contractSQL.insertContract(newid, uid1, uid2, begin, end, hid);
     }
 
-    public void updateContract(int id, int uid1, int uid2, int hid){
-        contractSQL.updateContract(id, uid1, uid2, hid);
+    public void updateContract(int id, int uid1, int uid2, String begin, String end, int hid){
+        contractSQL.updateContract(id, uid1, uid2, begin, end, hid);
     }
 
     public void deleteContract(int id){

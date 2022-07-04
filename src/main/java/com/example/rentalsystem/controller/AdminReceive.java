@@ -23,13 +23,6 @@ public class AdminReceive {
         return view;
     }
 
-//    @PostMapping(value = "/select")
-//    public ModelAndView searchUser(HttpServletRequest http){
-//        ModelAndView view = new ModelAndView("newManage::user-userTable");
-//        view.addObject("user_list", serviceUser.searchUser(http.getParameter("search")));
-//        return view;
-//    }
-
     @PostMapping(value = "/insert")
     public ModelAndView insertAdmin(HttpServletRequest http){
         serviceAdmin.insertAdmin(http.getParameter("account"), http.getParameter("name"),

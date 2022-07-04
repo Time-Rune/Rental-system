@@ -441,31 +441,33 @@
                                     <input id="con-search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
                                                 <button id="con-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
                                 </div>
-                                <div id="con-userTable" th:fragment="userTable">
+                                <div id="ContractTable" th:fragment="ContractTable">
                                     <table class="footable table table-stripped toggle-arrow-tiny">
                                         <thead>
                                         <tr>
                                             <th>合同编号</th>
-                                            <th>房东姓名</th>
-                                            <th>租房人姓名</th>
+                                            <th>房东ID</th>
+                                            <th>租房人ID</th>
                                             <th>开始时间</th>
                                             <th>结束时间</th>
-                                            <th>房屋编号</th>
+                                            <th>房屋ID</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="user: ${user_list}">
-                                            <td th:text="${user?.UID}">1</td>
-                                            <td th:text="${user?.Uaccount}">ydw</td>
-                                            <td th:text="${user?.Uname}">袁德伟</td>
-                                            <td th:text="${user?.Upassword}">123</td>
+                                        <tr th:each="con: ${con_list}">
+                                            <td th:text="${con?.CID}">null</td>
+                                            <td th:text="${con?.UID1}">null</td>
+                                            <td th:text="${con?.UID2}">null</td>
+                                            <td th:text="${con?.Ubegin}">null</td>
+                                            <td th:text="${con?.Uend}">null</td>
+                                            <td th:text="${con?.HID}">null</td>
                                             <td style="width: 50px;">
-                                                <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                <button th:onclick="con_updateBtn([[${con?.CID}]],[[${con?.UID1}]],[[${con?.UID2}]],[[${con?.Ubegin}]],[[${con?.Uend}]],[[${con?.HID}]],)" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改
                                                 </button>
                                             </td>
                                             <td style="width: 50px;">
-                                                <button th:onclick="|deleteBtn(${user?.UID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+                                                <button th:onclick="|con_deleteBtn(${con?.CID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-trash"></i> 删除
                                                 </button>
                                             </td>
@@ -493,13 +495,13 @@
                                 <div class="ibox-content">
                                     <form id="con-addForm" class="form-horizontal">
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">房东姓名：</label>
+                                            <label class="col-sm-3 control-label">房东ID：</label>
                                             <div class="col-sm-8">
                                                 <input id="con-addUID1" type="text" placeholder="房东姓名" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">租房人姓名：</label>
+                                            <label class="col-sm-3 control-label">租房人ID：</label>
                                             <div class="col-sm-8">
                                                 <input id="con-addUID2" type="text" placeholder="租房人姓名" class="form-control">
                                             </div>
@@ -633,10 +635,10 @@
                                         </thead>
                                         <tbody>
                                         <tr th:each="user: ${user_list}">
-                                            <td th:text="${user?.UID}">1</td>
-                                            <td th:text="${user?.Uaccount}">ydw</td>
-                                            <td th:text="${user?.Uname}">袁德伟</td>
-                                            <td th:text="${user?.Upassword}">123</td>
+                                            <td th:text="${user?.UID}">null</td>
+                                            <td th:text="${user?.Uaccount}">null</td>
+                                            <td th:text="${user?.Uname}">null</td>
+                                            <td th:text="${user?.Upassword}">null</td>
                                             <td style="width: 50px;">
                                                 <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改
@@ -779,7 +781,7 @@
                                             <td th:text="${user?.Uname}">袁德伟</td>
                                             <td th:text="${user?.Upassword}">123</td>
                                             <td style="width: 50px;">
-                                                <button th:onclick="updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                <button th:onclick="con_updateBtn([[${user?.UID}]],[[${user?.Uaccount}]],[[${user?.Uname}]],[[${user?.Upassword}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改
                                                 </button>
                                             </td>
@@ -1014,6 +1016,23 @@
         })
     }
 
+    function con_deleteBtn(id) {
+        $.ajax({
+            type: 'POST',
+            url: '/contract/delete',
+            data: {
+                'id': id
+            },
+            success: function (data) {
+                $('#ContractTable').html(data)
+            },
+            error: function (err) {
+                console.log(err)
+                alert("操作失败，请刷新重新尝试！")
+            }
+        })
+    }
+
 	// 点击修改按钮
 	function user_updateBtn(id, account, name, password, sex, birth, phone) {
 		// 传递数据到弹出框
@@ -1037,13 +1056,15 @@
         $('#admin-updateAphone').val(phone)
     }
 
-    function house_updateBtn(id, username, nickname, password) {
+    function con_updateBtn(id, UID1, UID2, begin, end, hid) {
         // 传递数据到弹出框
-        $('#modal-form-update').modal('show');
-        $('#updateUserId').val(id)
-        $('#updateUsername').val(username)
-        $('#updateNickname').val(nickname)
-        $('#updatePassword').val(password)
+        $('#con-modal-form-update').modal('show');
+        $('#con-updateId').val(id)
+        $('#con-updateUID1').val(UID1)
+        $('#con-updateUID2').val(UID2)
+        $('#con-updateUbegin').val(begin)
+        $('#con-updateUend').val(end)
+        $('#con-updateHID').val(hid)
     }
 
     function news_updateBtn(id, username, nickname, password) {
@@ -1055,7 +1076,7 @@
         $('#updatePassword').val(password)
     }
 
-    function contract_updateBtn(id, username, nickname, password) {
+    function house_updateBtn(id, username, nickname, password) {
         // 传递数据到弹出框
         $('#modal-form-update').modal('show');
         $('#updateUserId').val(id)
