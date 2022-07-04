@@ -2,6 +2,7 @@ package com.example.rentalsystem.controller;
 
 import com.example.rentalsystem.service.ServiceAdmin;
 import com.example.rentalsystem.service.ServiceContract;
+import com.example.rentalsystem.service.ServiceShowHouse;
 import com.example.rentalsystem.service.ServiceUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -22,6 +23,9 @@ public class UserController {
     @Autowired
     private ServiceContract serviceContract;
 
+    @Autowired
+    private ServiceShowHouse serviceShowHouse;
+
     @GetMapping("/admincenter")
     public ModelAndView login(Model model) {
 //        List<House> houses = serviceShowHouse.getLastestHouse(num);
@@ -30,6 +34,7 @@ public class UserController {
         view.addObject("user_list", serviceUser.selectAllUser());
         view.addObject("admin_list", serviceAdmin.selectAllAdmin());
         view.addObject("con_list", serviceContract.selectAllContract());
+        view.addObject("house_list", serviceShowHouse.getAllHouse());
         return view;
     }
 

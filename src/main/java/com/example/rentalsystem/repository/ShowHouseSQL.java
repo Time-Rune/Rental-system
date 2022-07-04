@@ -15,8 +15,8 @@ public interface ShowHouseSQL {
     void insertHouse(int id, String name, int kind, int cost, int area, int floor, int direct, int owner, String date);
 
     @Update("Update House set Hname=#{name},Hkind=#{kind},Hcost=#{cost},Harea=#{area}," +
-            "Hfloor=#{floor}, Hdirection=#{direct},Howner=#{owner}")
-    void updateHouse(String name, int kind, int cost, int area, int floor, int direct, int owner);
+            "Hfloor=#{floor}, Hdirection=#{direct},Howner=#{owner} where HID=#{id}")
+    void updateHouse(int id, String name, int kind, int cost, int area, int floor, int direct, int owner);
 
     @Delete("delete * from House where HID = #{id}")
     void deleteHouse(int id);
@@ -36,7 +36,7 @@ public interface ShowHouseSQL {
     @Select("select * from house where Hname like #{keyword}")
     List<House> searchHouseByName(String keyword);
 
-    @Select("select * from house where HID like #{key} or Hname like ${key} or Hkind like #{key} " +
+    @Select("select * from house where HID like #{key} or Hname like #{key} or Hkind like #{key} " +
             "or Hcost like #{key} or Howner like #{key}")
     List<House> searchHouse(String key);
 

@@ -384,15 +384,16 @@ $('#house-addUserBtn').click(function() {
 // 房屋 查询
 $('#house-findBtn').click(function () {
 	// 发送GET异步请求
+
 	$.ajax({
 		type: 'GET',
-		url: '/user/select',
+		url: '/house/search',
 		data: {
 			'search': $('#house-search').val()
 		},
 		success: function (data) {
 			// 局部刷新数据显示部分的div
-			$('#house-userTable').html(data)
+			$('#HouseTable').html(data)
 		},
 		error: function (err) {
 			console.log(err)
@@ -401,76 +402,53 @@ $('#house-findBtn').click(function () {
 	})
 })
 
-// 房屋 添加
-$('#house-addSubmitBtn').click(function () {
-    //变量
-	var username = $('#addUserName').val()
-	var nickname = $('#addNickname').val()
-	var password = $("#addPassword").val()
-
-	// 非空效验
-	if (username.length == 0){
-		alert("用户名不能为空")
-	}else if(nickname.length == 0){
-		alert("昵称不能为空")
-	}else if (password.length == 0){
-		alert("密码不能为空")
-	}else {
-		$.ajax({
-			type: 'POST',
-			url: '/user/insert',
-			data: {
-				'username': username, //用户名
-				'nickname': nickname, //昵称
-				'password': password //密码
-			},
-			success: function (data) {
-				// 关闭modal框
-				$('#house-modal-form-add').modal('hide')
-				// 清空modal框里上一次的数据
-				document.getElementById("addForm").reset()
-				// 局部刷新
-				$('#house-userTable').html(data)
-			},
-			error: function (err) {
-				console.log(err)
-				alert("操作失败，请刷新重新尝试！")
-			}
-		})
-	}
-})
-
 // 房屋 修改提交
 $('#house-updateSubmitBtn').click(function () {
     //变量
-	var id = $('#updateUserId').val()
-	var username = $('#updateUsername').val()
-	var nickname = $('#updateNickname').val()
-	var password = $("#updatePassword").val()
+	var id = $('#house-updateId').val()
+	var name = $('#house-updateHname').val()
+	var kind = $('#house-updateHkind').val()
+	var cost = $('#house-updateHcost').val()
+	var area = $('#house-updateHarea').val()
+	var floor = $('#house-updateHfloor').val()
+	var direct = $('#house-updateHdirection').val()
+	var owner = $('#house-updateHowner').val()
 
-	if (username.length ==0) {
-		alert('用户名不能为空')
-	}else if (nickname.length == 0) {
-		alert('昵称不能为空')
-	}else if (password.length == 0) {
-		alert('密码不能为空')
+	if (name.length ==0) {
+		alert('房名不能为空')
+	}else if (kind.length == 0) {
+		alert('类型不能为空')
+	}else if (cost.length == 0) {
+		alert('价格不能为空')
+	}else if (area.length == 0) {
+		alert('面积不能为空')
+	}else if (floor.length == 0) {
+		alert('楼层不能为空')
+	}else if (direct.length == 0) {
+		alert('朝向不能为空')
+	}else if (owner.length == 0) {
+		alert('持有人不能为空')
 	}else {
 		$.ajax({
 			type: 'POST',
-			url: '/user/update',
+			url: '/house/update',
 			data: {
 				'id': id,
-				'username': username,
-				'nickname': nickname,
-				'password': password
+				'name': name,
+				'kind': kind,
+				'cost': cost,
+				'area': area,
+				'floor': floor,
+				'direct': direct,
+				'owner': owner,
 			},
 			success: function (data) {
 				// 关闭modal框
 				$('#house-modal-form-update').modal('hide')
 				// 清空modal框里上一次的数据
-				document.getElementById("updateForm").reset()
+				document.getElementById("house-updateForm").reset()
 				// 局部刷新
-				$('#house-userTable').html(data)
+				$('#HouseTable').html(data)
 			},
 			error: function (err) {
 				console.log(err)
