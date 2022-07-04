@@ -412,7 +412,6 @@ $('#house-updateSubmitBtn').click(function () {
 	var direct = $('#house-updateHdirection').val()
 	var owner = $('#house-updateHowner').val()
 	var click = $('#house-updateHclick').val()
-	var date = $('#house-updateHdate').val()
 
 	if (name.length ==0) {
 		alert('房名不能为空')
@@ -430,9 +429,6 @@ $('#house-updateSubmitBtn').click(function () {
 		alert('持有人不能为空')
 	}else if (click.length == 0) {
         alert('点击数不能为空')
-	}else if (date.length == 0) {
-        alert('发布日期不能为空')
-
 	}else {
 		$.ajax({
 			type: 'POST',
@@ -447,7 +443,6 @@ $('#house-updateSubmitBtn').click(function () {
 				'direct': direct,
 				'owner': owner,
 				'click': click,
-				'date': date,
 			},
 			success: function (data) {
 				// 关闭modal框
@@ -497,7 +492,7 @@ $('#word-findBtn').click(function () {
 // 留言 修改提交 <!--留言修改弹出框：留言编号，留言人编号，日期，点击量-->
 $('#word-updateSubmitBtn').click(function () {
     //变量
-	var id = $('#word-updateWId').val()
+	var id = $('#word-updateId').val()
 	var post = $('#word-updateWpost').val()
 	var date = $('#word-updateWdate').val()
 	var click = $('#word-updateWclick').val()
@@ -566,11 +561,11 @@ $('#news-findBtn').click(function () {
 // 新闻 修改提交 <!--新闻修改弹出框：新闻编号，发布人编号，新闻标题，发布日期，点击量-->
 $('#news-updateSubmitBtn').click(function () {
     //变量
-	var id = $('#news-updateUserNId').val()
-	var post = $('#news-updateUserNpost').val()
-	var header = $('#news-updateUserNheader').val()
-	var date = $('#news-updateUserNdate').val()
-	var click = $('#news-updateUserNclick').val()
+	var id = $('#news-updateId').val()
+	var post = $('#news-updateNpost').val()
+	var header = $('#news-updateNheader').val()
+	var date = $('#news-updateNdate').val()
+	var click = $('#news-updateNclick').val()
 
 	if (post.length ==0) {
 		alert('发布人不能为空')

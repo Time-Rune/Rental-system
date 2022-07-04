@@ -10,7 +10,7 @@ import java.util.List;
 public interface ContractSQL {
     @Insert("insert into Contract(CID, Cphoto, UID1, UID2, Ubegin, Uend, Hid)" +
             "values(#{id}, 'src/main/resources/static/default.jpeg', #{uid1}, #{uid2}, #{begin}, #{end}, #{hid})")
-    void insertContract(int id, int uid1, int uid2, String begin, String end, int hid);
+    void RuneinsertContract(int id, int uid1, int uid2, String begin, String end, int hid);
 
     @Select("select * from Contract")
     List<Contract> getContract();
@@ -25,7 +25,7 @@ public interface ContractSQL {
     @Select("select max(Contract.CID) from Contract")
     int getMaxCID();
 
-    @Insert("insert into contract(CID, Cphoto, UID1, UID2, Ubegin, Uend, HID" +
+    @Insert("insert into contract(CID, Cphoto, UID1, UID2, Ubegin, Uend, HID)" +
             "values(#{CID}, #{Cphoto}, #{UID1}, #{UID2}, #{Ubegin}, #{Uend}, #{HID})")
     void insertContract(int CID, String Cphoto, String Ubegin, String Uend, int HID);
 
