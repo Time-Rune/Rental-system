@@ -11,6 +11,7 @@ $('#user-addUserBtn').click(function() {
 // 用户 查询
 $('#user-findBtn').click(function () {
 	// 发送GET异步请求
+
 	$.ajax({
 		type: 'GET',
 		url: '/user/select',
@@ -83,6 +84,7 @@ $('#user-addSubmitBtn').click(function () {
 // 用户 修改提交
 $('#user-updateSubmitBtn').click(function () {
     //变量
+
 	var id = $('#user-updateId').val()
 	var account = $('#user-updateUaccount').val()
 	var name = $('#user-updateUname').val()
@@ -145,13 +147,13 @@ $('#admin-findBtn').click(function () {
 	// 发送GET异步请求
 	$.ajax({
 		type: 'GET',
-		url: '/user/select',
+		url: '/admin/select',
 		data: {
 			'search': $('#admin-search').val()
 		},
 		success: function (data) {
 			// 局部刷新数据显示部分的div
-			$('#admin-userTable').html(data)
+			$('#AdminTable').html(data)
 		},
 		error: function (err) {
 			console.log(err)

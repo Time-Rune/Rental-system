@@ -15,6 +15,10 @@ public interface AdminSQL {
     @Update("update Admins set Aaccount=#{account},Apassword=#{password},Aname=#{name},Aphone=#{phone} where AID=#{id}")
     void updateAdmin(int id, String account, String password, String name, String phone);
 
+    @Select("select * from Admins where Aaccount like #{key} or Apassword like #{key} or Aname like #{key} " +
+            "or Aphone like #{key}")
+    List<Admins> searchAdmin(String key);
+
     @Select("select * from Admins")
     List<Admins> getAdmins();
 

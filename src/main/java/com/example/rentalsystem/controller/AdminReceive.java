@@ -3,10 +3,7 @@ package com.example.rentalsystem.controller;
 import com.example.rentalsystem.entity.Admins;
 import com.example.rentalsystem.service.ServiceAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +15,20 @@ public class AdminReceive {
 
     @Autowired
     private ServiceAdmin serviceAdmin;
+
+    @GetMapping(value = "/select")
+    public ModelAndView searchAdmin(HttpServletRequest http){
+        ModelAndView view = new ModelAndView("newManage::AdminTable");
+        view.addObject("admin_list", serviceAdmin.searchAdmin(http.getParameter("search")));
+        return view;
+    }
+
+//    @PostMapping(value = "/select")
+//    public ModelAndView searchUser(HttpServletRequest http){
+//        ModelAndView view = new ModelAndView("newManage::user-userTable");
+//        view.addObject("user_list", serviceUser.searchUser(http.getParameter("search")));
+//        return view;
+//    }
 
     @PostMapping(value = "/insert")
     public ModelAndView insertAdmin(HttpServletRequest http){

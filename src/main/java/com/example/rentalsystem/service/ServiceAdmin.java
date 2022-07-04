@@ -18,6 +18,11 @@ public class ServiceAdmin {
         return adminSQL.getAdmins();
     }
 
+    public List<Admins> searchAdmin(String key){
+        String key0 = "%" + key + "%";
+        return adminSQL.searchAdmin(key0);
+    }
+
     public void insertAdmin(String account, String name, String password, String phone){
         int id = adminSQL.getMaxAID() + 1;
         Date date = new Date();

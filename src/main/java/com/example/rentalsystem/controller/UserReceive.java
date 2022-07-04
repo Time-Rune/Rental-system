@@ -45,7 +45,7 @@ public class UserReceive {
         return view;
     }
 
-    @PostMapping(value = "/select")
+    @GetMapping(value = "/select")
     public ModelAndView searchUser(HttpServletRequest http){
         ModelAndView view = new ModelAndView("newManage::user-userTable");
         view.addObject("user_list", serviceUser.searchUser(http.getParameter("search")));
