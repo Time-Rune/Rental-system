@@ -5,6 +5,7 @@ import com.example.rentalsystem.entity.House;
 import com.example.rentalsystem.entity.User;
 import com.example.rentalsystem.repository.ShowHouseSQL;
 import com.example.rentalsystem.service.ServiceContract;
+import com.example.rentalsystem.service.ServiceShowHouse;
 import com.example.rentalsystem.service.ServiceUserCenter;
 import com.example.rentalsystem.utils.AjaxResult;
 import com.example.rentalsystem.utils.TypeConversion;
@@ -34,6 +35,8 @@ public class UserCenterController {
     ShowHouseSQL showHouseSQL;
     @Autowired
     ServiceContract serviceContract;
+    @Autowired
+    ServiceShowHouse serviceShowHouse;
 
     @GetMapping("/center")
     public String userCenter(Model model){
@@ -44,6 +47,7 @@ public class UserCenterController {
             System.out.println(contract.toString());
         }
         model.addAttribute("myContractList", myContractList);
+        List<House> houses = serviceShowHouse.getMyHouse(user.getUID());
         return "/user";
     }
 //个人信息修改
