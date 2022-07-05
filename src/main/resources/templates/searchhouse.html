@@ -91,7 +91,7 @@
                         <ul>
                             <li th:each="house:${SearchResultList}">
                                 <img th:src="${house.Hphoto}" alt="">
-                                <p th:text="${house.Hname}">环境很好，阳光充足！</p>
+                                <p class="line-limit-length" th:text="${house.Hname}">环境很好，阳光充足！</p>
                                 <h2 th:text="'￥'+${house.Hcost}+'/月'">＄7600/月</h2>
                             </li>
                         </ul>

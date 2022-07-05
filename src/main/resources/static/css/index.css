@@ -147,6 +147,14 @@
     padding-left: 3px;
     padding-top: 6px;
 }
+
+.line-limit-length {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .alla {
     text-decoration: none;
 }

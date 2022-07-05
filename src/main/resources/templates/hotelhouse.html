@@ -91,7 +91,7 @@
           <ul>
             <li th:each="house:${allHotelHouseList}">
               <a class="alla" th:href="@{/house/housedetail(houseid=${house.HID})}"><img th:src="${house.Hphoto}" alt=""></a>
-              <a class="alla" th:href="@{/house/housedetail(houseid=${house.HID})}"><p th:text="${house.Hname}">环境很好，阳光充足！</p></a>
+              <a class="alla" th:href="@{/house/housedetail(houseid=${house.HID})}"><p class="line-limit-length" th:text="${house.Hname}">环境很好，阳光充足！</p></a>
               <h2 th:text="'￥'+${house.Hcost}+'/月'">＄7600/月</h2>
             </li>
           </ul>
