@@ -136,14 +136,26 @@ $(function(){
             alert("操作失败");
         }
     };
+    // var optionpassword = {
+    //     type: 'POST',
+    //     success:showPassword,
+    //     dataType: 'json',
+    //     error : function(xhr, status, err) {
+    //         alert("操作失败");
+    //     }
+    // };
+    $("#passwordForm").submit(function(){
+        $(this).ajaxSubmit(optionpassword);
+        return false;  //防止表单自动提交
+    });
     $("#register-form").submit(function(){
         $(this).ajaxSubmit(option);
         return false;  //防止表单自动提交
     });
-    $("#login-form").submit(function(){
-        $(this).ajaxSubmit(options);
-        return false;  //防止表单自动提交
-    });
+    // $("#login-form").submit(function(){
+    //     $(this).ajaxSubmit(options);
+    //     return false;  //防止表单自动提交
+    // });
 });
 /**
  * 保存操作
@@ -185,6 +197,15 @@ function showregister(responseText){
         alert('啥也不是');
     }
 }
+//用户中心信息
+// function showPassword(responseText){
+//     if(responseText.msg == "1"){
 
+//         alert("修改密码成功!");
+//         // window.location.href="/index";
+//     } else {
+//         alert("密码修改失败，请检查原密码是否正确！");
+//     }
+// }
 
 
