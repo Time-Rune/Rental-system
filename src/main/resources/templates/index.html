@@ -23,7 +23,7 @@
                 </div>
                 <div id="head-wel-login-after" style="display: none;">
                     <span id="login-after" th:text="${session?.current_user_info?.Uname}+'你好,欢迎光临本站！'">欢迎光临本站！</span>
-                    <span><a href="/usercenter" id="userBtn">[用户中心]</a></span>
+                    <span><a href="/usercenter/center" id="userBtn">[用户中心]</a></span>
                 </div>
             </div>
             <div class="nav">
@@ -192,15 +192,15 @@
         </div>
         <form id="register-form" action="Registersubmit" method="post" onsubmit="return save();" style="display: block">
             <div class="register-input">
-                <label>邮箱:</label>
+                <label>账号名:</label>
                 <i class="icons-email"></i>
-                <input type="text" id="inputEmail" name="email" minlength="4" maxlength="40" class="list-input" placeholder="请输入邮箱"/><br>
+                <input type="text" id="inputAct" name="email" minlength="4" maxlength="40" class="list-input" placeholder="请输入邮箱"/><br>
                 <span id="inputEmailEmpty" class="emptyInput" style="display: none">邮箱不能为空</span>
             </div>
             <div class="register-input">
-                <label>用户名:</label>
+                <label>昵称:</label>
                 <i class="icons-user" id="icons-register"></i>
-                <input type="text" id="inputAct" name="act" minlength="4" maxlength="40" class="list-input" placeholder="请输入用户名" /><br>
+                <input type="text" id="inputNickname" name="act" minlength="4" maxlength="40" class="list-input" placeholder="请输入用户名" /><br>
                 <span id="inputActEmpty" class="emptyInput" style="display: none">用户名不能为空</span>
             </div>
             <div class="register-input eye-div">
