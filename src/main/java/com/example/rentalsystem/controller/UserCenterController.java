@@ -31,7 +31,9 @@ public class UserCenterController {
     ShowHouseSQL showHouseSQL;
 
     @GetMapping("/center")
-    public String userCenter(){
+    public String userCenter(Model model){
+        User user = UserContext.getCurrentUser();
+        model.addAttribute("user", user);
         return "/user";
     }
 //个人信息修改
