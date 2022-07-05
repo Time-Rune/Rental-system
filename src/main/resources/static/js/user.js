@@ -70,3 +70,51 @@ userMyPaper.onclick = function(){
     $("#submitPaperinfo-box").css("display", "none");
     $("#myPaperinfo-box").css("display", "block");
 }
+// 表单提交
+//若其中一个为空 则阻止表单提交
+$("#updateForm").submit(function () {
+    let act = $("#inputAccount").val();
+    let psw = $("#inputPassword").val();
+    if (act === "" || psw === "") {
+        return false;
+    }
+    return true;
+})
+//表单提交顺序
+$(function(){
+    var options = {
+        type: 'POST',
+        success:showResponse,
+        dataType: 'json',
+        error : function(xhr, status, err) {
+            alert("操作失败");
+        }
+    };
+    // 个人信息
+    $("#updateForm").submit(function(){
+        $(this).ajaxSubmit(options);
+        return false;  //防止表单自动提交
+    });
+    // 修改密码
+    $("#passwordForm").submit(function(){
+        $(this).ajaxSubmit(options);
+        return false;  //防止表单自动提交
+    });
+    // 发布房源
+    $("#postHouseForm").submit(function(){
+        $(this).ajaxSubmit(options);
+        return false;  //防止表单自动提交
+    });
+    // 提交合同
+    $("#submitPaperForm").submit(function(){
+        $(this).ajaxSubmit(options);
+        return false;  //防止表单自动提交
+    });
+
+});
+/**
+ * 保存操作
+ */
+function toSave(){
+    $("#updateForm").submit();
+}

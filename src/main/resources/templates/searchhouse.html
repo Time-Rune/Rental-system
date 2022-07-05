@@ -16,8 +16,14 @@
     <div class="wrap">
         <div class="header">
             <div class="header-wel">
-                <span>欢迎光临本站！</span>
-                <span><a href="" id="adminBtn">登录</a></span>
+                <div id="head-wel-login-before" style="display: none;">
+                    <span id="login-before">欢迎光临本站！</span>
+                    <span><a href="/index" id="returnindex">回到主页登录</a></span>
+                </div>
+                <div id="head-wel-login-after" style="display: block;">
+                    <span id="login-after" th:text="${session?.current_user_info?.Uname}+'你好,欢迎光临本站！'">欢迎光临本站！</span>
+                    <span><a href="/usercenter" id="userBtn">[用户中心]</a></span>
+                </div>
             </div>
             <div class="nav">
                 <ul>
@@ -97,6 +103,8 @@
 <script type="text/javascript" src="../static/js/login.js"></script>
 <!-- register.js -->
 <script type="text/javascript" src="../static/js/register.js"></script>
+<!-- slide.js -->
+<script type="text/javascript" src="/static/js/slide.js"></script>
 <!-- forget.js -->
 <!-- <script type="text/javascript" src="../static/js/forget.js"></script> -->
 </body>

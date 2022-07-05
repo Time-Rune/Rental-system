@@ -10,7 +10,7 @@ import java.util.List;
 public interface ContractSQL {
     @Insert("insert into Contract(CID, Cphoto, UID1, UID2, Ubegin, Uend, Hid)" +
             "values(#{id}, 'src/main/resources/static/default.jpeg', #{uid1}, #{uid2}, #{begin}, #{end}, #{hid})")
-    void insertContract(int id, int uid1, int uid2, String begin, String end, int hid);
+    void insertContractUser(int id, int uid1, int uid2, String begin, String end, int hid);
 
     @Select("select * from Contract")
     List<Contract> getContract();

@@ -15,9 +15,15 @@
 <body>
     <div class="wrap">
         <div class="header">
-            <div class="header-wel">
-                <span>欢迎光临本站！</span>
-                <span><a href="" id="adminBtn">登录</a></span>
+            <div class="header-wel returnindex">
+                <div id="head-wel-login-before" style="display: none;">
+                    <span id="login-before">欢迎光临本站！</span>
+                    <span><a href="/index" id="returnindex">回到主页登录</a></span>
+                </div>
+                <div id="head-wel-login-after" style="display: block;">
+                    <span id="login-after" th:text="${session?.current_user_info?.Uname}+'你好,欢迎光临本站！'">欢迎光临本站！</span>
+                    <span><a href="/usercenter" id="userBtn">[用户中心]</a></span>
+                </div>
             </div>
             <div class="nav">
                 <ul>
@@ -87,8 +93,12 @@
                                 <a class="alla" th:href="@{/house/housedetail(houseid=${house.HID})}"><img th:src="${house.Hphoto}" alt=""></a>
                                 <a class="alla" th:href="@{/house/housedetail(houseid=${house.HID})}"><p th:text="${house.Hname}">环境很好，阳光充足！</p></a>
                                 <h2 th:text="'￥'+${house.Hcost}+'/月'">＄7600/月</h2>
-                            </li>
+                            </li>   
                         </ul>
+                    </div>
+                    <div id="allhouse-right-content-button">
+                        <!-- <button>下一页</button> -->
+                        <a href="" id="allhouse-btn">下一页</a>
                     </div>
                 </div>
             </div>
@@ -100,7 +110,27 @@
 <script type="text/javascript" src="../static/js/login.js"></script>
 <!-- register.js -->
 <script type="text/javascript" src="../static/js/register.js"></script>
+<!-- allhouse.js -->
+<script type="text/javascript" src="../static/js/allhouse.js"></script>
+<!-- slide.js -->
+<!-- <script type="text/javascript" src="/static/js/slide.js"></script> -->
 <!-- forget.js -->
 <!-- <script type="text/javascript" src="../static/js/forget.js"></script> -->
+<script>
+    window.onload = function(){
+        var spanValue = document.getElementById("login-after").innerHTML;
+    // alert(spanValue);
+    if(spanValue == 'null你好,欢迎光临本站！'){
+        // alert('是空的哈哈哈')
+        // alert(spanValue);
+        $("#head-wel-login-before").css("display", "block");
+        $("#head-wel-login-after").css("display", "none");
+    }else{
+        // alert('你好呀');
+        $("#head-wel-login-before").css("display", "none");
+        $("#head-wel-login-after").css("display", "block");
+    }
+    }
+</script>
 </body>
 </html>

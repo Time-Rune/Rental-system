@@ -153,10 +153,11 @@ function showResponse(responseText){
          * 请求成功后的操作
          */
         // alert(responseText.msg);
-        alert("登录成功!");
+        alert("用户登录成功!");
         window.location.href="/index";
     } else if(responseText.msg == "admin"){
-        window.location.href="/house/allhouse";
+        alert('管理员登录成功！')
+        window.location.href="/admincenter";
     } else {
         alert("账号或密码错误请重新登录！");
         // alert(responseText.msg);

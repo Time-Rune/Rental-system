@@ -34,7 +34,7 @@ public class UserCenterController {
     public String userCenter(){
         return "/user";
     }
-
+//个人信息修改
     @RequestMapping(value = "/userinfo", method = RequestMethod.POST)
     public AjaxResult updateUserInfo(HttpServletRequest request, HttpServletResponse response, Model model){
         User user = UserContext.getCurrentUser();
@@ -60,23 +60,23 @@ public class UserCenterController {
         }
         return ajaxResult;
     }
-
+//    修改密码
     @RequestMapping(value = "updatepassword", method = RequestMethod.POST)
     public void updatePassword(HttpServletRequest request){
-        String newPassword = request.getParameter("");
+        String newPassword = request.getParameter("newpsw");
         serviceUserCenter.updateCurrentUerPassword(newPassword);
     }
-
+//发布房源
     @RequestMapping(value = "submithouse", method = RequestMethod.POST)
     public void submitHouse(HttpServletRequest request){
-        String name = request.getParameter("");
-        int kind = TypeConversion.changeHouseTypeToNumber(request.getParameter(""));
-        int cost = Integer.parseInt(request.getParameter(""));
-        String photo = request.getParameter("");
-        int area = Integer.parseInt(request.getParameter(""));
-        int floor = Integer.parseInt(request.getParameter(""));
-        int direct = TypeConversion.changeDirectionTypeToNumber(request.getParameter(""));
-        String text = request.getParameter("");
+        String name = request.getParameter("housename");
+        int kind = TypeConversion.changeHouseTypeToNumber(request.getParameter("housetype"));
+        int cost = Integer.parseInt(request.getParameter("housecost"));
+        String photo = request.getParameter("housepicture");
+        int area = Integer.parseInt(request.getParameter("housearea"));
+        int floor = Integer.parseInt(request.getParameter("housefloor"));
+        int direct = TypeConversion.changeDirectionTypeToNumber(request.getParameter("housedirect"));
+        String text = request.getParameter("housetext");
         int id = showHouseSQL.getMaxHID() + 1;
         int userid = UserContext.getCurrentUser().getUID();
         String nowtime = new SimpleDateFormat().format(new Date().getTime());

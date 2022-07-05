@@ -17,11 +17,11 @@
     <div class="wrap">
         <div class="header">
             <div class="header-wel">
-                <div id="head-wel-login-before" style="display: none;">
+                <div id="head-wel-login-before" style="display: block;">
                     <span id="login-before">欢迎光临本站！</span>
                     <span><a href="" id="adminBtn">登录</a></span>
                 </div>
-                <div id="head-wel-login-after" style="display: block;">
+                <div id="head-wel-login-after" style="display: none;">
                     <span id="login-after" th:text="${session?.current_user_info?.Uname}+'你好,欢迎光临本站！'">欢迎光临本站！</span>
                     <span><a href="/usercenter" id="userBtn">[用户中心]</a></span>
                 </div>
@@ -181,16 +181,16 @@
             <span><a id="forget-btn" href="">忘记密码？</a></span>
         </form>
     </div>
-<!--    <%&#45;&#45;                注册框&#45;&#45;%>-->
+<!--  注册框 -->
     <div id="register" class="register">
         <div id="register-title" class="register-title">
             <div class="register-title-item">
-                <div class="active">用户注册</div><div>标注者注册</div>
+                <div>用户注册</div>
             </div>
             <span><a id="closeButton" href="javascript:void(0)"><img src="/static/assets/images/icon-img/closeBtn.png"
                                                                      alt=""></a></span>
         </div>
-        <form id="register-form" action="RegisterServlet" method="post" onsubmit="return save();" style="display: block">
+        <form id="register-form" action="Registersubmit" method="post" onsubmit="return save();" style="display: block">
             <div class="register-input">
                 <label>邮箱:</label>
                 <i class="icons-email"></i>
