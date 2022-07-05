@@ -40,6 +40,9 @@ public class UserCenterController {
         User user = UserContext.getCurrentUser();
         model.addAttribute("user", user);
         List<Contract> myContractList = serviceContract.showMyContract();
+        for(Contract contract: myContractList){
+            System.out.println(contract.toString());
+        }
         model.addAttribute("myContractList", myContractList);
         return "/user";
     }
