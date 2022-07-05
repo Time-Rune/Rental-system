@@ -107,7 +107,7 @@
     width: 220px;
 }
 .infobtn {
-    width: 450px;
+    width: 50px;
     height: 30px;
     /* background-color: #31c27c; */
 }
@@ -118,21 +118,22 @@
     width: 70px;
     height: 28px;
     color: #ffffff;
-    margin-left: 370px;
+    margin-left: 180px;
+    margin-top: 2px;
 }
 /* 右边处理的各个公共修改部分 */
 /* 改变盒子的大小 */
 /* 用户信息 */
 #userinfo-box {
     width: 500px;
-    height: 400px;
+    height: 450px;
     margin-top: 15px;
     margin-left: 30px;
     background-color: #f3f3f4;;
 }
 .userinfo {
     width: 494px;
-    height: 394px;
+    height: 444px;
     background-color: #ffffff;
     margin-top: 3px;
     margin-left: 3px;
@@ -145,12 +146,18 @@
     margin-top: 5px;
     margin-left: 1px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .updata-form {
     width: 450px;
-    height: 330px;
+    height: 260px;
     /* border: 1px solid green; */
+} 
+.submit-img {
+    width: 450px;
+    height: 100px;
+    /* background-color: #1ab394; */
 }
 /* 修改密码 */
 #passwordinfo-box {
@@ -175,12 +182,12 @@
     margin-top: 5px;
     margin-left: 1px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .password-form {
     width: 450px;
-    height: 230px;
-    /* border: 1px solid green; */
+    height: 215px;
 }
 /* 发布房源 */
 #postHouseinfo-box {
@@ -205,6 +212,7 @@
     margin-top: 5px;
     margin-left: 1px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .postHouse-form {
@@ -240,6 +248,7 @@
     height: 430px;
     margin-top: 5px;
     margin-left: 1px;
+    flex-wrap: wrap;
 }
 .myhouseinfo-content-list {
     width: 656px;
@@ -309,11 +318,12 @@
     margin-top: 5px;
     margin-left: 1px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .submitPaper-form {
     width: 450px;
-    height: 290px;
+    height: 190px;
     /* border: 1px solid green; */
 }
 /* 我的合同 */
