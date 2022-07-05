@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+<!--    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png">-->
+    <link rel="stylesheet" href="/static/css/adminLogin/login.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/new.css">
+    <link rel="stylesheet" href="/static/css/house.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="header-wel">
+                <div id="head-wel-login-before" style="display: none;">
+                    <span id="login-before">欢迎光临本站！</span>
+                    <span><a href="/index" id="returnindex">回到主页登录</a></span>
+                </div>
+                <div id="head-wel-login-after" style="display: block;">
+                    <span id="login-after" th:text="${session?.current_user_info?.Uname}+'你好,欢迎光临本站！'">欢迎光临本站！</span>
+                    <span><a href="/usercenter/center" id="userBtn">[用户中心]</a></span>
+                </div>
+            </div>
+            <div class="nav">
+                <ul>
+                    <!-- <img src="/11.jpeg" alt=""> -->
+                    <img src="/static/assets/images/logo/2.webp" alt="" class="nav-img">
+                    <li><a href="/index">首页</a></li>
+                    <li><a href="/house/newsdetail">新闻公告</a></li>
+                    <li><a href="/house/commercialoffice">商业办公</a></li>
+                    <li><a href="/house/commonhouse">普通民宅</a></li>
+                    <li><a href="/house/hotelhouse">酒店公寓</a></li>
+                    <li><a href="/house/allhouse">全部房源</a></li>
+                    <li><a href="/contact/showcontact">留言交流</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="search">
+            <img id="search-img" src="/static/assets/images/logo/1.webp" alt="">
+            <input type="text">
+            <button id="searchbtn">搜索</button>
+        </div>
+        <div id="new">
+            <div id="new-nav">
+                <!-- <h2>当前页面</h2> -->
+                <span>当前页面,</span>
+                <a href="/index">首页</a>
+                <a href="/house/allhouse">>全部商品</a>
+                <span>
+                    >新闻公告
+                </span>
+            </div>
+            <div class="house-main">
+                <div class="house-main-lelf">
+                    <div id="house-adr-head">
+                        <h2>新闻公告</h2>
+                    </div>
+                    <div id="house-adr-type">
+                        <ul>
+                            <li><a href="/templates/new.html">商业办公</a></li>
+                            <li><a href="">普通民宅</a></li>
+                            <li><a href="">酒店公寓</a></li>
+                        </ul>
+                    </div>
+                    <div id="hoting-house">
+                        <div id="hoting-house-head">
+                            <h2>热门房源</h2>
+                        </div>
+                        <div class="hoting-house-list">
+                            <div class="hoting-house-list-div" th:each="house:${HotHousesList}">
+                                <div class="hoting-house-list-img">
+                                    <a th:href="@{/house/housedetail(houseid=${house.HID})}"><img th:src="${house.Hphoto}" alt=""></a>
+                                </div>
+                                <div class="hoting-house-list-content">
+                                    <span class="hoting-house-list-head"><a th:href="@{/house/housedetail(houseid=${house.HID})}" th:text="${house.Hname}">标题</a></span>
+                                    <h2 class = "hoting-house-list-word" th:text="'￥'+${house.Hcost}+'/月'">￥5000/月</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="house-main-right">
+                    <div id="house-right-head">
+                        <h2>新闻公告</h2>
+                    </div>
+                    <div id="new-content">
+                        <ul>
+                            <li th:each="news:${LatestNewsList}">
+                                <a th:href="@{/news/shownews(id=${news.NID})}" th:text="'● '+${news.Nheader}">● 新闻一</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <div id="house-top-content">
+                        <div class="house-top-content-img">
+                            <img th:src="${house.Hphoto}" alt="">
+                        </div>
+                        <div class="house-detail-content">
+                            <div id="house-detail-head" >
+                                <h2 th:text="${house.Hname}">标题</h2>
+                            </div>
+                            <div id="house-detail-p">
+                                <p th:text="'租金：'+ ${house.Hcost}">租金：</p>
+                                <p th:text="'房源类型：'+ ${house.Hkind}">房源类型：</p>
+                                <p th:text="'发布日期：'+ ${house.Hdate}">发布日期：</p>
+                                <p th:text="'面积：'+ ${house.Harea}">面积：</p>
+                                <p th:text="'楼层：'+ ${house.Hfloor}">楼层：</p>
+                                <p th:text="'朝向：'+ ${house.Hdirection}">朝向：</p>
+                                <p th:text="'点击数：'+ ${house.Hclick}">点击数：</p>
+                            </div>
+                            <div id="house-detail-host">
+                                <button>联系房东</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="house-bottom-content">
+                        <div id="house-detail-title">
+                            <span>房源描述</span>
+                        </div>
+                        <div id="house-detail">
+                            <p th:text="${house.Hintroduce}">房源内容</p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- jQuery JS -->
+<script src="/static/assets/js/vendor/jquery-3.3.1.min.js"></script>
+<!-- login.js  -->
+<script type="text/javascript" src="../static/js/login.js"></script>
+<!-- register.js -->
+<script type="text/javascript" src="../static/js/register.js"></script>
+<!-- forget.js -->
+<!-- <script type="text/javascript" src="../static/js/forget.js"></script> -->
+<!-- slide.js -->
+<script type="text/javascript" src="/static/js/slide.js"></script>
+</body>
+</html>
