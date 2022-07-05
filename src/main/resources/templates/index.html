@@ -190,24 +190,24 @@
             <span><a id="closeButton" href="javascript:void(0)"><img src="/static/assets/images/icon-img/closeBtn.png"
                                                                      alt=""></a></span>
         </div>
-        <form id="register-form" action="Registersubmit" method="post" onsubmit="return save();" style="display: block">
+        <form id="register-form" action="Registersubmit" method="post" style="display: block">
             <div class="register-input">
                 <label>账号名:</label>
                 <i class="icons-email"></i>
                 <input type="text" id="inputAct" name="email" minlength="4" maxlength="40" class="list-input" placeholder="请输入账号名"/><br>
-                <span id="inputEmailEmpty" class="emptyInput" style="display: none">邮箱不能为空</span>
+                <span id="inputEmailEmpty" class="emptyInput" style="display: none">账号不能为空</span>
             </div>
             <div class="register-input">
                 <label>昵称:</label>
                 <i class="icons-user" id="icons-register"></i>
                 <input type="text" id="inputNickname" name="act" minlength="4" maxlength="40" class="list-input" placeholder="请输入昵称" /><br>
-                <span id="inputActEmpty" class="emptyInput" style="display: none">用户名不能为空</span>
+                <span id="inputActEmpty" class="emptyInput" style="display: none">名称不能为空</span>
             </div>
             <div class="register-input eye-div">
                 <label>密码:</label>
                 <i class="icons-password"></i>
                 <input type="password" id="inputPsw" minlength="6" maxlength="18" name="pwd" class="list-input eye-input" placeholder="请输入密码" /><br>
-                <img id="registereye" class="eye" src="/static/assets/images/icon-img/eye-show.png" alt="">
+<!--                <img id="registereye" class="eye" src="/static/assets/images/icon-img/eye-show.png" alt="">-->
                 <span id="inputPswEmpty" class="emptyInput" style="display: none">密码不能为空</span>
             </div>
             <input type="hidden" id="registerRole" name="role" value="user"/>

@@ -139,3 +139,30 @@ $("#inputAct").focus(function () {
 $("#inputPsw").focus(function () {
     $("#inputPswEmpty").css("display", "none");
 })
+
+//表单提交顺序
+// $(function(){
+//     var options = {
+//         type: 'POST',
+//         success:showregister,
+//         dataType: 'json',
+//         error : function(xhr, status, err) {
+//             alert("操作失败");
+//         }
+//     };
+//     $("#register-form").submit(function(){
+//         $(this).ajaxSubmit(options);
+//         return false;  //防止表单自动提交
+//     });
+// });
+//
+// function showregister(responseText){
+//     if(responseText.msg == "empty"){
+//         alert("信息不全，请检查输入！")
+//     }else if (responseText.msg == "userReg"){
+//         alert("用户注册成功！")
+//         window.location.href="/index";
+//     }else {
+//         alert('啥也不是');
+//     }
+// }

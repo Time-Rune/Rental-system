@@ -3,6 +3,7 @@ package com.example.rentalsystem.controller;
 import com.example.rentalsystem.entity.Admins;
 import com.example.rentalsystem.entity.User;
 import com.example.rentalsystem.service.ServiceLogin;
+import com.example.rentalsystem.service.ServiceUser;
 import com.example.rentalsystem.utils.AjaxResult;
 import com.example.rentalsystem.utils.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import java.io.IOException;
 @RequestMapping("/")
 public class RegisterController {
     @Autowired
-    private ServiceLogin serviceRegister;
+    private ServiceUser serviceUser;
 
     @GetMapping("/register")
     public String login(String test){
@@ -31,13 +32,24 @@ public class RegisterController {
 
     @RequestMapping(value = "Registersubmit", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    public void loginController(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public AjaxResult loginController(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("success!");
         String useremail = request.getParameter("email");
         String username = request.getParameter("act");
         String password = request.getParameter("pwd");
         System.out.println(" useremail = " + useremail + "username = " + username + " password = " + password);
-//        return ajaxResult;
+        AjaxResult ajaxResult = new AjaxResult();
+
+        if(useremail.length() == 0 || username.length() == 0 || password.length() == 0){
+            ajaxResult.setMsg("empty");
+            System.out.println("Error，账号或用户名或密码为空");
+        }
+        else{
+            serviceUser.insertUser(useremail, password, username, "男", "1990-01-01", "");
+            ajaxResult.setMsg("userReg");
+            System.out.println("用户注册成功");
+        }
+        return ajaxResult;
     }
 }
 //注册将信息插入到数据库代码

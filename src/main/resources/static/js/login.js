@@ -128,6 +128,18 @@ $(function(){
             alert("操作失败");
         }
     };
+    var option = {
+        type: 'POST',
+        success:showregister,
+        dataType: 'json',
+        error : function(xhr, status, err) {
+            alert("操作失败");
+        }
+    };
+    $("#register-form").submit(function(){
+        $(this).ajaxSubmit(option);
+        return false;  //防止表单自动提交
+    });
     $("#login-form").submit(function(){
         $(this).ajaxSubmit(options);
         return false;  //防止表单自动提交
@@ -161,6 +173,16 @@ function showResponse(responseText){
     } else {
         alert("账号或密码错误请重新登录！");
         // alert(responseText.msg);
+    }
+}
+function showregister(responseText){
+    if(responseText.msg == "empty"){
+        alert("信息不全，请检查输入！")
+    }else if (responseText.msg == "userReg"){
+        alert("用户注册成功！")
+        window.location.href="/index";
+    }else {
+        alert('啥也不是');
     }
 }
 
