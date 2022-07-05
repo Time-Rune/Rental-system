@@ -82,14 +82,6 @@ $("#updateForm").submit(function () {
 })
 //表单提交顺序
 $(function(){
-    // var options = {
-    //     type: 'POST',
-    //     success:showPassword,
-    //     dataType: 'json',
-    //     error : function(xhr, status, err) {
-    //         alert("操作失败");
-    //     }
-    // };
     var optionpassword = {
         type: 'POST',
         success:showPassword,
@@ -98,28 +90,64 @@ $(function(){
             alert("操作失败");
         }
     };
-    // 个人信息
-    // $("#updateForm").submit(function(){
-    //     $(this).ajaxSubmit(options);
-    //     return false;  //防止表单自动提交
-    // });
-    // 修改密码
     $("#passwordForm").submit(function(){
         $(this).ajaxSubmit(optionpassword);
         return false;  //防止表单自动提交
     });
-    // 发布房源
-    $("#postHouseForm").submit(function(){
-        $(this).ajaxSubmit(options);
-        return false;  //防止表单自动提交
-    });
-    // 提交合同
-    $("#submitPaperForm").submit(function(){
-        $(this).ajaxSubmit(options);
-        return false;  //防止表单自动提交
-    });
-
+    // 对应的操作成功函数
+    function showPassword(responseText){
+        if(responseText.msg == "1"){
+            /**
+             * 请求成功后的操作
+             */
+            // alert(responseText.msg);
+            alert("修改密码成功!");
+            // window.location.href="/index";
+        } else {
+            alert("密码修改失败，请检查原密码是否正确！");
+            // alert(responseText.msg);
+        }
+    }
 });
+// $(function(){
+//     // var options = {
+//     //     type: 'POST',
+//     //     success:showPassword,
+//     //     dataType: 'json',
+//     //     error : function(xhr, status, err) {
+//     //         alert("操作失败");
+//     //     }
+//     // };
+//     var optionpassword = {
+//         type: 'POST',
+//         success:showPassword,
+//         dataType: 'json',
+//         error : function(xhr, status, err) {
+//             alert("操作失败");
+//         }
+//     };
+//     // 个人信息
+//     // $("#updateForm").submit(function(){
+//     //     $(this).ajaxSubmit(options);
+//     //     return false;  //防止表单自动提交
+//     // });
+//     // 修改密码
+//     $("#passwordForm").submit(function(){
+//         $(this).ajaxSubmit(optionpassword);
+//         return false;  //防止表单自动提交
+//     });
+//     // 发布房源
+//     $("#postHouseForm").submit(function(){
+//         $(this).ajaxSubmit(options);
+//         return false;  //防止表单自动提交
+//     });
+//     // 提交合同
+//     $("#submitPaperForm").submit(function(){
+//         $(this).ajaxSubmit(options);
+//         return false;  //防止表单自动提交
+//     });
+//
+// });
 /**
  * 保存操作
  */
@@ -137,3 +165,4 @@ function showPassword(responseText){
         // alert(responseText.msg);
     }
 }
+

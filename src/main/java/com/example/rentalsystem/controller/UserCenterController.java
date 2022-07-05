@@ -44,9 +44,9 @@ public class UserCenterController {
         User user = UserContext.getCurrentUser();
         model.addAttribute("user", user);
         List<Contract> myContractList = serviceContract.showMyContract();
-        for(Contract contract: myContractList){
-            System.out.println(contract.toString());
-        }
+//        for(Contract contract: myContractList){
+//            System.out.println(contract.toString());
+//        }
         model.addAttribute("myContractList", myContractList);
         List<House> houses = serviceShowHouse.getMyHouse(user.getUID());
         model.addAttribute("myHouseList", houses);
@@ -85,10 +85,14 @@ public class UserCenterController {
         String newPassword = request.getParameter("newpsw");
         boolean flag = serviceUserCenter.updateCurrentUerPassword(newPassword);
         AjaxResult ajaxResult = new AjaxResult();
-        if(flag)
+        if(flag){
             ajaxResult.setMsg("1");
-        else
+            System.out.println("密码修改成功，新密码为：" + newPassword);
+        }
+        else{
+            System.out.println("密码修改失败！");
             ajaxResult.setMsg("0");
+        }
         return ajaxResult;
     }
 //发布房源
