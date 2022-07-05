@@ -181,3 +181,58 @@ $("#passwordSubmitBtn").on('click',function () {
 //     }
 // }
 
+function uploadfile (){
+    var formData = new FormData($('#uploadForm')[0]);
+    $.ajax({
+    type: 'post',
+    url: "/fileprocess/userphotoupload", //上传文件的请求路径必须是绝对路劲
+    data: formData,
+    cache: false,
+    processData: false,
+    contentType: false,
+}).success(function (data) {
+    console.log(data);
+    alert("上传成功"+data);
+    // filename=data;
+}).error(function (data) {
+    alert("上传失败");
+});
+}
+    $( function(){
+    $("#upload").on("click", function () {
+        $("#selectfile").click();
+    });
+
+    // $("selectfile").on("change", function (){
+    //     var formData = new FormData($('#uploadForm')[0]);
+    //     $.ajax({
+    //         type: 'post',
+    //         url: "/fileprocess/userphotoupload", //上传文件的请求路径必须是绝对路劲
+    //         data: formData,
+    //         cache: false,
+    //         processData: false,
+    //         contentType: false,
+    //     }).success(function (data) {
+    //         console.log(data);
+    //         alert("上传成功"+data);
+    //         filename=data;
+    //     }).error(function (data) {
+    //         alert("上传失败");
+    //     });
+    // });
+});
+// 登录退出
+$("#userBtn").on('click',function () {
+    var data = $("#passwordForm").serialize();//获取整个form表单的数据并序列化
+    $.ajax(
+        {
+            url:'/usercenter/userexit',//请求地址
+            type:"POST",//请求方法
+            data:data,
+            datatype:"json",//数据类型为json
+            success:function () {//回调函数
+              alert('退出')
+            }
+        }
+    )
+});

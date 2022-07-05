@@ -41,8 +41,8 @@
         </div>
         <div class="search">
             <img id="search-img" src="/static/assets/images/logo/1.webp" alt="">
-            <input type="text">
-            <button id="searchbtn">搜索</button>
+            <input id="searchInput" type="text" onkeypress="if (event.keyCode == 13) showResult();" onkeydown="entersearch(event)" />
+            <button id="searchbtn" onclick="to()"><a >搜索</a></button>
         </div>
         <div id="new">
             <div id="new-nav">
@@ -138,4 +138,23 @@
     }
 </script>
 </body>
+<script type="text/javascript">
+    function jumpPage(searchValue) {
+        window.location.href="searchhouse?keyword="+searchValue;
+    }
+
+    // 按Enter键,执行事件
+    function entersearch(event){
+        if (event.keyCode == 13)
+        {
+            to();
+        }
+    }
+    // 按钮点击触发函数
+    function to(){
+        var searchValue = document.getElementById("searchInput").value;
+        jumpPage(searchValue);
+
+    }
+</script>
 </html>
