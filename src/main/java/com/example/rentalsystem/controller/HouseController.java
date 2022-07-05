@@ -112,7 +112,7 @@ public class HouseController {
      */
     @GetMapping("/searchhouse")
     public String searchHouseByName(@RequestParam(defaultValue = "") String keyword, Model model){
-        List<House> houses = serviceShowHouse.searchHouseByName(keyword);
+        List<House> houses = serviceShowHouse.searchHouse(keyword);
         model.addAttribute("SearchResultList", houses);
         addHotHouse(model);
         return "searchhouse";
