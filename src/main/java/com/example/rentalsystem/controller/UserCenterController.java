@@ -82,8 +82,9 @@ public class UserCenterController {
     @RequestMapping(value = "updatepassword", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public AjaxResult updatePassword(HttpServletRequest request){
+        String oldPassword = request.getParameter("oldpsw");
         String newPassword = request.getParameter("newpsw");
-        boolean flag = serviceUserCenter.updateCurrentUerPassword(newPassword);
+        boolean flag = serviceUserCenter.updateCurrentUerPassword(oldPassword, newPassword);
         AjaxResult ajaxResult = new AjaxResult();
         if(flag){
             ajaxResult.setMsg("1");
