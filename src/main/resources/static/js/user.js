@@ -79,8 +79,8 @@ $("#passwordSubmitBtn").on('click',function () {
             type:"POST",//请求方法
             data:data,
             datatype:"json",//数据类型为json
-            success:function (msg) {//回调函数
-                if(msg=="1") {
+            success:function (response) {//回调函数
+                if(response.msg=="1") {
                     alert('修改成功');
                 }else {
                     alert("修改失败")

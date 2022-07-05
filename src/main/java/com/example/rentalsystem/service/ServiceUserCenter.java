@@ -33,13 +33,15 @@ public class ServiceUserCenter {
 
     public boolean checkCurrentUserPassword(String inputPassword){
         User user = getUserInfo();
+        System.out.println("当前用户：" + user.getUname() + " 用户密码：" + user.getUpassword());
+        System.out.println("新密码为：" + inputPassword);
         if(inputPassword.equals(user.getUpassword()))
             return true;
         return false;
     }
 
-    public boolean updateCurrentUerPassword(String inputPassword){
-        if(!checkCurrentUserPassword(inputPassword))
+    public boolean updateCurrentUerPassword(String oldPassword, String inputPassword){
+        if(!checkCurrentUserPassword(oldPassword))
             return false;
         User user = getUserInfo();
         userSQL.updatePassword(user.getUID(), inputPassword);
