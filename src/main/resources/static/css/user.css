@@ -350,3 +350,10 @@
     display: flex;
     justify-content: center;
 }
+#userbtn-a {
+    color: black;
+    text-decoration: none;
+}
+#userbtn-a:hover {
+    color: rgb(14, 61, 148);
+}

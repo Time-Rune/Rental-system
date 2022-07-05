@@ -272,8 +272,8 @@ $("#userBtn").on('click',function () {
             data:data,
             datatype:"json",//数据类型为json
             success:function () {//回调函数
-                alert('退出成功！')
-                window.location.href="/index";
+                // alert('退出成功！')
+                // window.location.href="/index";
             }
         }
     )
