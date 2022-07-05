@@ -8,8 +8,9 @@
 <!--    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.png">-->
     <link rel="stylesheet" href="/static/css/adminLogin/login.css">
     <link rel="stylesheet" href="/static/css/index.css">
-    <link rel="stylesheet" href="/static/css/new.css">
+
     <link rel="stylesheet" href="/static/css/house.css">
+    <link rel="stylesheet" href="/static/css/newsdetail-css.css.css">
 </head>
 <body>
     <div class="wrap">
@@ -86,9 +87,9 @@
                     <div id="house-right-head">
                         <h2>新闻公告</h2>
                     </div>
-                    <div id="new-content">
+                    <div id="news-content">
                         <ul>
-                            <li th:each="news:${LatestNewsList}">
+                            <li th:each="news:${news_list}">
                                 <a th:href="@{/news/shownews(id=${news.NID})}" th:text="'● '+${news.Nheader}">● 新闻一</a>
                             </li>
                         </ul>
