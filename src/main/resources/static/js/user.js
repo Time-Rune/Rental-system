@@ -262,8 +262,9 @@ $(function(){
     //     });
     // });
 // 登录退出
+// 登录退出
 $("#userBtn").on('click',function () {
-    var data = $("#passwordForm").serialize();//获取整个form表单的数据并序列化
+    var data = $("#userBtn-Form").serialize();//获取整个form表单的数据并序列化
     $.ajax(
         {
             url:'/usercenter/userexit',//请求地址
@@ -271,7 +272,8 @@ $("#userBtn").on('click',function () {
             data:data,
             datatype:"json",//数据类型为json
             success:function () {//回调函数
-              alert('退出')
+                alert('退出成功！')
+                window.location.href="/index";
             }
         }
     )
