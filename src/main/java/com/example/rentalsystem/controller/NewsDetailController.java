@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/news")
 public class NewsDetailController {
@@ -19,5 +21,12 @@ public class NewsDetailController {
         News news = serviceNews.getNewsByID(id);
         model.addAttribute("news", news);
         return "new";
+    }
+
+    @GetMapping("/allnews")
+    public String getAllNews(Model model){
+        List<News> allnews = serviceNews.getAllNews();
+        model.addAttribute("news_list", allnews);
+        return "news";
     }
 }
