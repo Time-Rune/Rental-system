@@ -1,7 +1,9 @@
 package com.example.rentalsystem.controller;
 
 import com.example.rentalsystem.entity.House;
+import com.example.rentalsystem.entity.User;
 import com.example.rentalsystem.service.ServiceShowHouse;
+import com.example.rentalsystem.service.ServiceUser;
 import com.example.rentalsystem.utils.TypeConversion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ public class HouseController {
     @Autowired
     private ServiceShowHouse serviceShowHouse;
 
+    @Autowired
+    private ServiceUser serviceUser;
+
     /**
      * 房源详情页
      * @param houseid 房屋id
@@ -29,6 +34,8 @@ public class HouseController {
     public String getHouseDetial(int houseid, Model model){
         serviceShowHouse.increaseHouseHclick(houseid);
         House house = serviceShowHouse.getHouseByID(houseid).get(0);
+        User user = serviceUser.selectUser(house.getHowner());
+        model.addAttribute("user", user);
         model.addAttribute("house", house);
         addHotHouse(model);
         return "housedetail";
