@@ -51,9 +51,9 @@ public class ServiceUserCenter {
     public boolean submitHouse(House house){
         User user = getUserInfo();
         try{
-            showHouseSQL.insertHouse(house.getHID(), house.getHname(), house.getHkind(),
+            showHouseSQL.insertHouseUser(house.getHID(), house.getHname(), house.getHkind(),
                     house.getHcost(), house.getHarea(), house.getHfloor(), house.getHdirection(),
-                    house.getHowner(), house.getHdate());
+                    house.getHowner(), house.getHdate(), house.getHclick(), house.getHintroduce(), house.getHstate(), house.getHphoto());
             return true;
         }catch (Exception e){
             e.printStackTrace();

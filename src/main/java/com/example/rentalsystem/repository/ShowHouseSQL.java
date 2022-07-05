@@ -10,9 +10,13 @@ import java.util.List;
 public interface ShowHouseSQL {
 //    @Select("select * from house where house.Hdate > #{nowtime}")
 //    List<House> getLatestHouse(String nowtime);
-    @Insert("Insert into House(HID,Hname,Hkind,Hcost,Harea,Hfloor,Hdirection,Howner,Hdate) " +
-            "values(#{id},#{name},#{kind},#{cost},#{area},#{direct},#{owner},#{date})")
-    void insertHouse(int id, String name, int kind, int cost, int area, int floor, int direct, int owner, String date);
+//    @Insert("Insert into House(HID,Hname,Hkind,Hcost,Harea,Hfloor,Hdirection,Howner,Hdate) " +
+//            "values(#{id},#{name},#{kind},#{cost},#{area},#{direct},#{owner},#{date})")
+//    void insertHouse(int id, String name, int kind, int cost, int area, int floor, int direct, int owner, String date, int click);
+
+    @Insert("Insert into House(HID,Hname,Hkind,Hcost,Hphoto,Harea,Hfloor,Hdirection,Hintroduce,Hstate,Howner,Hdate,Hclick) " +
+            "values(#{id},#{name},#{kind},#{cost},#{photo},#{area},#{floor},#{direct},#{introduce},#{state},#{owner},#{date},#{click})")
+    void insertHouseUser(int id, String name, int kind, int cost, int area, int floor, int direct, int owner, String date, int click, String introduce, int state, String photo);
 
     @Update("Update House set Hname=#{name},Hkind=#{kind},Hcost=#{cost},Harea=#{area}," +
             "Hfloor=#{floor}, Hdirection=#{direct},Howner=#{owner},Hclick=#{click} where HID=#{id}")

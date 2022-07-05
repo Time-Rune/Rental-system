@@ -13,17 +13,6 @@ public class HouseReceive {
     @Autowired
     private ServiceShowHouse serviceShowHouse;
 
-    @PostMapping(value = "/insert")
-    public ModelAndView insertHouse(HttpServletRequest http){
-        serviceShowHouse.insertHouse(http.getParameter("name"), Integer.parseInt(http.getParameter("kind")),
-                Integer.parseInt(http.getParameter("cost")), Integer.parseInt(http.getParameter("area")),
-                Integer.parseInt(http.getParameter("floor")), Integer.parseInt(http.getParameter("direct")),
-                Integer.parseInt(http.getParameter("owner")));
-        ModelAndView view = new ModelAndView("newManage::HouseTable");
-        view.addObject("house_list", serviceShowHouse.getAllHouse());
-        return view;
-    }
-
     @PostMapping(value = "/update")
     public ModelAndView updateHouse(HttpServletRequest http){
         serviceShowHouse.updateHouse(Integer.parseInt(http.getParameter("id")),

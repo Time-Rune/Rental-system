@@ -54,6 +54,7 @@ public class UserCenterController {
     }
 //个人信息修改
     @RequestMapping(value = "/userinfo", method = RequestMethod.POST)
+    @ResponseBody
     public AjaxResult updateUserInfo(HttpServletRequest request, HttpServletResponse response, Model model){
         User user = UserContext.getCurrentUser();
         model.addAttribute("user", user);
@@ -97,8 +98,9 @@ public class UserCenterController {
         return ajaxResult;
     }
 //发布房源
-    @RequestMapping(value = "submithouse", method = RequestMethod.POST)
-    public void submitHouse(HttpServletRequest request){
+    @RequestMapping(value = "submithouse", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public AjaxResult submitHouse(HttpServletRequest request){
         String name = request.getParameter("housename");
         int kind = TypeConversion.changeHouseTypeToNumber(request.getParameter("housetype"));
         int cost = Integer.parseInt(request.getParameter("housecost"));
@@ -109,8 +111,12 @@ public class UserCenterController {
         String text = request.getParameter("housetext");
         int id = showHouseSQL.getMaxHID() + 1;
         int userid = UserContext.getCurrentUser().getUID();
-        String nowtime = new SimpleDateFormat().format(new Date().getTime());
+        String nowtime = new SimpleDateFormat("yyyy-MM-dd").format(new Date().getTime());
         House house = new House(id, name, kind, cost, photo, area, floor, direct, text, 0, 0, userid, nowtime);
+        serviceShowHouse.insertHouseByHouse(house);
+        AjaxResult ajaxResult = new AjaxResult();
+        ajaxResult.setMsg("1");
+        return ajaxResult;
     }
 //用户退出
     @GetMapping(value = "userexit")

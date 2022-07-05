@@ -38,12 +38,16 @@ public class ServiceShowHouse {
         return showHouseSQL.getAllSpecificKindHouse(id);
     }
 
-    public void insertHouse(String name, int kind, int cost, int area, int floor, int direct, int owner){
-        int nid = showHouseSQL.getMaxHID() + 1;
-        Date date = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
-        String nowd = ft.format(date);
-        showHouseSQL.insertHouse(nid, name, kind, cost, area, floor, direct, owner, nowd);
+//    public void insertHouse(String name, int kind, int cost, int area, int floor, int direct, int owner){
+//        int nid = showHouseSQL.getMaxHID() + 1;
+//        Date date = new Date();
+//        SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+//        String nowd = ft.format(date);
+//        showHouseSQL.insertHouse(nid, name, kind, cost, area, floor, direct, owner, nowd);
+//    }
+
+    public void insertHouseByHouse(House house){
+        showHouseSQL.insertHouseUser(house.getHID(), house.getHname(), house.getHkind(), house.getHcost(), house.getHarea(), house.getHfloor(), house.getHdirection(), house.getHowner(), house.getHdate(), house.getHclick(), house.getHintroduce(), house.getHstate(), house.getHphoto());
     }
 
     public void updateHouse(int id, String name, int kind, int cost, int area, int floor, int direct, int owner, int click){

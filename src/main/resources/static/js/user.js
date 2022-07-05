@@ -89,6 +89,46 @@ $("#passwordSubmitBtn").on('click',function () {
         }
     )
 });
+//发布房源
+$("#postHouseSubmitBtn").on('click',function () {
+    var data = $("#postHouseForm").serialize();//获取整个form表单的数据并序列化
+    $.ajax(
+        {
+            url:'/usercenter/submithouse',//请求地址
+            type:"POST",//请求方法
+            data:data,
+            datatype:"json",//数据类型为json
+            success:function (response) {//回调函数
+                if(response.msg=="1") {
+                    alert('修改成功');
+                    location.reload(true);
+                }else {
+                    alert("修改失败")
+                }
+            }
+        }
+    )
+});
+//个人信息修改
+$("#updateSubmitBtn").on('click',function () {
+    var data = $("#updateForm").serialize();//获取整个form表单的数据并序列化
+    $.ajax(
+        {
+            url:'/usercenter/userinfo',//请求地址
+            type:"POST",//请求方法
+            data:data,
+            datatype:"json",//数据类型为json
+            success:function (response) {//回调函数
+                if(response.msg=="1") {
+                    alert('修改成功');
+                    location.reload(true);
+                }else {
+                    alert("修改失败")
+                }
+            }
+        }
+    )
+});
 // 表单提交
 //若其中一个为空 则阻止表单提交
 // $("#updateForm").submit(function () {
@@ -184,24 +224,25 @@ $("#passwordSubmitBtn").on('click',function () {
 function uploadfile (){
     var formData = new FormData($('#uploadForm')[0]);
     $.ajax({
-    type: 'post',
-    url: "/fileprocess/userphotoupload", //上传文件的请求路径必须是绝对路劲
-    data: formData,
-    cache: false,
-    processData: false,
-    contentType: false,
-}).success(function (data) {
-    console.log(data);
-    alert("上传成功"+data);
-    // filename=data;
-}).error(function (data) {
-    alert("上传失败");
-});
+        type: 'post',
+        url: "/fileprocess/userphotoupload", //上传文件的请求路径必须是绝对路劲
+        data: formData,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success:function (){
+            alert("上传成功")
+        },
+        error:function (){
+            alert("上传失败")
+        }
+    })
 }
-    $( function(){
+$(function(){
     $("#upload").on("click", function () {
         $("#selectfile").click();
     });
+});
 
     // $("selectfile").on("change", function (){
     //     var formData = new FormData($('#uploadForm')[0]);
@@ -220,7 +261,6 @@ function uploadfile (){
     //         alert("上传失败");
     //     });
     // });
-});
 // 登录退出
 $("#userBtn").on('click',function () {
     var data = $("#passwordForm").serialize();//获取整个form表单的数据并序列化
