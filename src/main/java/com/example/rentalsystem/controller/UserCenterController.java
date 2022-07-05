@@ -82,4 +82,5 @@ public class UserCenterController {
         String nowtime = new SimpleDateFormat().format(new Date().getTime());
         House house = new House(id, name, kind, cost, photo, area, floor, direct, text, 0, 0, userid, nowtime);
     }
+//
 }
