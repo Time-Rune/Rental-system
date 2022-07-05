@@ -79,9 +79,15 @@ public class UserCenterController {
     }
 //    修改密码
     @RequestMapping(value = "updatepassword", method = RequestMethod.POST)
-    public void updatePassword(HttpServletRequest request){
+    public AjaxResult updatePassword(HttpServletRequest request){
         String newPassword = request.getParameter("newpsw");
-        serviceUserCenter.updateCurrentUerPassword(newPassword);
+        boolean flag = serviceUserCenter.updateCurrentUerPassword(newPassword);
+        AjaxResult ajaxResult = new AjaxResult();
+        if(flag)
+            ajaxResult.setMsg("1");
+        else
+            ajaxResult.setMsg("0");
+        return ajaxResult;
     }
 //发布房源
     @RequestMapping(value = "submithouse", method = RequestMethod.POST)
