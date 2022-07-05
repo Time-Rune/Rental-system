@@ -60,7 +60,7 @@ public class HouseController {
     @GetMapping("/commercialoffice")
     public String getCommercialOffice(@RequestParam(defaultValue = "1") int pageNumber, @RequestParam(defaultValue = "5") int numbersOfHousePerPage, Model model){
         int kind = TypeConversion.changeHouseTypeToNumber("商业办公");
-        List<House> houses = serviceShowHouse.getAllSpecificKindHouse(kind);
+        List<House> houses = serviceShowHouse.getSpecificKindHouse(kind, 10);
         List<House> reslist = new ArrayList<>();
         for(int i = (pageNumber-1)*numbersOfHousePerPage; i < Math.min(houses.size(), pageNumber*numbersOfHousePerPage); i++)
             reslist.add(houses.get(i));
@@ -77,7 +77,7 @@ public class HouseController {
     @GetMapping("/commonhouse")
     public String getcommonhouse(@RequestParam(defaultValue = "1") int pageNumber, @RequestParam(defaultValue = "5") int numbersOfHousePerPage, Model model){
         int kind = TypeConversion.changeHouseTypeToNumber("普通民宅");
-        List<House> houses = serviceShowHouse.getAllSpecificKindHouse(kind);
+        List<House> houses = serviceShowHouse.getSpecificKindHouse(kind, 10);
         List<House> reslist = new ArrayList<>();
         for(int i = (pageNumber-1)*numbersOfHousePerPage; i < Math.min(houses.size(), pageNumber*numbersOfHousePerPage); i++)
             reslist.add(houses.get(i));
@@ -95,7 +95,7 @@ public class HouseController {
     @GetMapping("/hotelhouse")
     public String getHotelHouse(@RequestParam(defaultValue = "1") int pageNumber, @RequestParam(defaultValue = "5") int numbersOfHousePerPage, Model model){
         int kind = TypeConversion.changeHouseTypeToNumber("酒店式公寓");
-        List<House> houses = serviceShowHouse.getAllSpecificKindHouse(kind);
+        List<House> houses = serviceShowHouse.getSpecificKindHouse(kind, 10);
         List<House> reslist = new ArrayList<>();
         for(int i = (pageNumber-1)*numbersOfHousePerPage; i < Math.min(houses.size(), pageNumber*numbersOfHousePerPage); i++)
             reslist.add(houses.get(i));
