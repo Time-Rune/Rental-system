@@ -70,45 +70,60 @@ userMyPaper.onclick = function(){
     $("#submitPaperinfo-box").css("display", "none");
     $("#myPaperinfo-box").css("display", "block");
 }
+// 修改密码
+$("#passwordSubmitBtn").on('click',function () {
+    var data = $("#passwordForm").serialize();//获取整个form表单的数据并序列化
+    $.ajax(
+        {
+            url:'/usercenter/updatepassword',//请求地址
+            type:"POST",//请求方法
+            data:data,
+            datatype:"json",//数据类型为json
+            success:function (msg) {//回调函数
+                if(msg=="1") {
+                    alert('修改成功');
+                }else {
+                    alert("修改失败")
+                }
+            }
+        }
+    )
+});
 // 表单提交
 //若其中一个为空 则阻止表单提交
-$("#updateForm").submit(function () {
-    let act = $("#inputAccount").val();
-    let psw = $("#inputPassword").val();
-    if (act === "" || psw === "") {
-        return false;
-    }
-    return true;
-})
+// $("#updateForm").submit(function () {
+//     let act = $("#inputAccount").val();
+//     let psw = $("#inputPassword").val();
+//     if (act === "" || psw === "") {
+//         return false;
+//     }
+//     return true;
+// })
 //表单提交顺序
-$(function(){
-    var optionpassword = {
-        type: 'POST',
-        success:showPassword,
-        dataType: 'json',
-        error : function(xhr, status, err) {
-            alert("操作失败");
-        }
-    };
-    $("#passwordForm").submit(function(){
-        $(this).ajaxSubmit(optionpassword);
-        return false;  //防止表单自动提交
-    });
-    // 对应的操作成功函数
-    function showPassword(responseText){
-        if(responseText.msg == "1"){
-            /**
-             * 请求成功后的操作
-             */
-            // alert(responseText.msg);
-            alert("修改密码成功!");
-            // window.location.href="/index";
-        } else {
-            alert("密码修改失败，请检查原密码是否正确！");
-            // alert(responseText.msg);
-        }
-    }
-});
+// $(function(){
+//     var optionpassword = {
+//         type: 'POST',
+//         success:showPassword,
+//         dataType: 'json',
+//         error : function(xhr, status, err) {
+//             alert("操作失败");
+//         }
+//     };
+//     $("#passwordForm").submit(function(){
+//         $(this).ajaxSubmit(optionpassword);
+//         return false;  //防止表单自动提交
+//     });
+//     // 对应的操作成功函数
+//     function showPassword(responseText){
+//         if(responseText.msg == "1"){
+//
+//             alert("修改密码成功!");
+//             // window.location.href="/index";
+//         } else {
+//             alert("密码修改失败，请检查原密码是否正确！");
+//         }
+//     }
+// });
 // $(function(){
 //     // var options = {
 //     //     type: 'POST',
@@ -152,17 +167,17 @@ $(function(){
  * 保存操作
  */
 // 对应的操作成功函数
-function showPassword(responseText){
-    if(responseText.msg == "1"){
-        /**
-         * 请求成功后的操作
-         */
-        // alert(responseText.msg);
-        alert("修改密码成功!");
-        // window.location.href="/index";
-    } else {
-        alert("密码修改失败，请检查原密码是否正确！");
-        // alert(responseText.msg);
-    }
-}
+// function showPassword(responseText){
+//     if(responseText.msg == "1"){
+//         /**
+//          * 请求成功后的操作
+//          */
+//         // alert(responseText.msg);
+//         alert("修改密码成功!");
+//         // window.location.href="/index";
+//     } else {
+//         alert("密码修改失败，请检查原密码是否正确！");
+//         // alert(responseText.msg);
+//     }
+// }
 

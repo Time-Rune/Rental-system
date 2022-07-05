@@ -161,7 +161,7 @@
                         </div>
                         <div class="passwordinfo-content" >
 							<!-- 修改密码 -->
-                            <form id="passwordForm" class="password-form" action="/usercenter/updatepassword"  method="post">
+                            <form id="passwordForm" class="password-form"  method="post">
                                 <div class="form-group">
                                     <label class="form-label">用户名：</label>
                                     <div class="form-group-div">
@@ -186,11 +186,11 @@
                                         <input id="updatepsw2" type="text" placeholder="确认密码" class="form-input">
                                     </div>
                                 </div>
-                                <div class="infobtn">
-                                    <input id="passwordSubmitBtn" class="infosubmirbtn" type="submit" value="确认修改">
-                                </div>
                             </form>
-						</div> 
+                            <div class="infobtn">
+                                <button id="passwordSubmitBtn" class="infosubmirbtn">确认修改</button>
+                            </div>
+						</div>
                     </div>
                 </div>
                 <!-- 发布房源 -->
@@ -388,7 +388,7 @@
 <!-- jQuery JS -->
 <script src="/static/assets/js/vendor/jquery-3.3.1.min.js"></script>
 <!-- login.js  -->
-<!-- <script type="text/javascript" src="../static/js/login.js"></script> -->
+ <script type="text/javascript" src="../static/js/login.js"></script>
 <!-- register.js -->
 <!-- <script type="text/javascript" src="../static/js/register.js"></script> -->
 <!-- user.js -->
