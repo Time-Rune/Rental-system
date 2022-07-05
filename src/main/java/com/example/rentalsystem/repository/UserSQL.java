@@ -21,7 +21,7 @@ public interface UserSQL {
     List<User> searchUser(String key);
 
     @Select("select * from User where UID = #{uid}")
-    List<User> selectUser(int uid);
+    User selectUser(int uid);
 
     @Select("select * from User")
     List<User> selectAllUser();

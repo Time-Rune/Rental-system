@@ -14,7 +14,7 @@ public class ServiceUser {
     @Resource
     private UserSQL userSQL;
 
-    public List<User> selectUser(int num){
+    public User selectUser(int num){
         return userSQL.selectUser(num);
     }
 
