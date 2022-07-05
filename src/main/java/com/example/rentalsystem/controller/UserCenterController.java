@@ -1,8 +1,10 @@
 package com.example.rentalsystem.controller;
 
+import com.example.rentalsystem.entity.Contract;
 import com.example.rentalsystem.entity.House;
 import com.example.rentalsystem.entity.User;
 import com.example.rentalsystem.repository.ShowHouseSQL;
+import com.example.rentalsystem.service.ServiceContract;
 import com.example.rentalsystem.service.ServiceUserCenter;
 import com.example.rentalsystem.utils.AjaxResult;
 import com.example.rentalsystem.utils.TypeConversion;
@@ -21,6 +23,7 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/usercenter")
@@ -29,11 +32,15 @@ public class UserCenterController {
     ServiceUserCenter serviceUserCenter;
     @Autowired
     ShowHouseSQL showHouseSQL;
+    @Autowired
+    ServiceContract serviceContract;
 
     @GetMapping("/center")
     public String userCenter(Model model){
         User user = UserContext.getCurrentUser();
         model.addAttribute("user", user);
+        List<Contract> myContractList = serviceContract.showMyContract();
+        model.addAttribute("myContractList", myContractList);
         return "/user";
     }
 //个人信息修改

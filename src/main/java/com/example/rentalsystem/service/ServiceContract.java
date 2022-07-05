@@ -2,6 +2,7 @@ package com.example.rentalsystem.service;
 
 import com.example.rentalsystem.entity.Contract;
 import com.example.rentalsystem.repository.ContractSQL;
+import com.example.rentalsystem.utils.UserContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -32,6 +33,11 @@ public class ServiceContract {
     public List<Contract> searcthConstract(String key){
         String key0 = "%" + key + "%";
         return contractSQL.searchContract(key0);
+    }
+
+    public List<Contract> showMyContract(){
+        int userid = UserContext.getCurrentUser().getUID();
+        return contractSQL.getMyContract(userid);
     }
 
 }
