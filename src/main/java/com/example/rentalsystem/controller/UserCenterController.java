@@ -14,10 +14,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -97,6 +94,24 @@ public class UserCenterController {
         }
         return ajaxResult;
     }
+    //合同提交
+    @RequestMapping(value = "submitcontract", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public AjaxResult submitcontract(HttpServletRequest request){
+        String oldPassword = request.getParameter("oldpsw");
+        String newPassword = request.getParameter("newpsw");
+        boolean flag = serviceUserCenter.updateCurrentUerPassword(oldPassword, newPassword);
+        AjaxResult ajaxResult = new AjaxResult();
+        if(flag){
+            ajaxResult.setMsg("1");
+            System.out.println("密码修改成功，新密码为：" + newPassword);
+        }
+        else{
+            System.out.println("密码修改失败！");
+            ajaxResult.setMsg("0");
+        }
+        return ajaxResult;
+    }
 //发布房源
     @RequestMapping(value = "submithouse", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
@@ -119,7 +134,7 @@ public class UserCenterController {
         return ajaxResult;
     }
 //用户退出
-    @GetMapping(value = "userexit")
+    @PostMapping(value = "userexit")
     public void exitUser(){
         UserContext.removeCurrentUser();
     }
