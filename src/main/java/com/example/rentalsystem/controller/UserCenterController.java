@@ -48,6 +48,7 @@ public class UserCenterController {
         }
         model.addAttribute("myContractList", myContractList);
         List<House> houses = serviceShowHouse.getMyHouse(user.getUID());
+        model.addAttribute("myHouseList", houses);
         return "/user";
     }
 //个人信息修改
