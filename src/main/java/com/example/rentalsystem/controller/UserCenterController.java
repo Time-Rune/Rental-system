@@ -1,8 +1,11 @@
 package com.example.rentalsystem.controller;
 
+import com.example.rentalsystem.entity.Contract;
 import com.example.rentalsystem.entity.House;
 import com.example.rentalsystem.entity.User;
 import com.example.rentalsystem.repository.ShowHouseSQL;
+import com.example.rentalsystem.service.ServiceContract;
+import com.example.rentalsystem.service.ServiceShowHouse;
 import com.example.rentalsystem.service.ServiceUserCenter;
 import com.example.rentalsystem.utils.AjaxResult;
 import com.example.rentalsystem.utils.TypeConversion;
@@ -21,6 +24,7 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/usercenter")
@@ -29,11 +33,22 @@ public class UserCenterController {
     ServiceUserCenter serviceUserCenter;
     @Autowired
     ShowHouseSQL showHouseSQL;
+    @Autowired
+    ServiceContract serviceContract;
+    @Autowired
+    ServiceShowHouse serviceShowHouse;
 
     @GetMapping("/center")
     public String userCenter(Model model){
         User user = UserContext.getCurrentUser();
         model.addAttribute("user", user);
+        List<Contract> myContractList = serviceContract.showMyContract();
+        for(Contract contract: myContractList){
+            System.out.println(contract.toString());
+        }
+        model.addAttribute("myContractList", myContractList);
+        List<House> houses = serviceShowHouse.getMyHouse(user.getUID());
+        model.addAttribute("myHouseList", houses);
         return "/user";
     }
 //个人信息修改
@@ -64,9 +79,15 @@ public class UserCenterController {
     }
 //    修改密码
     @RequestMapping(value = "updatepassword", method = RequestMethod.POST)
-    public void updatePassword(HttpServletRequest request){
+    public AjaxResult updatePassword(HttpServletRequest request){
         String newPassword = request.getParameter("newpsw");
-        serviceUserCenter.updateCurrentUerPassword(newPassword);
+        boolean flag = serviceUserCenter.updateCurrentUerPassword(newPassword);
+        AjaxResult ajaxResult = new AjaxResult();
+        if(flag)
+            ajaxResult.setMsg("1");
+        else
+            ajaxResult.setMsg("0");
+        return ajaxResult;
     }
 //发布房源
     @RequestMapping(value = "submithouse", method = RequestMethod.POST)

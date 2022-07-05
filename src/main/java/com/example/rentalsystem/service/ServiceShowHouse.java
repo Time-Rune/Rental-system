@@ -69,5 +69,7 @@ public class ServiceShowHouse {
     public List<House> getHotHouse(int sum){
         return showHouseSQL.getHotHouse(sum);
     }
+
+    public List<House> getMyHouse(int id){ return showHouseSQL.getHouseByOwnerID(id); }
 }
 
