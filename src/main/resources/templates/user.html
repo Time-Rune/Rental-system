@@ -267,7 +267,7 @@
                         </div>
                         <div class="myhouseinfo-content" >
 							<!-- 我的房源 -->
-                            <div class="myhouseinfo-content-list">
+                            <div class="myhouseinfo-content-list" >
                                 <ul>
                                     <li>房屋</li>
                                     <li>出租价</li>
@@ -282,18 +282,18 @@
                                 </ul>
                             </div>
                             <!-- 房源展示 -->
-                            <div class="myhouseinfo-list">
+                            <div class="myhouseinfo-list" th:each="house:${myHouseList}">
                                 <ul>
-                                    <li>房屋</li>
-                                    <li>出租价</li>
-                                    <li>房屋类型</li>
-                                    <li>面积</li>
-                                    <li>楼层</li>
-                                    <li>朝向</li>
-                                    <li>发布日期</li>
-                                    <li>点击数</li>
-                                    <li>状态</li>
-                                    <li>操作</li>
+                                    <li th:text="${house.Hname}">房屋</li>
+                                    <li th:text="${house.Hcost}">出租价</li>
+                                    <li th:text="${house.Hkind}">房屋类型</li>
+                                    <li th:text="${house.Harea}">面积</li>
+                                    <li th:text="${house.Hfloor}">楼层</li>
+                                    <li th:text="${house.Hdirection}">朝向</li>
+                                    <li th:text="${house.Hdate}">发布日期</li>
+                                    <li th:text="${house.Hclick}">点击数</li>
+                                    <li>未出售</li>
+                                    <li>删除</li>
                                 </ul>
                             </div>
 						</div> 

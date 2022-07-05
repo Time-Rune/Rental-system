@@ -56,7 +56,6 @@
         <div class="header-wel">
             <span><marquee behavior="scroll" direction="left">欢迎使用本系统！</marquee></span>
             <span><a href="/index">【返回首页】</a></span>
-            <!-- 为什么登录弹不出来框 -->
         </div>
     </div>
 </div>
@@ -205,13 +204,17 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">性别：</label>
                                             <div class="col-sm-8">
-                                                <input id="user-addUsex" type="text" placeholder="性别" class="form-control">
+                                                <select id="user-addUsex" type="text" class="form-control">
+                                                    <option value="男">男</option>
+                                                    <option value="女">女</option>
+                                                </select>
+                                                <!-- <input id="user-addUsex" type="text" placeholder="性别" class="form-control"> -->
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">生日：</label>
                                             <div class="col-sm-8">
-                                                <input id="user-addUbirth" type="text" placeholder="生日" class="form-control">
+                                                <input id="user-addUbirth" type="date" placeholder="生日" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -272,13 +275,17 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">性别：</label>
                                             <div class="col-sm-8">
-                                                <input id="user-updateUsex" type="text" placeholder="性别" class="form-control">
+                                                <select id="user-addUsex" type="text" class="form-control">
+                                                    <option value="男">男</option>
+                                                    <option value="女">女</option>
+                                                </select>
+                                                <!-- <input id="user-updateUsex" type="text" placeholder="性别" class="form-control"> -->
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">生日：</label>
                                             <div class="col-sm-8">
-                                                <input id="user-updateUbirth" type="text" placeholder="生日" class="form-control">
+                                                <input id="user-updateUbirth" type="date" placeholder="生日" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -549,13 +556,13 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">开始时间：</label>
                                             <div class="col-sm-8">
-                                                <input id="con-addUbegin" type="text" placeholder="开始时间" class="form-control">
+                                                <input id="con-addUbegin" type="date" placeholder="开始时间" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">结束时间：</label>
                                             <div class="col-sm-8">
-                                                <input id="con-addUend" type="text" placeholder="结束时间" class="form-control">
+                                                <input id="con-addUend" type="date" placeholder="结束时间" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -610,13 +617,13 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">开始时间：</label>
                                             <div class="col-sm-8">
-                                                <input id="con-updateUbegin" type="text" placeholder="开始时间" class="form-control">
+                                                <input id="con-updateUbegin" type="date" placeholder="开始时间" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">结束时间：</label>
                                             <div class="col-sm-8">
-                                                <input id="con-updateUend" type="text" placeholder="结束时间" class="form-control">
+                                                <input id="con-updateUend" type="date" placeholder="结束时间" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -675,7 +682,7 @@
                                         <tbody>
                                         <tr th:each="house: ${house_list}">
                                             <td th:text="${house?.HID}">null</td>
-                                            <td th:text="${house?.Hname}">null</td>
+                                            <td th:text="${house?.Hname}" class="line-limit-length">null</td>
                                             <td th:text="${house?.Hkind}">null</td>
                                             <td th:text="${house?.Hcost}">null</td>
                                             <td th:text="${house?.Harea}">null</td>
@@ -704,7 +711,7 @@
             </div>
         </div>
 
-        <!--房屋修改弹出框：房子ID，名称，类型，租金，大小，层数，朝向，拥有人编号，点击数，发布日期-->
+        <!--房屋修改弹出框：房子ID，名称，类型，租金，大小，层数，朝向，拥有人编号，点击数-->
         <div id="house-modal-form-update" class="modal fade" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -816,7 +823,7 @@
                                         <tr th:each="word: ${word_list}">
                                             <td th:text="${word?.WID}">null</td>
                                             <td th:text="${word?.Wpost}">null</td>
-                                            <td th:text="${word?.Wtext}">null</td>
+                                            <td th:text="${word?.Wtext}" class="line-limit-length">null</td>
                                             <td th:text="${word?.Wdate}">null</td>
                                             <td th:text="${word?.Wclick}">null</td>
                                             <td style="width: 50px;">               <!--留言修改弹出框：留言编号，留言人编号，日期，点击量-->
@@ -922,7 +929,7 @@
                                         <tr th:each="news: ${news_list}">
                                             <td th:text="${news?.NID}">null</td>
                                             <td th:text="${news?.Npost}">null</td>
-                                            <td th:text="${news?.Nheader}">null</td>
+                                            <td th:text="${news?.Nheader}" class="line-limit-length">null</td>
                                             <td th:text="${news?.Ndate}">null</td>
                                             <td th:text="${news?.Nclick}">null</td>
                                             <td style="width: 50px;">               <!--新闻修改弹出框：新闻编号，发布人编号，新闻标题，发布日期，点击量-->
@@ -978,7 +985,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">发布日期：</label>
                                             <div class="col-sm-8">
-                                                <input id="news-updateNdate" type="text" placeholder="发布日期" class="form-control">
+                                                <input id="news-updateNdate" type="date" placeholder="发布日期" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -1197,8 +1204,15 @@
         $('#news-updateNdate').val(date)
         $('#news-updateNclick').val(click)
     }
+    
 
 
+</script>
+
+<script>
+    $(function() {
+      $( "#datepicker" ).datepicker();
+    });   
 </script>
 </body>
 </html>
