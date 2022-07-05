@@ -44,7 +44,7 @@ public class HouseController {
     public String getAllHouse(@RequestParam(defaultValue = "1") int pageNumber, @RequestParam(defaultValue = "6") int numbersOfHousePerPage, Model model){
         List<House> houses = serviceShowHouse.getAllHouse();
         List<House> reslist = new ArrayList<>();
-        for(int i = (pageNumber-1)*numbersOfHousePerPage; i < pageNumber*numbersOfHousePerPage; i++)
+        for(int i = (pageNumber-1)*numbersOfHousePerPage; i < Math.min(houses.size(), pageNumber*numbersOfHousePerPage); i++)
             reslist.add(houses.get(i));
         model.addAttribute("allHousesList", reslist);
         addHotHouse(model);
