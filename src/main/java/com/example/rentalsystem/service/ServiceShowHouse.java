@@ -46,8 +46,8 @@ public class ServiceShowHouse {
         showHouseSQL.insertHouse(nid, name, kind, cost, area, floor, direct, owner, nowd);
     }
 
-    public void updateHouse(int id, String name, int kind, int cost, int area, int floor, int direct, int owner){
-        showHouseSQL.updateHouse(id, name, kind, cost, area, floor, direct, owner);
+    public void updateHouse(int id, String name, int kind, int cost, int area, int floor, int direct, int owner, int click){
+        showHouseSQL.updateHouse(id, name, kind, cost, area, floor, direct, owner, click);
     }
 
     public void deleteHouse(int id){

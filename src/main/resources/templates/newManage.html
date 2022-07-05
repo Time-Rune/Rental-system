@@ -799,7 +799,7 @@
                             <div class="ibox-content">
                                 <div class="input-group">
                                     <input id="word-search" type="text" placeholder="请输入关键词" class="input-sm form-control"> <span class="input-group-btn">
-                                                <button id="message-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
+                                                <button id="word-findBtn" type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"> 搜索</i> </button> </span>
                                 </div>
                                 <div id="WordTable" th:fragment="WordTable">
                                     <table class="footable table table-stripped toggle-arrow-tiny">
@@ -813,19 +813,19 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="user: ${word_list}">
+                                        <tr th:each="word: ${word_list}">
                                             <td th:text="${word?.WID}">null</td>
                                             <td th:text="${word?.Wpost}">null</td>
                                             <td th:text="${word?.Wtext}">null</td>
                                             <td th:text="${word?.Wdate}">null</td>
                                             <td th:text="${word?.Wclick}">null</td>
                                             <td style="width: 50px;">               <!--留言修改弹出框：留言编号，留言人编号，日期，点击量-->
-                                                <button th:onclick="con_updateBtn([[${word?.WID}]],[[${word?.Wpost}]],[[${word?.Wdate}]],[[${word?.Wclick}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                <button th:onclick="word_updateBtn([[${word?.WID}]],[[${word?.Wpost}]],[[${word?.Wdate}]],[[${word?.Wclick}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改
                                                 </button>
                                             </td>
                                             <td style="width: 50px;">
-                                                <button th:onclick="|deleteBtn(${word?.WID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+                                                <button th:onclick="|word_deleteBtn(${word?.WID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-trash"></i> 删除
                                                 </button>
                                             </td>
@@ -913,25 +913,25 @@
                                         <tr>
                                             <th>新闻编号</th>
                                             <th>发布人编号</th>
-                                            <th>标题</th>
-                                            <th>内容</th>
+                                            <th>新闻标题</th>
+                                            <th>发布日期</th>
                                             <th>点击量</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="user: ${news_list}">
+                                        <tr th:each="news: ${news_list}">
                                             <td th:text="${news?.NID}">null</td>
                                             <td th:text="${news?.Npost}">null</td>
                                             <td th:text="${news?.Nheader}">null</td>
-                                            <td th:text="${news?.Ntext}">null</td>
+                                            <td th:text="${news?.Ndate}">null</td>
                                             <td th:text="${news?.Nclick}">null</td>
                                             <td style="width: 50px;">               <!--新闻修改弹出框：新闻编号，发布人编号，新闻标题，发布日期，点击量-->
-                                                <button th:onclick="updateBtn([[${news?.NID}]],[[${news?.Npost}]],[[${news?.Nheader}]],[[${news?.Ndate}]],[[${news?.Nclick}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
+                                                <button th:onclick="news_updateBtn([[${news?.NID}]],[[${news?.Npost}]],[[${news?.Nheader}]],[[${news?.Ndate}]],[[${news?.Nclick}]])" class="updateUserBtn btn btn-warning btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-edit"></i> 修改
                                                 </button>
                                             </td>
                                             <td style="width: 50px;">
-                                                <button th:onclick="|deleteBtn(${news?.NID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
+                                                <button th:onclick="|news_deleteBtn(${news?.NID})|" class="deleteUserBtn btn btn-danger btn-xs btn-rounded" type="button">
                                                     <i class="fa fa-trash"></i> 删除
                                                 </button>
                                             </td>
@@ -1181,7 +1181,7 @@
     function word_updateBtn(id, post, date, click) {
         // 传递数据到弹出框
         $('#word-modal-form-update').modal('show');
-        $('#word-updateWID').val(id)
+        $('#word-updateId').val(id)
         $('#word-updateWpost').val(post)
         $('#word-updateWdate').val(date)
         $('#word-updateWclick').val(click)
@@ -1190,8 +1190,8 @@
     <!--新闻修改弹出框：新闻编号，发布人编号，新闻标题，发布日期，点击量-->
     function news_updateBtn(id, post, header, date, click) {
         // 传递数据到弹出框
-        $('news-#modal-form-update').modal('show');
-        $('#news-updateNID').val(id)
+        $('#news-modal-form-update').modal('show');
+        $('#news-updateId').val(id)
         $('#news-updateNpost').val(post)
         $('#news-updateNheader').val(header)
         $('#news-updateNdate').val(date)

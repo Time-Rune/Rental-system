@@ -16,7 +16,7 @@ public class Word {
     private int WID;
     private String Wtext;
     private int Wpost;
-    private Date Wdate;
+    private String Wdate;
     private int Wclick;
     private String WdetailTime;
 }

@@ -15,8 +15,8 @@ public interface ShowHouseSQL {
     void insertHouse(int id, String name, int kind, int cost, int area, int floor, int direct, int owner, String date);
 
     @Update("Update House set Hname=#{name},Hkind=#{kind},Hcost=#{cost},Harea=#{area}," +
-            "Hfloor=#{floor}, Hdirection=#{direct},Howner=#{owner} where HID=#{id}")
-    void updateHouse(int id, String name, int kind, int cost, int area, int floor, int direct, int owner);
+            "Hfloor=#{floor}, Hdirection=#{direct},Howner=#{owner},Hclick=#{click} where HID=#{id}")
+    void updateHouse(int id, String name, int kind, int cost, int area, int floor, int direct, int owner, int click);
 
     @Delete("delete * from House where HID = #{id}")
     void deleteHouse(int id);

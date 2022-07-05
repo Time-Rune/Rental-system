@@ -2,10 +2,7 @@ package com.example.rentalsystem.controller;
 
 import com.example.rentalsystem.service.ServiceWord;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +31,7 @@ public class WordReceive {
         return view;
     }
 
-    @PostMapping(value = "/select")
+    @GetMapping(value = "/select")
     public ModelAndView searchWord(HttpServletRequest http){
         ModelAndView view = new ModelAndView("newManage::WordTable");
         view.addObject("word_list", serviceWord.searchWord(http.getParameter("search")));

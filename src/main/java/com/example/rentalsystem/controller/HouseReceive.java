@@ -30,7 +30,7 @@ public class HouseReceive {
                 http.getParameter("name"), Integer.parseInt(http.getParameter("kind")),
                 Integer.parseInt(http.getParameter("cost")), Integer.parseInt(http.getParameter("area")),
                 Integer.parseInt(http.getParameter("floor")), Integer.parseInt(http.getParameter("direct")),
-                Integer.parseInt(http.getParameter("owner")));
+                Integer.parseInt(http.getParameter("owner")), Integer.parseInt(http.getParameter("click")));
         ModelAndView view = new ModelAndView("newManage::HouseTable");
         view.addObject("house_list", serviceShowHouse.getAllHouse());
         return view;

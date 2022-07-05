@@ -25,6 +25,6 @@ public interface WordSQL {
     @Update("update Word set Wpost=#{post},Wclick=#{click},Wdate=#{date} where WID=#{id}")
     void updateWord(int id, int post, int click, String date);
 
-    @Select("select * from Word where WID like #{key} or Wpost like #{key} or Wdate like #{key}")
+    @Select("select * from Word where WID like #{key} or Wpost like #{key} or Wdate like #{key} or Wtext like #{key}")
     List<Word> searchWord(String key);
 }
